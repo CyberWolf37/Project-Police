@@ -5,6 +5,9 @@
 
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "SFML/Graphics/Text.hpp"
+#include "SFML/Graphics/RenderWindow.hpp"
+#include "SFML/Graphics/View.hpp"
+
 
 #include "ProgressBar.hpp"
 #include "ParallelTask.hpp"
@@ -22,6 +25,8 @@ public:
     void                                    setCompletion(float percent);
 
 private:
+    sf::RenderWindow&                        mWindow;
+
     GUI::ProgressBar                        mProgressBar;
 
     ParallelTask                            mLoadingTask;
