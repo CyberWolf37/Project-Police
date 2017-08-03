@@ -123,6 +123,10 @@ void World::viewEvent(const sf::Event &event)
             case sf::Keyboard::Down:
             mWorldView.move(0.f,10.f);
             break;
+
+            default:
+            break;
+
         }
     }
 }
