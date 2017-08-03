@@ -27,6 +27,7 @@ class ProgressBar : public Component
 
 public:
 
+    // enume for check every sprite
     enum Type
     {
         BackStage,
