@@ -31,7 +31,7 @@ MenuState::MenuState(StateStack& stack, Context context)
     auto testProgressBar = std::make_shared<GUI::ProgressBar>(*context.fonts, *context.textures);
     testProgressBar->setPosition(500,500);
     testProgressBar->setSelectable(true);
-    testProgressBar->setValue(0);
+    testProgressBar->setValue(50);
 
 
     auto settingsButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);

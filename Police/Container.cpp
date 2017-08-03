@@ -48,6 +48,7 @@ void Container::handleEvent(const sf::Event &event)
         {
             // Deselect all component
             deselectAll();
+            // Select the component
             select(mSelectedChild);
         }
         else

@@ -1,6 +1,9 @@
 #include "ProgressBar.hpp"
 #include "Utility.h"
 
+// For test
+#include <iostream>
+
 namespace GUI
 {
 
@@ -8,6 +11,7 @@ ProgressBar::ProgressBar(const FontHolder& fonts, const TextureHolder& textures)
     :mTextureProgress()
     ,mIsFinish(false)
     ,mIsSelectable(false)
+    ,mIsCurseurview(false)
     ,mValue(0.f)
     ,mText()
 {
@@ -23,7 +27,7 @@ ProgressBar::ProgressBar(const FontHolder& fonts, const TextureHolder& textures)
     mText.setCharacterSize(20u);
     mText.setColor(sf::Color::White);
     centerOrigin(mText);
-    mText.setPosition(100,65);
+    mText.setPosition(120,65);
 
     // Set the sprites
     setSprite(textures);
@@ -49,18 +53,41 @@ void ProgressBar::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void ProgressBar::handleEvent(const sf::Event& event)
 {
-
+    if(event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
+    {
+        std::cout << "ProgressBar Test check"<< std::endl;
+    }
 }
 
 bool ProgressBar::checkColision(sf::Vector2i& position)
 {
-    return false;
+    // Get the rect of our progressBar
+    sf::FloatRect boundsButton  = getBoundingRect();
+
+    sf::Vector2f positionSprite = this->getPosition();
+
+    // If the position was not in our progress rect
+    if(
+            position.x < (positionSprite.x + boundsButton.width) &&
+            position.x >  positionSprite.x &&
+            position.y < (positionSprite.y + boundsButton.height) &&
+            position.y >  positionSprite.y )
+    {
+        // If we are in the box
+        return true;
+    }
+    else
+    {
+        // If we not
+        return false;
+    }
 
 }
 
 void ProgressBar::setSelectable(bool select)
 {
     mIsSelectable = select;
+
 }
 
 bool ProgressBar::isSelectable() const
@@ -70,17 +97,19 @@ bool ProgressBar::isSelectable() const
 
 void ProgressBar::select()
 {
-
+    mIsCurseurview = true;
+    setValue(mValue);
 }
 
 void ProgressBar::deselect()
 {
-
+    mIsCurseurview = false;
+    setValue(mValue);
 }
 
 sf::FloatRect ProgressBar::getBoundingRect()
 {
-
+    return mStackSprite[BackStage].getGlobalBounds();
 }
 
 bool ProgressBar::setSprite(const TextureHolder &textures)
@@ -123,8 +152,8 @@ void ProgressBar::getSprite()
     mTextureProgress.draw(mStackSprite[Progress]);
     mTextureProgress.draw(mStackSprite[Windowing]);
 
-    // Get the curseur If is selectable
-    if(mIsSelectable)
+    // Get the curseur If is selectable & iscurseurview
+    if(mIsSelectable && mIsCurseurview)
     {
         mTextureProgress.draw(mStackSprite[Curseur]);
     }
@@ -150,7 +179,7 @@ void ProgressBar::setValue(size_t value)
     mStackSprite[Progress].setTextureRect(rectSpriteProgess);
 
     // If is selectable change position of curseur
-    if(mIsSelectable)
+    if(mIsSelectable && mIsCurseurview)
     {
         // Set sprite of curseur
         centerOrigin(mStackSprite[Curseur]);
@@ -160,6 +189,12 @@ void ProgressBar::setValue(size_t value)
         mText.setCharacterSize(15);
         mText.setPosition(mStackSprite[Curseur].getPosition().x,10);
 
+    }
+    else
+    {
+        // Set The Text Position
+        mText.setPosition(120,65);
+        mText.setCharacterSize(20u);
     }
 
     // And finally get the sprite
