@@ -73,6 +73,7 @@ private:
 
     bool                        mIsFinish;
     bool                        mIsSelectable;
+    bool                        mIsCurseurview;
 
 };
 
