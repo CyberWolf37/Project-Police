@@ -35,7 +35,7 @@ public:
     virtual void                deactivate();
 
     virtual void                handleEvent(const sf::Event& event) = 0;
-    virtual bool                checkColision(sf::Vector2i& position);
+    virtual bool                checkColision(sf::Vector2i& position) = 0;
 
 private:
     bool                        mIsSelected;

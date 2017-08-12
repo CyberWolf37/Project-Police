@@ -44,7 +44,7 @@ void Container::handleEvent(const sf::Event &event)
         sf::Vector2i position = sf::Mouse::getPosition(mWindow);
 
         //Check if children was in position
-        if(checkColisionEvent(position) && hasSelection())
+        if(checkColision(position) && hasSelection())
         {
             // Deselect all component
             deselectAll();
@@ -119,7 +119,7 @@ void Container::deselectAll()
             child->deselect();
 }
 
-bool Container::checkColisionEvent(sf::Vector2i& position)
+bool Container::checkColision(sf::Vector2i& position)
 {
     // Check colision in children
     for(size_t i = 0; i< mChildren.size(); i++)

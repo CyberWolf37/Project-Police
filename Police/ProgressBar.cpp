@@ -61,19 +61,15 @@ void ProgressBar::handleEvent(const sf::Event& event)
 
 bool ProgressBar::checkColision(sf::Vector2i& position)
 {
-    // Get the rect of our progressBar
-    sf::FloatRect boundsButton  = getBoundingRect();
-
-    sf::Vector2f positionSprite = this->getPosition();
+    // Check item
+    ProgressBar::Type itemChecked = checkItem(position);
+    std::cout << itemChecked << std::endl;
 
     // If the position was not in our progress rect
-    if(
-            position.x < (positionSprite.x + boundsButton.width) &&
-            position.x >  positionSprite.x &&
-            position.y < (positionSprite.y + boundsButton.height) &&
-            position.y >  positionSprite.y )
+    if(itemChecked == BackStage || itemChecked == Progress || itemChecked == Windowing || itemChecked == CurseurTop || itemChecked == Curseur)
     {
         // If we are in the box
+        std::cout << "in box" << std::endl;
         return true;
     }
     else
@@ -81,6 +77,40 @@ bool ProgressBar::checkColision(sf::Vector2i& position)
         // If we not
         return false;
     }
+
+}
+
+ProgressBar::Type ProgressBar::checkItem(sf::Vector2i &position)
+{
+    // Type for save the type
+    ProgressBar::Type saveType = TypeCount;
+
+    // Check up the items
+    for (int i = BackStage; i <= TypeCount; i++ )
+    {
+
+        // Get the type value
+        ProgressBar::Type type = static_cast<Type>(i);
+
+        // Save the variables we need
+        sf::FloatRect boundsItem = mStackSprite[type].getGlobalBounds();
+        sf::Vector2f positionSprite = this->getPosition();
+
+
+        // Check if the position is in the box
+        if(
+        position.x < (positionSprite.x + boundsItem.width) &&
+        position.x >  positionSprite.x &&
+        position.y < (positionSprite.y + boundsItem.height) &&
+        position.y >  positionSprite.y )
+        {
+            saveType = type;
+            std::cout << type;
+        }
+    }
+    std::cout << std::endl;
+
+    return saveType;
 
 }
 
@@ -117,8 +147,7 @@ void ProgressBar::setSprite(const TextureHolder &textures)
     // For BackStage
     sf::IntRect rectBackStage (0,0,200,50);
     sf::Sprite  backStageSprite(textures.get(Textures::ProgressBar), rectBackStage);
-    centerOrigin(backStageSprite);
-    backStageSprite.setPosition(120,75);
+    backStageSprite.setPosition(20,50);
 
     // For Progress,
     sf::IntRect rectProgress (0,50,5,50);
@@ -128,17 +157,17 @@ void ProgressBar::setSprite(const TextureHolder &textures)
     // For Window,
     sf::IntRect rectWindow (0,100,200,50);
     sf::Sprite  windowSprite(textures.get(Textures::ProgressBar), rectWindow);
-    centerOrigin(windowSprite);
     windowSprite.setPosition(backStageSprite.getPosition());
 
     // For Curseur Top
     sf::IntRect rectCurseurTop (80,150,40,50);
     sf::Sprite curseurTopSprite(textures.get(Textures::ProgressBar), rectCurseurTop);
-    centerOrigin(curseurTopSprite);
+    curseurTopSprite.setPosition(150,50);
 
     // For Curseur
     sf::IntRect rectCurseur (136,150,2,50);
     sf::Sprite curseurSprite (textures.get(Textures::ProgressBar), rectCurseur);
+    curseurSprite.setPosition(0,0);
 
     // Stack all Sprite in a map
     mStackSprite[BackStage]  = backStageSprite;

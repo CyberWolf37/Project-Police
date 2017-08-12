@@ -34,7 +34,7 @@ private:
     void                            selectPrevious();
     void                            deselectAll();
 
-    bool                            checkColisionEvent(sf::Vector2i &position);
+    virtual bool                    checkColision(sf::Vector2i &position);
 
 private:
     std::vector<Component::Ptr>     mChildren;

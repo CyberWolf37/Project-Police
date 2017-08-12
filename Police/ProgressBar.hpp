@@ -30,11 +30,15 @@ public:
     // enume for check every sprite
     enum Type
     {
-        BackStage,
-        Progress,
-        Windowing,
-        CurseurTop,
-        Curseur
+        BackStage   = 0,
+        Progress    = 1,
+        Windowing   = 2,
+        CurseurTop  = 3,
+        Curseur     = 4,
+        TypeCount   = 5,
+
+        Box         = Progress | Windowing | BackStage | Curseur | CurseurTop,
+        CurseurBar  = Curseur | CurseurTop,
     };
 
     // Typdef For map the sprites
@@ -46,6 +50,7 @@ public:
 
     virtual void                handleEvent(const sf::Event& event);
     virtual bool                checkColision(sf::Vector2i &position);
+    Type                        checkItem(sf::Vector2i &position);
 
     void                        setSelectable(bool select);
     virtual bool                isSelectable() const;
@@ -76,6 +81,7 @@ private:
     bool                        mIsFinish;
     bool                        mIsSelectable;
     bool                        mIsCurseurview;
+    bool                        mIsPickUp;
 
 };
 

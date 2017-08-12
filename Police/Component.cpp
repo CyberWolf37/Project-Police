@@ -44,9 +44,4 @@ void Component::deactivate()
     mIsActive = false;
 }
 
-bool Component::checkColision(sf::Vector2i &position)
-{
-    // Do nothing by default
-}
-
 }   // End of namespace
