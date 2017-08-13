@@ -143,7 +143,7 @@ void World::loadTextures()
     mTextures.load(Textures::TileSetGround, "Media/Textures/TileSetGround.png");
 
     // Texture for tileset
-    mTextures.load(Textures::Buttons,"Media/Textures/Buttons.png" );
+    mTextures.load(Textures::Buttons,"Media/Textures/ButtonsPolice.png" );
 }
 
 // Load the file how we have some layout

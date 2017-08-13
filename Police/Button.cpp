@@ -1,5 +1,5 @@
 #include "Button.hpp"
-#include "Utility.h"
+#include "Utility.hpp"
 
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
@@ -14,6 +14,7 @@ namespace GUI
 Button::Button(const FontHolder& fonts, const TextureHolder& textures)
     : mCallback()
     , mSprite(textures.get(Textures::Buttons))
+    , mRectangleBackground()
     , mText("", fonts.get(Fonts::Main), 16)
     , mIsToggle(false)
 {
@@ -21,6 +22,10 @@ Button::Button(const FontHolder& fonts, const TextureHolder& textures)
 
     sf::FloatRect bounds = mSprite.getLocalBounds();
     mText.setPosition(bounds.width / 2.f, bounds.height / 2.f);
+
+    // Set position of rectangle background
+    mRectangleBackground.setFillColor(sf::Color::Black);
+
 
 }
 
@@ -33,6 +38,11 @@ void Button::setText(const std::string& text)
 {
     mText.setString(text);
     centerOrigin(mText);
+
+    sf::Vector2f vectorText(mText.getLocalBounds().width+10.f,mText.getLocalBounds().height+10.f);
+    mRectangleBackground.setSize(vectorText);
+    centerOrigin(mRectangleBackground);
+    mRectangleBackground.setPosition(mText.getPosition().x,mText.getPosition().y+5.f);
 }
 
 void Button::setToggle(bool flag)
@@ -144,6 +154,7 @@ void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
     target.draw(mSprite, states);
+    target.draw(mRectangleBackground, states);
     target.draw(mText, states);
 }
 

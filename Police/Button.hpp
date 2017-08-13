@@ -7,6 +7,7 @@
 
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/Text.hpp"
+#include "SFML/Graphics/RectangleShape.hpp"
 
 #include <vector>
 #include <string>
@@ -58,6 +59,7 @@ private:
 private:
     Callback                mCallback;
     sf::Sprite              mSprite;
+    sf::RectangleShape      mRectangleBackground;
     sf::Text                mText;
     bool                    mIsToggle;
 };

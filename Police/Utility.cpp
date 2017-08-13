@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 
 #include <random>
 #include <cmath>
@@ -30,6 +31,12 @@ void centerOrigin(sf::Text& text)
 {
     sf::FloatRect bounds = text.getLocalBounds();
     text.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+}
+
+void centerOrigin(sf::RectangleShape &rectShape)
+{
+    sf::FloatRect bounds = rectShape.getLocalBounds();
+    rectShape.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 }
 
 std::string toString(sf::Keyboard::Key key)

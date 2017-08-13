@@ -18,7 +18,7 @@ Application::Application()
 {
     mTextures.load(Textures::TitleScreen,"Media/Textures/Title_Screen.png");
     mFonts.load(Fonts::Main, "Media/Font/BreeSerif.ttf");
-    mTextures.load(Textures::Buttons,"Media/Textures/Buttons.png" );
+    mTextures.load(Textures::Buttons,"Media/Textures/ButtonsPolice.png" );
     mTextures.load(Textures::ProgressBar,"Media/Textures/ProgressBar.png");
 
     mWindow.setKeyRepeatEnabled(false);
