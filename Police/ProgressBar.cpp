@@ -137,7 +137,7 @@ void ProgressBar::setSprite(const TextureHolder &textures)
     centerOrigin(curseurTopSprite);
 
     // For Curseur
-    sf::IntRect rectCurseur (136,150,2,50);
+    sf::IntRect rectCurseur (135,150,4,50);
     sf::Sprite curseurSprite (textures.get(Textures::ProgressBar), rectCurseur);
 
     // Stack all Sprite in a map
