@@ -32,7 +32,8 @@ public:
         BackStage,
         Progress,
         Windowing,
-        Curseur,
+        CurseurTop,
+        Curseur
     };
 
     // Typdef For map the sprites
@@ -54,7 +55,7 @@ public:
 
     sf::FloatRect               getBoundingRect();
 
-    bool                        setSprite(const TextureHolder& textures);
+    void                        setSprite(const TextureHolder& textures);
     void                        getSprite();
 
     void                        setValue(size_t value);

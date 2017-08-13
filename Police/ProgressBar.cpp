@@ -112,7 +112,7 @@ sf::FloatRect ProgressBar::getBoundingRect()
     return mStackSprite[BackStage].getGlobalBounds();
 }
 
-bool ProgressBar::setSprite(const TextureHolder &textures)
+void ProgressBar::setSprite(const TextureHolder &textures)
 {
     // For BackStage
     sf::IntRect rectBackStage (0,0,200,50);
@@ -131,18 +131,21 @@ bool ProgressBar::setSprite(const TextureHolder &textures)
     centerOrigin(windowSprite);
     windowSprite.setPosition(backStageSprite.getPosition());
 
+    // For Curseur Top
+    sf::IntRect rectCurseurTop (80,150,40,50);
+    sf::Sprite curseurTopSprite(textures.get(Textures::ProgressBar), rectCurseurTop);
+    centerOrigin(curseurTopSprite);
+
     // For Curseur
-    sf::IntRect rectCurseur (80,150,40,50);
-    sf::Sprite curseurSprite(textures.get(Textures::ProgressBar), rectCurseur);
-    centerOrigin(curseurSprite);
+    sf::IntRect rectCurseur (135,150,4,50);
+    sf::Sprite curseurSprite (textures.get(Textures::ProgressBar), rectCurseur);
 
     // Stack all Sprite in a map
     mStackSprite[BackStage]  = backStageSprite;
     mStackSprite[Progress]   = progressSprite;
     mStackSprite[Windowing]  = windowSprite;
+    mStackSprite[CurseurTop] = curseurTopSprite;
     mStackSprite[Curseur]    = curseurSprite;
-
-    return true;
 }
 
 void ProgressBar::getSprite()
@@ -155,6 +158,7 @@ void ProgressBar::getSprite()
     // Get the curseur If is selectable & iscurseurview
     if(mIsSelectable && mIsCurseurview)
     {
+        mTextureProgress.draw(mStackSprite[CurseurTop]);
         mTextureProgress.draw(mStackSprite[Curseur]);
     }
 
@@ -182,12 +186,14 @@ void ProgressBar::setValue(size_t value)
     if(mIsSelectable && mIsCurseurview)
     {
         // Set sprite of curseur
+        centerOrigin(mStackSprite[CurseurTop]);
         centerOrigin(mStackSprite[Curseur]);
-        mStackSprite[Curseur].setPosition(static_cast<int>(valuePix)+20,25);
+        mStackSprite[CurseurTop].setPosition(static_cast<int>(valuePix)+20,25);
+        mStackSprite[Curseur].setPosition(static_cast<int>(valuePix)+20,75);
 
         // Set mText in the curseur
         mText.setCharacterSize(15);
-        mText.setPosition(mStackSprite[Curseur].getPosition().x,10);
+        mText.setPosition(mStackSprite[CurseurTop].getPosition().x,10);
 
     }
     else
