@@ -49,6 +49,7 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     // Prepare the view
     //mWorldView.zoom(0.5f);
     mWorldView.setCenter(784,1408);
+    checkView();
 
 }
 
@@ -90,10 +91,12 @@ void World::viewEvent(const sf::Event &event)
 {
     if(event.type == sf::Event::KeyPressed)
     {
+
         switch(event.key.code)
         {
             case sf::Keyboard::Z:
             mWorldView.move(0.f,-10.f);
+
             break;
 
             case sf::Keyboard::Up:
@@ -128,6 +131,7 @@ void World::viewEvent(const sf::Event &event)
             break;
 
         }
+        checkView();
     }
 }
 
@@ -176,6 +180,36 @@ void World::buildScene()
     // Get and build layout we get in the file
     buildFile();
 
+}
+
+// Move the view if is crosse the bounds
+void World::checkView()
+{
+    sf::FloatRect mWorldViewRect;
+    mWorldViewRect.left = mWorldView.getCenter().x - (mWorldView.getSize().x/2);
+    mWorldViewRect.top  = mWorldView.getCenter().y - (mWorldView.getSize().y/2);
+    mWorldViewRect.width = mWorldView.getSize().x;
+    mWorldViewRect.height = mWorldView.getSize().y;
+
+    sf::FloatRect intersection;
+
+    const bool checkIntersect = mWorldBounds.intersects(mWorldViewRect,intersection);
+
+    float surfaceIntersect = intersection.width * intersection.height;
+    float surfaceView = mWorldView.getSize().x * mWorldView.getSize().y;
+
+    if(checkIntersect && surfaceIntersect != surfaceView)
+    {
+        if(mWorldViewRect.top == intersection.top && mWorldViewRect.left == intersection.left)
+        {
+            mWorldView.move(-(mWorldViewRect.width - intersection.width),-(mWorldViewRect.height - intersection.height));
+        }
+
+        else if(mWorldViewRect.top < intersection.top || mWorldViewRect.left < intersection.left)
+        {
+            mWorldView.move((mWorldViewRect.width - intersection.width),(mWorldViewRect.height - intersection.height));
+        }
+    }
 }
 
 // Split the world for get position

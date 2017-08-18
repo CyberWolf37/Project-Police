@@ -25,7 +25,7 @@ MenuState::MenuState(StateStack& stack, Context context)
     playButton->setCallback([this] ()
     {
         requestStackPop();
-        requestStackPush(States::Loading);
+        requestStackPush(States::Game);
     });
 
     auto testProgressBar = std::make_shared<GUI::ProgressBar>(*context.fonts, *context.textures);

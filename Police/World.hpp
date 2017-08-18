@@ -57,9 +57,7 @@ private:
         void                                loadFile();
 
         void                                buildScene();
-        void                                buildSpriteScene();
-        ArraySpriteNode                     buildArraySprite(IOFile::Layout layout);
-        sf::FloatRect                       getViewBounds() const;
+        void                                checkView();
 
         ArrayVector2f                       splitWorldBounds();
         ArrayUi                             splitResourceSprite(sf::Texture &texture);
