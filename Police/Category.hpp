@@ -8,16 +8,18 @@ namespace Category
     {
         None                = 0,
         SceneGroundLayer    = 1 << 0,
-        //SceneBuildingLayer  = 1 << 1,
+        SceneBuildingLayer  = 1 << 1,
         //SceneObjectLayer    = 1 << 2,
     };
 
 }
 
-namespace Textures
+namespace Category_Build
 {
     enum Type
     {
+        None        = 0,
+        Room        = 1,
 
     };
 }

@@ -28,7 +28,9 @@ SOURCES += \
     MenuState.cpp \
     ProgressBar.cpp \
     LoadingStates.cpp \
-    ParallelTask.cpp
+    ParallelTask.cpp \
+    Build.cpp \
+    RectangleRoom.cpp
 
 HEADERS += \
     Application.hpp \
@@ -53,7 +55,9 @@ HEADERS += \
     MenuState.hpp \
     ProgressBar.hpp \
     LoadingState.hpp \
-    ParallelTask.hpp
+    ParallelTask.hpp \
+    Build.hpp \
+    RectangleRoom.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \

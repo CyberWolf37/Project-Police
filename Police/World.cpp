@@ -185,19 +185,26 @@ void World::buildScene()
 // Move the view if is crosse the bounds
 void World::checkView()
 {
+    // Get the float rect
     sf::FloatRect mWorldViewRect;
+
+    // Set the right position of view
     mWorldViewRect.left = mWorldView.getCenter().x - (mWorldView.getSize().x/2);
     mWorldViewRect.top  = mWorldView.getCenter().y - (mWorldView.getSize().y/2);
     mWorldViewRect.width = mWorldView.getSize().x;
     mWorldViewRect.height = mWorldView.getSize().y;
 
+    // initialise float rect for get intersection
     sf::FloatRect intersection;
 
+    // Intersection
     const bool checkIntersect = mWorldBounds.intersects(mWorldViewRect,intersection);
 
+    // Some calcul of surface to use it
     float surfaceIntersect = intersection.width * intersection.height;
     float surfaceView = mWorldView.getSize().x * mWorldView.getSize().y;
 
+    // If check
     if(checkIntersect && surfaceIntersect != surfaceView)
     {
         if(mWorldViewRect.top == intersection.top && mWorldViewRect.left == intersection.left)

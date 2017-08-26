@@ -17,4 +17,6 @@ INPUT(
 ./release\ProgressBar.o
 ./release\LoadingStates.o
 ./release\ParallelTask.o
+./release\Build.o
+./release\RectangleRoom.o
 );

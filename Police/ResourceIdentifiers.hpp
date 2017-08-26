@@ -15,6 +15,7 @@ namespace Textures
     {
         TitleScreen,
         TileSetGround,
+        TileSetBuild,
         Buttons,
         ProgressBar,
     };

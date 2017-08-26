@@ -17,4 +17,6 @@ INPUT(
 ./debug\ProgressBar.o
 ./debug\LoadingStates.o
 ./debug\ParallelTask.o
+./debug\Build.o
+./debug\RectangleRoom.o
 );
