@@ -12,6 +12,7 @@ namespace GUI
 {
 
 class Container : public Component
+
 {
 public:
     typedef std::shared_ptr<Container> Ptr;
@@ -26,7 +27,8 @@ public:
 
 
 private:
-    virtual void                    draw(sf::RenderTarget &target, sf::RenderStates states) const;
+    virtual void                    drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const;
+    virtual void                    draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     bool                            hasSelection() const;
     void                            select(std::size_t index);

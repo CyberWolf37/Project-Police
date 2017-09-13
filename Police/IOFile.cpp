@@ -5,6 +5,7 @@
 IOFile::IOFile()
     : mFile(new IOFile::File)
 {
+
 }
 
 IOFile::IOFile(std::string& name)
@@ -25,6 +26,9 @@ IOFile::IOFile(std::string& name)
 
 IOFile::~IOFile()
 {
+    // Delete mFile Ptr
+    delete mFile;
+    mFile = 0;
 }
 
 // Read the file text
@@ -112,6 +116,7 @@ bool IOFile::loadFromFile(std::string& name)
 
     if(file)
     {
+        readFile();
         file.close();
         return true;
     }
@@ -168,6 +173,19 @@ void IOFile::readBalise(std::ifstream &file)
             // Initialise the object layout
             std::unique_ptr<Layout> layout(new Layout);
             // Set the name of layout
+            if(balise->nameParameter == "BackGround")
+            {
+                layout->category = Category::Layers::SceneGroundLayer;
+            }
+            else if(balise->nameParameter == "Building")
+            {
+                layout->category = Category::Layers::SceneBuildingLayer;
+            }
+            else
+            {
+                layout->category = Category::Layers::None;
+            }
+
             layout->nameLayout = balise->nameParameter;
             // Reset balise we receive
             balise.reset(nullptr);
@@ -357,4 +375,62 @@ void IOFile::writeLayout(std::ofstream &file)
 IOFile::File* IOFile::getFile()
 {
     return mFile;
+}
+
+//Get the tuile Map
+std::shared_ptr<IOFile::MapTuile> IOFile::getTuile(Category::Layers categoryLayer, TuileState::ID tuileCategory, sf::Texture& texture, sf::Vector2u& pix)
+{
+    // Get world number of tile
+    size_t countX = texture.getSize().x / pix.x;
+    size_t countY = texture.getSize().y / pix.y;
+
+    // Counter to split tile
+    unsigned int counter = 0;
+    std::shared_ptr<MapTuile> mapTuile (new MapTuile);
+    std::vector<std::shared_ptr<Tuile>> vector;
+
+
+    // Index
+    sf::IntRect index(0,0,pix.x,pix.y);
+
+    // Split the texture
+    for(size_t i = 0;i < countY; i++)
+    {
+        for(size_t j = 0;j < countX; j++ , counter++)
+        {
+            // si j = 0 on remet à zero l'index
+            if(j == 0)
+            {
+                index.left = 0;
+
+                // Add in Tuile
+                std::unique_ptr<sf::Sprite> Psprite (new sf::Sprite(texture,index));
+                std::unique_ptr<Tuile> Ptuile(new Tuile(counter,pix,std::move(Psprite),categoryLayer));
+
+                // Insert in vector in a map
+                vector.push_back(std::move(Ptuile));
+            }
+            else
+            {
+                // On ajoute pix sur X
+                index.left += pix.x;
+
+                // Add in sprite
+                std::unique_ptr<sf::Sprite> Psprite (new sf::Sprite(texture,index));
+                std::unique_ptr<Tuile> Ptuile(new Tuile(counter, pix, std::move(Psprite), categoryLayer, tuileCategory));
+
+                // Insert in vector
+                vector.push_back(std::move(Ptuile));
+            }
+        }
+
+        // On ajoute pix sur y
+        index.top += pix.y;
+    }
+
+    // Set vector in map
+    (*mapTuile)[categoryLayer] = vector;
+
+    // Return Array
+    return mapTuile;
 }

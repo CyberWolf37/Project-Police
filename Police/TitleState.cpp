@@ -4,10 +4,13 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
+// For test
+#include <iostream>
+
 TitleState::TitleState(StateStack& stack, Context context)
     : State(stack, context)
     , mText()
-    , mShowText(true)
+    , mShowText(false)
     , mTextEffectTime(sf::Time::Zero)
 {
     mBackgroundSprite.setTexture(context.textures->get(Textures::TitleScreen));
@@ -18,7 +21,6 @@ TitleState::TitleState(StateStack& stack, Context context)
     mText.setColor(sf::Color::Black);
     centerOrigin(mText);
     mText.setPosition(context.window->getView().getSize() / 2.f);
-
 }
 
 void TitleState::draw()

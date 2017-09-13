@@ -19,4 +19,5 @@ INPUT(
 ./release\ParallelTask.o
 ./release\Build.o
 ./release\RectangleRoom.o
+./release\Tuile.o
 );

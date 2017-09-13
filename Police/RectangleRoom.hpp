@@ -28,13 +28,13 @@ public:
         BottomRight,
     };
 
-    typedef std::map<Textures,sf::Sprite> SpritesMap;
+    typedef std::map<RectangleRoom::Type,sf::Sprite> SpritesMap;
 
 public:
 
     explicit                RectangleRoom(TextureHolder &texture);
 
-    virtual void            draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void            drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 
     virtual void            handleEvent(const sf::Event& event);
 
@@ -53,13 +53,13 @@ private:
     bool                    mIsCurrent;
     bool                    mIsFirst;
 
-    TextureHolder           mTexture;
+    TextureHolder&          mTexture;
     SpritesMap              mStackSprite;
     sf::RenderTexture       mRenderTexture;
 
     sf::Vector2i            mPositionBegin;
 
-    sf::FloatRect           mBounds;
+    sf::IntRect             mBounds;
 
 };
 

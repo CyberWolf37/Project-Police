@@ -5,7 +5,6 @@ GameState::GameState(StateStack& stack, Context context)
     , mWorld(*context.window, *context.fonts)
 {
 
-
 }
 
 void GameState::draw()

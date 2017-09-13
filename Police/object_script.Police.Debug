@@ -19,4 +19,5 @@ INPUT(
 ./debug\ParallelTask.o
 ./debug\Build.o
 ./debug\RectangleRoom.o
+./debug\Tuile.o
 );

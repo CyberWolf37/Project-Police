@@ -23,6 +23,7 @@ class ResourceHolder
 
             void            insertResource(Identifier id, std::unique_ptr<Resource> resource);
 
+
     private:
             std::map<Identifier, std::unique_ptr<Resource>> mResourceMap;
 };

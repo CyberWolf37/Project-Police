@@ -12,6 +12,9 @@
 // Std Library
 #include <iostream>
 
+// Debug
+#include <QDebug>
+
 MenuState::MenuState(StateStack& stack, Context context)
     : State(stack, context)
     , mGuiContainer(*context.window)
@@ -24,7 +27,7 @@ MenuState::MenuState(StateStack& stack, Context context)
     playButton->setText("Play");
     playButton->setCallback([this] ()
     {
-        //requestStackPop();
+        requestStackPop();
         requestStackPush(States::Game);
     });
 

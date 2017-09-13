@@ -12,6 +12,7 @@ RectangleRoom::RectangleRoom(TextureHolder &texture)
     , mTexture(texture)
     , mRenderTexture()
     , mPositionBegin()
+    , mStackSprite()
 {
 
     // Set Textures
@@ -19,7 +20,7 @@ RectangleRoom::RectangleRoom(TextureHolder &texture)
 
 }
 
-void RectangleRoom::draw(sf::RenderTarget &target, sf::RenderStates states) const
+void RectangleRoom::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
     if(mIsCurrent)
     {

@@ -84,7 +84,7 @@ private:
         sf::View                            mUiView;
         TextureHolder                       mTextures;
         FontHolder&                         mFonts;
-        sf::FloatRect                       mWorldBounds;
+        sf::IntRect                         mWorldBounds;
         ArrayVector2f                       mGridWorld;
         sf::Vector2f                        mSpawnPosition;
 

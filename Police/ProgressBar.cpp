@@ -39,6 +39,18 @@ ProgressBar::ProgressBar(const FontHolder& fonts, const TextureHolder& textures)
     this->setOrigin(20,50);
 }
 
+void ProgressBar::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
+{
+    states.transform *= getTransform();
+
+    // Draw the sprite
+    sf::Sprite sprite(mTextureProgress.getTexture());
+
+    // Draw Now the Target
+    target.draw(sprite, states);
+
+}
+
 void ProgressBar::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     states.transform *= getTransform();

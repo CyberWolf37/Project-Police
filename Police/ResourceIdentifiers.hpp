@@ -9,6 +9,7 @@ namespace sf
     class IOFile;
 }
 
+
 namespace Textures
 {
     enum ID

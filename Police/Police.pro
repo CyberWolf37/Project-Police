@@ -30,7 +30,8 @@ SOURCES += \
     LoadingStates.cpp \
     ParallelTask.cpp \
     Build.cpp \
-    RectangleRoom.cpp
+    RectangleRoom.cpp \
+    Tuile.cpp
 
 HEADERS += \
     Application.hpp \
@@ -57,7 +58,8 @@ HEADERS += \
     LoadingState.hpp \
     ParallelTask.hpp \
     Build.hpp \
-    RectangleRoom.hpp
+    RectangleRoom.hpp \
+    Tuile.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \

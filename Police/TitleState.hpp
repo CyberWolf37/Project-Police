@@ -20,6 +20,7 @@ public:
 private:
     sf::Sprite                      mBackgroundSprite;
     sf::Text                        mText;
+    sf::Text                        mText2;
 
     bool                            mShowText;
     sf::Time                        mTextEffectTime;

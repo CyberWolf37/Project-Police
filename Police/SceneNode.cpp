@@ -82,7 +82,7 @@ void SceneNode::drawChildren(sf::RenderTarget &target, sf::RenderStates states) 
 
 void SceneNode::drawBoundingRect(sf::RenderTarget& target, sf::RenderStates) const
 {
-    sf::FloatRect rect = getBoundingRect();
+    sf::IntRect rect = getBoundingRect();
 
     sf::RectangleShape shape;
     shape.setPosition(sf::Vector2f(rect.left, rect.top));
@@ -178,7 +178,7 @@ float distance(const SceneNode& lhs, const SceneNode& rhs)
     return length(lhs.getWorldPosition() - rhs.getWorldPosition());
 }
 
-sf::FloatRect SceneNode::getBoundingRect() const
+sf::IntRect SceneNode::getBoundingRect() const
 {
-    return sf::FloatRect();
+    return sf::IntRect();
 }
