@@ -58,6 +58,14 @@ void Container::handleEvent(const sf::Event &event)
     }
 }
 
+void Container::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    states.transform *= getTransform();
+
+    FOREACH(const Component::Ptr& child, mChildren)
+            target.draw(*child, states);
+}
+
 void Container::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= getTransform();

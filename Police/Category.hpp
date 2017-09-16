@@ -24,4 +24,14 @@ namespace Category_Build
     };
 }
 
+namespace TuileState
+{
+    enum ID
+    {
+        None,
+        GroundTuile,
+        ObjectTuile,
+    };
+}
+
 #endif // CATEGORY_HPP

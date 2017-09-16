@@ -23,7 +23,7 @@ public:
     virtual void                        drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void                        handleEvent(const sf::Event& event);
 
-    const sf::Vector2u&                       getPixSize() const;
+    const sf::Vector2u&                 getPixSize() const;
 
     bool                                isActive() const;
     void                                deactivate();

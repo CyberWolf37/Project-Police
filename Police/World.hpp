@@ -84,6 +84,7 @@ private:
         sf::View                            mUiView;
         TextureHolder                       mTextures;
         FontHolder&                         mFonts;
+        FileHolder                          mFile;
         sf::IntRect                         mWorldBounds;
         ArrayVector2f                       mGridWorld;
         sf::Vector2f                        mSpawnPosition;
@@ -91,8 +92,8 @@ private:
         SceneNode                           mSceneGraph;
         std::array<SceneNode*, LayerCount>  mSceneLayers;
 
-        IOFile                              mFile;
-        IOFile::File*                       mSauv;
+        //IOFile                              mFile;
+        //IOFile::File*                       mSauv;
 
         GUI::Container                      mMainContainer;
 

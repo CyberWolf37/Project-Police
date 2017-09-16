@@ -19,12 +19,12 @@ unsigned int Build::getCategory() const
     return mCategory;
 }
 
-sf::FloatRect Build::getBoundingRect() const
+sf::IntRect Build::getBoundingRect() const
 {
     return mBounds;
 }
 
-void Build::setBoundingRect(const sf::FloatRect bounds)
+void Build::setBoundingRect(const sf::IntRect bounds)
 {
     mBounds = bounds;
 }

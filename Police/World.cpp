@@ -153,14 +153,19 @@ void World::loadTextures()
 // Load the file how we have some layout
 void World::loadFile()
 {
-    // Get and load the file
-    std::string name(STD_NAME_FILE);
-    mFile.loadFromFile(name);
-    mFile.readFile();
+    // Load the file
+    mFile.load(File::FirstLevel, "Media/Map/First_Level.txt");
+    
+    // Get Tuile and put on Scene Graph
+    sf::Vector2u pix (16,16);
+    auto LayoutTuile = std::move(mFile.get(File::FirstLevel).getTuile(Category::Layers::SceneGroundLayer,TuileState::ID::None,mTextures.get(Textures::TileSetGround),pix));
+    auto vecteur = (*LayoutTuile)[Category::Layers::SceneGroundLayer];
 
-    // Put the "FILE" in variable
-    mSauv = mFile.getFile();
-
+    for(size_t i = 0; i < vecteur.size(); i++)
+    {
+       // put in Scene graph
+       mSceneLayers[Background]->attachChild(std::move(vecteur[i]));
+    }
 
 }
 

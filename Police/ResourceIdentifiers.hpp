@@ -6,9 +6,9 @@ namespace sf
 {
     class Texture;
     class Font;
-    class IOFile;
 }
 
+class IOFile;
 
 namespace Textures
 {
@@ -45,6 +45,6 @@ class ResourceHolder;
 
 typedef ResourceHolder<sf::Texture, Textures::ID>   TextureHolder;
 typedef ResourceHolder<sf::Font, Fonts::ID>         FontHolder;
-typedef ResourceHolder<sf::IOFile, File::ID>        FileHolder;
+typedef ResourceHolder<IOFile, File::ID>            FileHolder;
 
 #endif // RESOURCEIDENTIFIERS_HPP

@@ -150,6 +150,14 @@ bool Button::checkColision(sf::Vector2i& position)
     }
 }
 
+void Button::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    states.transform *= getTransform();
+    target.draw(mSprite, states);
+    target.draw(mRectangleBackground, states);
+    target.draw(mText, states);
+}
+
 void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= getTransform();

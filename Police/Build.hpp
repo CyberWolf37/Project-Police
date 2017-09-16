@@ -22,8 +22,8 @@ public:
 
     virtual unsigned int        getCategory() const;
 
-    virtual sf::FloatRect	getBoundingRect() const;
-    virtual void                setBoundingRect(const sf::FloatRect bounds);
+    virtual sf::IntRect	getBoundingRect() const;
+    virtual void                setBoundingRect(const sf::IntRect bounds);
 
     virtual bool                isSelectable() const = 0;
     bool                        isSelected() const;
@@ -56,7 +56,7 @@ private:
 
     Category_Build::Type        mCategory;
 
-    sf::FloatRect               mBounds;
+    sf::IntRect               mBounds;
 
     sf::Time                    mProgressionTime;
     bool                        mProgressFinish;
