@@ -387,7 +387,7 @@ std::shared_ptr<IOFile::MapTuile> IOFile::getTuile(Category::Layers categoryLaye
     // Counter to split tile
     unsigned int counter = 0;
     std::shared_ptr<MapTuile> mapTuile (new MapTuile);
-    std::vector<std::shared_ptr<Tuile>> vector;
+    std::vector<std::unique_ptr<Tuile>> vector;
 
 
     // Index

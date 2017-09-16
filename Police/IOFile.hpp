@@ -31,7 +31,7 @@ class IOFile
 
 // Structure of IOFile
 public:
-    typedef std::map<Category::Layers,std::vector<std::shared_ptr<Tuile>>> MapTuile;
+    typedef std::map<Category::Layers,std::vector<std::unique_ptr<Tuile>>> MapTuile;
 
     struct Layout
     {
