@@ -8,7 +8,7 @@ IOFile::IOFile()
 
 }
 
-IOFile::IOFile(std::string& name)
+IOFile::IOFile(const std::string& name)
     : mFile(new IOFile::File)
 {
     mFile->nameFile = name;
@@ -106,7 +106,7 @@ bool IOFile::saveFile()
 }
 
 // Load the file
-bool IOFile::loadFromFile(std::string& name)
+bool IOFile::loadFromFile(const std::string& name)
 {
     // Set the name of file. so we have a file
     mFile->nameFile = name;
@@ -429,7 +429,7 @@ std::shared_ptr<IOFile::MapTuile> IOFile::getTuile(Category::Layers categoryLaye
     }
 
     // Set vector in map
-    (*mapTuile)[categoryLayer] = vector;
+    (*mapTuile)[categoryLayer] = std::move(vector);
 
     // Return Array
     return mapTuile;

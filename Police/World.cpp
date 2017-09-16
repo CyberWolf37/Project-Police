@@ -159,12 +159,11 @@ void World::loadFile()
     // Get Tuile and put on Scene Graph
     sf::Vector2u pix (16,16);
     auto LayoutTuile = std::move(mFile.get(File::FirstLevel).getTuile(Category::Layers::SceneGroundLayer,TuileState::ID::None,mTextures.get(Textures::TileSetGround),pix));
-    auto vecteur = (*LayoutTuile)[Category::Layers::SceneGroundLayer];
 
-    for(size_t i = 0; i < vecteur.size(); i++)
+    for(size_t i = 0; i < (*LayoutTuile)[Category::Layers::SceneGroundLayer].size(); i++)
     {
        // put in Scene graph
-       mSceneLayers[Background]->attachChild(std::move(vecteur[i]));
+       mSceneLayers[Background]->attachChild(std::move((*LayoutTuile)[Category::Layers::SceneGroundLayer][i]));
     }
 
 }
@@ -318,6 +317,7 @@ World::ArrayUi World::splitResourceSprite(sf::Texture& texture)
 // Build the file we get
 void World::buildFile()
 {
+    /*
     // Get resource split
     World::ArrayUi arrayResource = splitResourceSprite(mTextures.get(Textures::TileSetGround));
 
@@ -340,7 +340,7 @@ void World::buildFile()
             std::unique_ptr<SpriteNode> spriteNode(new SpriteNode(mTextures.get(Textures::TileSetGround),rect,world_Position));
             mSceneLayers[Background]->attachChild(std::move(spriteNode));
         }
-    }
+    }*/
 }
 
 // Build User interface

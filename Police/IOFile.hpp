@@ -58,14 +58,14 @@ public:
 // Main Function
 public:
     IOFile();
-    IOFile(std::string& name);
+    IOFile(const std::string& name);
     ~IOFile();
 
     bool            readFile();
 
     bool            saveFile();
 
-    bool            loadFromFile(std::string& name);
+    bool            loadFromFile(const std::string& name);
 
     File*           getFile();
 

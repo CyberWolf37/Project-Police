@@ -23,6 +23,7 @@
 #include <array>
 #include <queue>
 #include <string>
+#include <vector>
 
 // Configuration
 #define PIX_WORLD 16
