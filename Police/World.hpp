@@ -10,6 +10,7 @@
 #include <Utility.hpp>
 #include <Container.hpp>
 #include <Button.hpp>
+#include "Tuile.hpp"
 
 // System SFML
 #include <SFML/System/Time.hpp>

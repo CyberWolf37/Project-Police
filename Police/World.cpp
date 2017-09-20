@@ -11,6 +11,9 @@
 #include <limits>
 #include <string>
 
+// For debug
+#include "QDebug"
+
 // Initialise object
 World::World(sf::RenderWindow &window, FontHolder& fonts)
     : mTarget(window)
@@ -40,7 +43,9 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
 
     // Load decor
     loadTextures();
+    qDebug() << "Passe 1";
     loadFile();
+    qDebug() << "Passe 2";
 
     // Build the entire scene
     buildScene();
@@ -155,16 +160,27 @@ void World::loadFile()
 {
     // Load the file
     mFile.load(File::FirstLevel, "Media/Map/First_Level.txt");
+
+    qDebug() << "Passe 1.1";
     
     // Get Tuile and put on Scene Graph
     sf::Vector2u pix (16,16);
-    auto LayoutTuile = std::move(mFile.get(File::FirstLevel).getTuile(Category::Layers::SceneGroundLayer,TuileState::ID::None,mTextures.get(Textures::TileSetGround),pix));
+    IOFile::MapTuile LayoutTuile = mFile.get(File::FirstLevel).getTuile(Category::Layers::SceneGroundLayer,TuileState::ID::None,mTextures.get(Textures::TileSetGround),pix);
 
-    for(size_t i = 0; i < (*LayoutTuile)[Category::Layers::SceneGroundLayer].size(); i++)
+    qDebug() << "Passe 1.2";
+    for(size_t i = 0; i < LayoutTuile[Category::Layers::SceneGroundLayer].size(); i++)
     {
+        // Take The tuile Node
+        Tuile tuile (LayoutTuile[Category::Layers::SceneGroundLayer][i]);
+        std::unique_ptr<Tuile> tuile (new Tuile);
+
+        qDebug() << "Passe 1.3";
+
        // put in Scene graph
-       mSceneLayers[Background]->attachChild(std::move((*LayoutTuile)[Category::Layers::SceneGroundLayer][i]));
+       mSceneLayers[Background]->attachChild(std::move(tuile));
+       qDebug() << "passe passe";
     }
+    qDebug() << "Passe 1.4 Fin";
 
 }
 

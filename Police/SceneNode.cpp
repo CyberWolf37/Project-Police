@@ -10,6 +10,9 @@
 #include <cassert>
 #include <cmath>
 
+// Test Debug
+#include <QDebug>
+
 SceneNode::SceneNode(Category::Layers category)
     : mChildren()
     , mParent(nullptr)
@@ -19,8 +22,11 @@ SceneNode::SceneNode(Category::Layers category)
 
 void SceneNode::attachChild(Ptr child)
 {
+    qDebug() << "Passe 1.3.1";
     child->mParent = this;
+    qDebug() << "Passe 1.3.2";
     mChildren.push_back(std::move(child));
+    qDebug() << "Passe 1.3.3";
 
 }
 

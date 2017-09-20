@@ -17,7 +17,8 @@
 class Tuile : public SceneNode
 {
 public:
-    explicit                            Tuile(unsigned int& count, sf::Vector2u &pixSize, std::shared_ptr<sf::Sprite> sprite, Category::Layers layerCategory = Category::Layers::None , TuileState::ID tuileCategory = TuileState::ID::None);
+                                        Tuile();
+    explicit                            Tuile(unsigned int& count, sf::Vector2u &pixSize, sf::Sprite& sprite, Category::Layers layerCategory = Category::Layers::None , TuileState::ID tuileCategory = TuileState::ID::None);
     ~Tuile();
 
     virtual void                        drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -41,8 +42,8 @@ public:
     const unsigned int                  getCount()const;
     void                                setCount(unsigned int& count);
 
-    std::shared_ptr<sf::Sprite>         getSprite()const;
-    void                                setSprite(std::shared_ptr<sf::Sprite> sprite);
+    sf::Sprite&                         getSprite()const;
+    void                                setSprite(sf::Sprite& sprite);
 
 
 private:

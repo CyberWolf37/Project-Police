@@ -1,5 +1,11 @@
 #include "Tuile.hpp"
 
+
+Tuile::Tuile()
+{
+
+}
+
 Tuile::Tuile(unsigned int& count, sf::Vector2u &pixSize, std::shared_ptr<sf::Sprite> sprite = std::unique_ptr<sf::Sprite>(new sf::Sprite()), Category::Layers layerCategory, TuileState::ID tuileCategory)
     : SceneNode(layerCategory)
     , mTuileCategory(tuileCategory)
