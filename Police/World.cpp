@@ -165,19 +165,18 @@ void World::loadFile()
     
     // Get Tuile and put on Scene Graph
     sf::Vector2u pix (16,16);
-    IOFile::MapTuile LayoutTuile = mFile.get(File::FirstLevel).getTuile(Category::Layers::SceneGroundLayer,TuileState::ID::None,mTextures.get(Textures::TileSetGround),pix);
+    IOFile::MapTuile LayoutTuile = std::move(mFile.get(File::FirstLevel).getTuile(Category::Layers::SceneGroundLayer,TuileState::ID::None,mTextures.get(Textures::TileSetGround),pix));
 
     qDebug() << "Passe 1.2";
     for(size_t i = 0; i < LayoutTuile[Category::Layers::SceneGroundLayer].size(); i++)
     {
         // Take The tuile Node
-        Tuile tuile (LayoutTuile[Category::Layers::SceneGroundLayer][i]);
-        std::unique_ptr<Tuile> tuile (new Tuile);
+        Tuile& tuile (LayoutTuile[Category::Layers::SceneGroundLayer][i]);
+        std::unique_ptr<Tuile> Ptuile (&tuile);
 
         qDebug() << "Passe 1.3";
-
        // put in Scene graph
-       mSceneLayers[Background]->attachChild(std::move(tuile));
+       mSceneLayers[Background]->attachChild(std::move(Ptuile));
        qDebug() << "passe passe";
     }
     qDebug() << "Passe 1.4 Fin";
