@@ -417,10 +417,10 @@ IOFile::MapTuile& IOFile::getTuile(Category::Layers categoryLayer, TuileState::I
 
                 // Add in sprite
                 sf::Sprite sprite (texture,index);
-                Tuile tuile(counter, pix, sprite, categoryLayer, tuileCategory);
+                Tuile Ptuile(counter, pix, sprite, categoryLayer, tuileCategory);
 
                 // Insert in vector
-                vector.push_back(std::move(tuile));
+                vector.push_back(Ptuile);
             }
         }
 
