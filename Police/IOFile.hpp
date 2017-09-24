@@ -31,7 +31,7 @@ class IOFile
 
 // Structure of IOFile
 public:
-    typedef std::map<Category::Layers,std::vector<Tuile>> MapTuile;
+    typedef std::map<Category::Layers,std::vector<std::unique_ptr<Tuile>>> MapTuile;
 
     struct Layout
     {
@@ -69,7 +69,7 @@ public:
 
     File*           getFile();
 
-    MapTuile&       getTuile(Category::Layers categoryLayer, TuileState::ID tuileCategory, sf::Texture& texture, sf::Vector2u& pix);
+    MapTuile&       splitTexture(Category::Layers categoryLayer, TuileState::ID tuileCategory, sf::Texture& texture, sf::Vector2u& pix);
 
 
 // Private function read and wright

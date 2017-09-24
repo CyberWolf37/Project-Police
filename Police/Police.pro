@@ -31,7 +31,8 @@ SOURCES += \
     ParallelTask.cpp \
     Build.cpp \
     RectangleRoom.cpp \
-    Tuile.cpp
+    Tuile.cpp \
+    TextureHolder.cpp
 
 HEADERS += \
     Application.hpp \
@@ -59,7 +60,8 @@ HEADERS += \
     ParallelTask.hpp \
     Build.hpp \
     RectangleRoom.hpp \
-    Tuile.hpp
+    Tuile.hpp \
+    TextureHolder.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \

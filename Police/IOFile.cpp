@@ -1,6 +1,9 @@
 #include "IOFile.hpp"
 #include <string>
 
+// Debug
+#include <QDebug>
+
 
 IOFile::IOFile()
     : mFile(new IOFile::File)
@@ -378,7 +381,7 @@ IOFile::File* IOFile::getFile()
 }
 
 //Get the tuile Map
-IOFile::MapTuile& IOFile::getTuile(Category::Layers categoryLayer, TuileState::ID tuileCategory, sf::Texture& texture, sf::Vector2u& pix)
+IOFile::MapTuile& IOFile::splitTexture(Category::Layers categoryLayer, TuileState::ID tuileCategory, sf::Texture& texture, sf::Vector2u& pix)
 {
     // Get world number of tile
     size_t countX = texture.getSize().x / pix.x;
@@ -387,8 +390,8 @@ IOFile::MapTuile& IOFile::getTuile(Category::Layers categoryLayer, TuileState::I
     // Counter to split tile
     unsigned int counter = 0;
     MapTuile mapTuile;
-    std::vector<Tuile> vector;
-
+    std::vector<std::unique_ptr<Tuile>> vector;     // Vector for texture split
+    std::vector<std::unique_ptr<Tuile>> vector2;    // Vector for Maptuile
 
     // Index
     sf::IntRect index(0,0,pix.x,pix.y);
@@ -405,10 +408,11 @@ IOFile::MapTuile& IOFile::getTuile(Category::Layers categoryLayer, TuileState::I
 
                 // Add in Tuile
                 sf::Sprite sprite (texture,index);
-                Tuile tuile(counter,pix,sprite,categoryLayer);
+                sprite.setPosition(index.left,index.top);
+                std::unique_ptr<Tuile> tuile(new Tuile(counter,pix,sprite,categoryLayer));
 
                 // Insert in vector in a map
-                vector.push_back(tuile);
+                vector.push_back(std::move(tuile));
             }
             else
             {
@@ -417,10 +421,11 @@ IOFile::MapTuile& IOFile::getTuile(Category::Layers categoryLayer, TuileState::I
 
                 // Add in sprite
                 sf::Sprite sprite (texture,index);
-                Tuile Ptuile(counter, pix, sprite, categoryLayer, tuileCategory);
+                sprite.setPosition(index.left,index.top);
+                std::unique_ptr<Tuile> tuile(new Tuile(counter, pix, sprite, categoryLayer, tuileCategory));
 
                 // Insert in vector
-                vector.push_back(Ptuile);
+                vector.push_back(std::move(tuile));
             }
         }
 
@@ -428,14 +433,20 @@ IOFile::MapTuile& IOFile::getTuile(Category::Layers categoryLayer, TuileState::I
         index.top += pix.y;
     }
 
-    // Set vector in map
-    mapTuile[categoryLayer] = vector;
+    // Set the file with the tuile i use
+    for(size_t i = 0; i < mFile->Layouts[0]->layerTile.size() ; i++)
+    {
+        std::unique_ptr<Tuile> tuile(vector[mFile->Layouts[0]->layerTile[i]].get());
+        vector2.push_back(std::move(tuile));
+    }
+
+    mapTuile[categoryLayer] = std::move(vector2);
 
     for(size_t i = 0; i < mFile->Layouts.size(); i++)
     {
         if(mFile->Layouts[i]->category == categoryLayer)
         {
-            mFile->Layouts[i]->mapTuile = mapTuile;
+            mFile->Layouts[i]->mapTuile = std::move(mapTuile);
 
             // Return Array
             return mFile->Layouts[i]->mapTuile;

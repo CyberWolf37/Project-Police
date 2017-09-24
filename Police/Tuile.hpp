@@ -36,13 +36,10 @@ public:
     TuileState::ID                      getTuileCategory() const;
     void                                setTuileCategory(TuileState::ID id);
 
-    const sf::FloatRect                 getRect()const;
-    void                                setRect();
-
     const unsigned int                  getCount()const;
     void                                setCount(unsigned int& count);
 
-    sf::Sprite&                         getSprite()const;
+    sf::Sprite&                         getSprite();
     void                                setSprite(sf::Sprite& sprite);
 
 
@@ -50,8 +47,7 @@ private:
 
     TuileState::ID                  mTuileCategory;
     const sf::Vector2u              mPixSize;
-    std::shared_ptr<sf::Sprite>     mSprite;
-    sf::IntRect                     mRect;
+    sf::Sprite                      mSprite;
     unsigned int                    mCount;
 
     bool                            mIsActive;
