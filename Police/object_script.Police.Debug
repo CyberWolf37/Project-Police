@@ -20,4 +20,5 @@ INPUT(
 ./debug\Build.o
 ./debug\RectangleRoom.o
 ./debug\Tuile.o
+./debug\TextureHolding.o
 );

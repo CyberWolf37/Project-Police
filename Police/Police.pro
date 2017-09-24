@@ -32,7 +32,7 @@ SOURCES += \
     Build.cpp \
     RectangleRoom.cpp \
     Tuile.cpp \
-    TextureHolder.cpp
+    TextureHolding.cpp
 
 HEADERS += \
     Application.hpp \
@@ -61,7 +61,7 @@ HEADERS += \
     Build.hpp \
     RectangleRoom.hpp \
     Tuile.hpp \
-    TextureHolder.hpp
+    TextureHolding.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \
