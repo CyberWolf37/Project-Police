@@ -1,5 +1,8 @@
 #include "TextureHolding.hpp"
 
+namespace sf
+{
+
 TextureHolding::TextureHolding()
     : Texture()
     , m_TuileMap(new std::map<unsigned int, Ptr>)
@@ -67,3 +70,4 @@ std::map<unsigned int, TextureHolding::Ptr> *TextureHolding::getSplitMap()
     return m_TuileMap.get();
 
 }
+}   // End of namespace

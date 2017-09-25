@@ -11,7 +11,8 @@
 #include <memory>
 #include <map>
 
-
+namespace sf
+{
 class TextureHolding : public sf::Texture
 {
 public:
@@ -33,5 +34,7 @@ private:
 
     MapPtr      m_TuileMap;
 };
+
+}   // End of namespace
 
 #endif // TEXTUREHOLDER_HPP
