@@ -20,5 +20,5 @@ INPUT(
 ./release\Build.o
 ./release\RectangleRoom.o
 ./release\Tuile.o
-./release\TextureHolding.o
+./release\TextureSpliter.o
 );

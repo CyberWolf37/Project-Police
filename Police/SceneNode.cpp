@@ -24,6 +24,7 @@ void SceneNode::attachChild(Ptr child)
 {
     child->mParent = this;
     mChildren.push_back(std::move(child));
+
 }
 
 SceneNode::Ptr SceneNode::detachChild(const SceneNode &node)
@@ -64,6 +65,7 @@ void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
     // Draw node and children with changed transform
     drawCurrent(target, states);
     drawChildren(target, states);
+
 
     // Draw bounding rectangle - disabled by default
     //drawBoundingRect(target, states);

@@ -22,6 +22,7 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     , mWorldView(window.getDefaultView())
     , mUiView(mWorldView.getCenter(),mWorldView.getSize())
     , mTextures()
+    , mTexturesSplite()
     , mFonts(fonts)
     , mSceneGraph()
     , mSceneLayers()
@@ -43,18 +44,24 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
 
     // Load decor
     loadTextures();
-
+    loadFile();
 
     // Build the entire scene
     buildScene();
+
+    // Build File
+    buildFile();
+
     buildUI();
 
-    loadFile();
+
 
     // Prepare the view
     //mWorldView.zoom(0.5f);
     mWorldView.setCenter(784,1408);
+    qDebug() << "Passe 1.1";
     checkView();
+    qDebug() << "Passe 2.2";
 
 }
 
@@ -72,15 +79,18 @@ void World::draw()
     mSceneTexture.draw(mSceneGraph);
     mSceneTexture.display();
 
+
     // Drawing the User interface
     mUiTexture.setView(mUiView);
     mUiTexture.draw(mMainContainer);
     mUiTexture.display();
 
+
     // Finaly draw the texture Scene
     mTarget.clear();
     mTarget.draw(sf::Sprite(mSceneTexture.getTexture()));
     mTarget.draw(sf::Sprite(mUiTexture.getTexture()));
+
 
 }
 
@@ -150,6 +160,7 @@ void World::loadTextures()
 {
     // Texture for tileset
     mTextures.load(Textures::TileSetGround, "Media/Textures/TileSetGround.png");
+    mTexturesSplite.load(Textures::TileSetGround, "Media/Textures/TileSetGround.png");
 
     // Texture for tileset
     mTextures.load(Textures::Buttons,"Media/Textures/ButtonsPolice.png" );
@@ -160,20 +171,6 @@ void World::loadFile()
 {
     // Load the file
     mFile.load(File::FirstLevel, "Media/Map/First_Level.txt");
-    
-    // Get Tuile and put on Scene Graph
-    sf::Vector2u pix (16,16);
-    IOFile::MapTuile& LayoutTuile = mFile.get(File::FirstLevel).splitTexture(Category::Layers::SceneGroundLayer,TuileState::ID::None,mTextures.get(Textures::TileSetGround),pix);
-
-    for(size_t i = 0; i < LayoutTuile[Category::Layers::SceneGroundLayer].size(); i++)
-    {
-        // Take The tuile Node
-        std::unique_ptr<Tuile> tuile (LayoutTuile[Category::Layers::SceneGroundLayer][i].get());
-
-       // put in Scene graph
-       mSceneLayers[Background]->attachChild(std::move(tuile));
-    }
-
 
 }
 
@@ -189,10 +186,6 @@ void World::buildScene()
 
         mSceneGraph.attachChild(std::move(layer));
     }
-
-    // Get and build layout we get in the file
-    buildFile();
-
 }
 
 // Move the view if is cross the bounds
@@ -326,6 +319,26 @@ World::ArrayUi World::splitResourceSprite(sf::Texture& texture)
 // Build the file we get
 void World::buildFile()
 {
+    // Get the split texture
+    TextureSpliter& texture = mTexturesSplite.get(Textures::TileSetGround);
+    sf::Vector2u pix(16,16);
+    texture.split(pix);
+    TextureSpliter::MapPtr PtrMap (texture.getSplitMap());
+
+    // Get the current world
+    ArrayVector2f arrayPosition (splitWorldBounds());
+
+    // Set the Tuile
+    for(size_t i = 0; i < PtrMap->size() ; i++)
+    {
+        qDebug() << i << "    -> " << PtrMap->size();
+        //std::unique_ptr<Tuile> Ptuile ((*PtrMap)[i+1].get());
+        std::unique_ptr<Tuile> Ptuile ((*PtrMap)[1].get());
+        Ptuile->setPosition(arrayPosition[i]);
+        mSceneLayers[Background]->attachChild(std::move(Ptuile));
+    }
+
+
     /*
     // Get resource split
     World::ArrayUi arrayResource = splitResourceSprite(mTextures.get(Textures::TileSetGround));

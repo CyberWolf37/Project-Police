@@ -21,6 +21,7 @@ public:
     explicit                            Tuile(unsigned int& count, sf::Vector2u &pixSize, sf::Sprite& sprite, Category::Layers layerCategory = Category::Layers::None , TuileState::ID tuileCategory = TuileState::ID::None);
     ~Tuile();
 
+    virtual void                        draw(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void                        drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void                        handleEvent(const sf::Event& event);
 

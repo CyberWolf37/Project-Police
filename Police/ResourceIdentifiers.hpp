@@ -6,10 +6,10 @@ namespace sf
 {
     class Texture;
     class Font;
-    class TextureHolding;
 }
 
 class IOFile;
+class TextureSpliter;
 
 namespace Textures
 {
@@ -44,7 +44,8 @@ namespace Fonts
 template <typename Resource, typename Identifier>
 class ResourceHolder;
 
-typedef ResourceHolder<sf::TextureHolding, Textures::ID>    TextureHolder;
+typedef ResourceHolder<sf::Texture, Textures::ID>           TextureHolder;
+typedef ResourceHolder<TextureSpliter, Textures::ID>        TextureSplite;
 typedef ResourceHolder<sf::Font, Fonts::ID>                 FontHolder;
 typedef ResourceHolder<IOFile, File::ID>                    FileHolder;
 

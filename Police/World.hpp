@@ -5,6 +5,7 @@
 #include <ResourceHolder.hpp>
 #include <ResourceIdentifiers.hpp>
 #include <IOFile.hpp>
+#include "TextureSpliter.hpp"
 #include <SceneNode.hpp>
 #include <SpriteNode.hpp>
 #include <Utility.hpp>
@@ -87,6 +88,7 @@ private:
         TextureHolder                       mTextures;
         FontHolder&                         mFonts;
         FileHolder                          mFile;
+        TextureSplite                       mTexturesSplite;
         sf::IntRect                         mWorldBounds;
         ArrayVector2f                       mGridWorld;
         sf::Vector2f                        mSpawnPosition;

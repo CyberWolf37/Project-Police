@@ -1,30 +1,32 @@
-#include "TextureHolding.hpp"
+#include "TextureSpliter.hpp"
 
-namespace sf
-{
-
-TextureHolding::TextureHolding()
-    : Texture()
+TextureSpliter::TextureSpliter()
+    : sf::Texture()
     , m_TuileMap(new std::map<unsigned int, Ptr>)
 {
 
 }
 
-TextureHolding::TextureHolding(const sf::Texture &copy)
-    : Texture(copy)
+TextureSpliter::TextureSpliter(const sf::Texture &copy)
+    : sf::Texture(copy)
     , m_TuileMap(new std::map<unsigned int, Ptr>)
 {
 
 }
 
-void TextureHolding::split(sf::Vector2u &pix)
+TextureSpliter::~TextureSpliter()
+{
+
+}
+
+void TextureSpliter::split(sf::Vector2u &pix)
 {
     // Get world number of tile
     size_t countX = this->getSize().x / pix.x;
     size_t countY = this->getSize().y / pix.y;
 
     // Counter to split tile
-    unsigned int counter = 0;
+    unsigned int counter = 1;
 
     // Index
     sf::IntRect index(0,0,pix.x,pix.y);
@@ -65,9 +67,8 @@ void TextureHolding::split(sf::Vector2u &pix)
     }
 }
 
-std::map<unsigned int, TextureHolding::Ptr> *TextureHolding::getSplitMap()
+std::map<unsigned int, TextureSpliter::Ptr> *TextureSpliter::getSplitMap()
 {
     return m_TuileMap.get();
 
 }
-}   // End of namespace

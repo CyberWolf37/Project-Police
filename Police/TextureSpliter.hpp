@@ -1,5 +1,5 @@
-#ifndef TEXTUREHOLDER_HPP
-#define TEXTUREHOLDER_HPP
+#ifndef TEXTURESPLITER_HPP
+#define TEXTURESPLITER_HPP
 
 // SFML Include
 #include "SFML/Graphics/Texture.hpp"
@@ -11,9 +11,7 @@
 #include <memory>
 #include <map>
 
-namespace sf
-{
-class TextureHolding : public sf::Texture
+class TextureSpliter : public sf::Texture
 {
 public:
 
@@ -22,8 +20,9 @@ public:
     typedef std::unique_ptr<std::map<unsigned int, Ptr>> MapPtr;
 
     // Function
-    TextureHolding();
-    TextureHolding(const Texture& copy);
+    TextureSpliter();
+    TextureSpliter(const sf::Texture& copy);
+    ~TextureSpliter();
 
     void                            split(sf::Vector2u& pix);
     std::map<unsigned int, Ptr>*    getSplitMap();
@@ -35,6 +34,4 @@ private:
     MapPtr      m_TuileMap;
 };
 
-}   // End of namespace
-
-#endif // TEXTUREHOLDER_HPP
+#endif // TEXTUREHOLDING_HPP
