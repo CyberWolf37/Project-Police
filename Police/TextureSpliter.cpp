@@ -46,7 +46,7 @@ void TextureSpliter::split(sf::Vector2u &pix)
                 Ptr tuile(new Tuile(counter,pix,sprite));
 
                 // Insert in a map
-                (*m_TuileMap)[counter] = std::move(tuile);
+                (*m_TuileMap)[counter] = tuile;
             }
             else
             {
@@ -58,7 +58,7 @@ void TextureSpliter::split(sf::Vector2u &pix)
                 Ptr tuile(new Tuile(counter, pix, sprite));
 
                 // Insert in map
-                (*m_TuileMap)[counter] = std::move(tuile);
+                (*m_TuileMap)[counter] = tuile;
             }
         }
 
@@ -67,8 +67,9 @@ void TextureSpliter::split(sf::Vector2u &pix)
     }
 }
 
-std::map<unsigned int, TextureSpliter::Ptr> *TextureSpliter::getSplitMap()
+TextureSpliter::MapPtr TextureSpliter::getSplitMap()
 {
-    return m_TuileMap.get();
+    MapPtr result(m_TuileMap);
+    return std::move(result);
 
 }

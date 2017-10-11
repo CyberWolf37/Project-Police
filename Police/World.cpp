@@ -328,41 +328,19 @@ void World::buildFile()
     // Get the current world
     ArrayVector2f arrayPosition (splitWorldBounds());
 
+    IOFile::File* file = mFile.get(File::FirstLevel).getFile();
+
+
     // Set the Tuile
-    for(size_t i = 0; i < PtrMap->size() ; i++)
+    for(size_t i = 0; i < file->Layouts[0]->layerTile.size() ; i++)
     {
-        qDebug() << i << "    -> " << PtrMap->size();
-        //std::unique_ptr<Tuile> Ptuile ((*PtrMap)[i+1].get());
-        std::unique_ptr<Tuile> Ptuile ((*PtrMap)[1].get());
+        Tuile& tuile (*(*PtrMap)[file->Layouts[0]->layerTile[i]]);
+        std::unique_ptr<Tuile> Ptuile (&tuile);
+        //std::shared_ptr<Tuile> Ptuile ((*PtrMap)[i]);
         Ptuile->setPosition(arrayPosition[i]);
         mSceneLayers[Background]->attachChild(std::move(Ptuile));
     }
 
-
-    /*
-    // Get resource split
-    World::ArrayUi arrayResource = splitResourceSprite(mTextures.get(Textures::TileSetGround));
-
-    // Get position in world
-    World::ArrayVector2f arrayWorldPosition = splitWorldBounds();
-
-    // Init the layer
-    for(size_t i = 0; i < mSauv->Layouts.size(); i++)
-    {
-        for(size_t j = 0; j < 100*100 ; j++)
-        {
-            // Get the floatrect in the open file
-            int file_Layout_Number = mSauv->Layouts[i]->layerTile[j];
-            sf::IntRect rect = arrayResource[file_Layout_Number - 1]; // Soustract 1 for begin in one to sprite tilset
-
-            // Get the position in the world
-            sf::Vector2f world_Position = arrayWorldPosition[j];
-
-            // Insert in a array of sprite node
-            std::unique_ptr<SpriteNode> spriteNode(new SpriteNode(mTextures.get(Textures::TileSetGround),rect,world_Position));
-            mSceneLayers[Background]->attachChild(std::move(spriteNode));
-        }
-    }*/
 }
 
 // Build User interface

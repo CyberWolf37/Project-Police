@@ -17,7 +17,7 @@ public:
 
     // Typedef
     typedef std::shared_ptr<Tuile> Ptr;
-    typedef std::unique_ptr<std::map<unsigned int, Ptr>> MapPtr;
+    typedef std::shared_ptr<std::map<unsigned int, Ptr>> MapPtr;
 
     // Function
     TextureSpliter();
@@ -25,7 +25,7 @@ public:
     ~TextureSpliter();
 
     void                            split(sf::Vector2u& pix);
-    std::map<unsigned int, Ptr>*    getSplitMap();
+    MapPtr    getSplitMap();
 
 
 

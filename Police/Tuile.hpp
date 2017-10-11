@@ -43,7 +43,6 @@ public:
     sf::Sprite&                         getSprite();
     void                                setSprite(sf::Sprite& sprite);
 
-
 private:
 
     TuileState::ID                  mTuileCategory;

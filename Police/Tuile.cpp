@@ -27,9 +27,8 @@ Tuile::~Tuile()
 
 void Tuile::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    qDebug() << "Passe Draw";
     // If is active drawing the tuile
-    /*if(mIsActive)
+    if(mIsActive)
     {
         // Apply Transform of current Node
         states.transform *= getTransform();
@@ -37,23 +36,13 @@ void Tuile::draw(sf::RenderTarget &target, sf::RenderStates states) const
         // Draw the Tuile
         target.draw(mSprite, states);
 
-    }*/
+    }
 
 }
 
 void Tuile::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    qDebug() << "Passe drawCurrent";
-    // If is active drawing the tuile
-    /*if(mIsActive)
-    {
-        // Apply Transform of current Node
-        states.transform *= getTransform();
 
-        // Draw the Tuile
-        target.draw(mSprite, states);
-
-    }*/
 }
 
 void Tuile::handleEvent(const sf::Event &event)
