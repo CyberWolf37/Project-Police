@@ -69,7 +69,6 @@ void TextureSpliter::split(sf::Vector2u &pix)
 
 TextureSpliter::MapPtr TextureSpliter::getSplitMap()
 {
-    MapPtr result(m_TuileMap);
-    return std::move(result);
-
+    MapPtr copyPtr = m_TuileMap;
+    return copyPtr;
 }

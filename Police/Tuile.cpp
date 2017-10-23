@@ -9,6 +9,17 @@ Tuile::Tuile()
 
 }
 
+Tuile::Tuile(const Tuile &copy)
+    : mTuileCategory(copy.getTuileCategory())
+    , mPixSize(copy.getPixSize())
+    , mSprite(copy.getSprite())
+    , mCount(copy.getCount())
+    , mIsActive(copy.isActive())
+    , mIsSelected(copy.isSelected())
+{
+
+}
+
 Tuile::Tuile(unsigned int& count, sf::Vector2u &pixSize, sf::Sprite& sprite, Category::Layers layerCategory, TuileState::ID tuileCategory)
     : SceneNode(layerCategory)
     , mTuileCategory(tuileCategory)
@@ -105,7 +116,7 @@ void Tuile::setCount(unsigned int& count)
     mCount = count;
 }
 
-sf::Sprite& Tuile::getSprite()
+const sf::Sprite& Tuile::getSprite() const
 {
     return mSprite;
 }

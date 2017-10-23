@@ -18,6 +18,7 @@ class Tuile : public SceneNode
 {
 public:
                                         Tuile();
+                                        Tuile(const Tuile &copy);
     explicit                            Tuile(unsigned int& count, sf::Vector2u &pixSize, sf::Sprite& sprite, Category::Layers layerCategory = Category::Layers::None , TuileState::ID tuileCategory = TuileState::ID::None);
     ~Tuile();
 
@@ -40,7 +41,7 @@ public:
     const unsigned int                  getCount()const;
     void                                setCount(unsigned int& count);
 
-    sf::Sprite&                         getSprite();
+    const sf::Sprite&                   getSprite() const;
     void                                setSprite(sf::Sprite& sprite);
 
 private:
