@@ -9,6 +9,7 @@
 #include "SFML/System/Time.hpp"
 #include "SFML/Graphics/Transformable.hpp"
 #include "SFML/Graphics/Drawable.hpp"
+#include "SFML/Window/Event.hpp"
 
 
 // STD library
@@ -33,6 +34,9 @@ public:
         void                    attachChild(Ptr child);
         Ptr                     detachChild(const SceneNode& node);
 
+        virtual void            handleEvent(const sf::Event& event);
+        virtual void            handleChildrenEvent(const sf::Event& event);
+
         void                    update(sf::Time dt, CommandQueue &commands);
         sf::Vector2f            getWorldPosition() const;
         sf::Transform           getWorldTransform() const;
@@ -50,6 +54,7 @@ public:
 private:
         virtual void            updateCurrent(sf::Time dt, CommandQueue& commands);
         void                    updatechildren(sf::Time dt, CommandQueue &commands);
+
 
         virtual void            draw(sf::RenderTarget& target, sf::RenderStates states) const;
         virtual void            drawCurrent (sf::RenderTarget& target, sf::RenderStates states) const;

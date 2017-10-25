@@ -57,6 +57,21 @@ void SceneNode::updatechildren(sf::Time dt, CommandQueue& commands)
     }
 }
 
+void SceneNode::handleEvent(const sf::Event &event)
+{
+    handleChildrenEvent(event);
+
+    // Do nothing after that
+}
+
+void SceneNode::handleChildrenEvent(const sf::Event &event)
+{
+    FOREACH (Ptr& child, mChildren)
+    {
+        child->handleEvent(event);
+    }
+}
+
 void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     // Apply transform of current node
