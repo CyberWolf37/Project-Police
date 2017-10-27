@@ -10,6 +10,7 @@
 #include "SceneNode.hpp"
 #include "ResourceHolder.hpp"
 #include "ResourceIdentifiers.hpp"
+#include "Utility.hpp"
 
 // STD library
 #include <memory>
@@ -43,6 +44,8 @@ public:
 
     const sf::Sprite&                   getSprite() const;
     void                                setSprite(sf::Sprite& sprite);
+
+    //sf::Rect                            getRect() const;
 
 private:
 

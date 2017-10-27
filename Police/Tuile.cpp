@@ -58,11 +58,8 @@ void Tuile::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 
 void Tuile::handleEvent(const sf::Event &event)
 {
-
-
     if(event.type == sf::Event::MouseButtonReleased && mSprite.getGlobalBounds().contains(sf::Mouse::getPosition().x,sf::Mouse::getPosition().y))
     {
-
         mIsSelected = true;
     }
     else

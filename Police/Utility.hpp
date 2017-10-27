@@ -25,6 +25,12 @@ class Button;
 template <typename T>
 std::string toString(const T& value);
 
+template <typename T>
+void tellMeVector(const T& value);
+
+template <typename T>
+void tellMeRect(const T& value);
+
 // COnvert enumerators to strings
 std::string toString(sf::Keyboard::Key key);
 
