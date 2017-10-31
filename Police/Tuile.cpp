@@ -56,11 +56,12 @@ void Tuile::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 
 }
 
-void Tuile::handleEvent(const sf::Event &event)
+void Tuile::handleEvent(const sf::Event &event, const sf::Window &window)
 {
-    if(event.type == sf::Event::MouseButtonReleased && mSprite.getGlobalBounds().contains(sf::Mouse::getPosition().x,sf::Mouse::getPosition().y))
+    if(event.type == sf::Event::MouseButtonReleased && this->getRectBounds().contains(sf::Mouse::getPosition(window)))
     {
         mIsSelected = true;
+        tellMeVector();
     }
     else
     {
@@ -123,4 +124,15 @@ const sf::Sprite& Tuile::getSprite() const
 void Tuile::setSprite(sf::Sprite& sprite)
 {
     mSprite = sprite;
+}
+
+const sf::IntRect Tuile::getRectBounds()
+{
+    sf::IntRect result(mSprite.getGlobalBounds());
+
+    result.left = this->getPosition().x;
+    result.top  = this->getPosition().y;
+
+    return result;
+
 }

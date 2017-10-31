@@ -25,7 +25,7 @@ public:
 
     virtual void                        draw(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void                        drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void                        handleEvent(const sf::Event& event);
+    virtual void                        handleEvent(const sf::Event& event,const sf::Window &window);
 
     const sf::Vector2u&                 getPixSize() const;
 
@@ -45,7 +45,7 @@ public:
     const sf::Sprite&                   getSprite() const;
     void                                setSprite(sf::Sprite& sprite);
 
-    //sf::Rect                            getRect() const;
+    const sf::IntRect                   getRectBounds();
 
 private:
 

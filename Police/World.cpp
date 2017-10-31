@@ -37,10 +37,8 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     // Layer texture for draw world
     mSceneTexture.create(mTarget.getSize().x, mTarget.getSize().y);
 
-
     // Layer texture for User interface
     mUiTexture.create(mTarget.getSize().x, mTarget.getSize().y);
-
 
     // Load decor
     loadTextures();
@@ -54,14 +52,9 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
 
     buildUI();
 
-
-
     // Prepare the view
-    //mWorldView.zoom(0.5f);
     mWorldView.setCenter(784,1408);
-    qDebug() << "Passe 1.1";
     checkView();
-    qDebug() << "Passe 2.2";
 
 }
 
@@ -97,7 +90,7 @@ void World::draw()
 bool World::handleEvent(const sf::Event &event)
 {
     mMainContainer.handleEvent(event);
-    mSceneGraph.handleEvent(event);
+    mSceneGraph.handleEvent(event,mTarget);
     viewEvent(event);
 
     return false;

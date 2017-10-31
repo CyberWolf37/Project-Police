@@ -57,18 +57,18 @@ void SceneNode::updatechildren(sf::Time dt, CommandQueue& commands)
     }
 }
 
-void SceneNode::handleEvent(const sf::Event &event)
+void SceneNode::handleEvent(const sf::Event &event, const sf::Window &window)
 {
-    handleChildrenEvent(event);
+    handleChildrenEvent(event,window);
 
     // Do nothing after that
 }
 
-void SceneNode::handleChildrenEvent(const sf::Event &event)
+void SceneNode::handleChildrenEvent(const sf::Event &event,const sf::Window &window)
 {
     FOREACH (Ptr& child, mChildren)
     {
-        child->handleEvent(event);
+        child->handleEvent(event,window);
     }
 }
 

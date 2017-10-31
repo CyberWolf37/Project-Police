@@ -34,8 +34,8 @@ public:
         void                    attachChild(Ptr child);
         Ptr                     detachChild(const SceneNode& node);
 
-        virtual void            handleEvent(const sf::Event& event);
-        virtual void            handleChildrenEvent(const sf::Event& event);
+        virtual void            handleEvent(const sf::Event& event, const sf::Window& window);
+        virtual void            handleChildrenEvent(const sf::Event& event, const sf::Window &window);
 
         void                    update(sf::Time dt, CommandQueue &commands);
         sf::Vector2f            getWorldPosition() const;
