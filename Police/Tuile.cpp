@@ -56,12 +56,20 @@ void Tuile::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 
 }
 
-void Tuile::handleEvent(const sf::Event &event, const sf::Window &window)
+void Tuile::handleEvent(const sf::Event &event, const sf::Window &window, const sf::View &view)
 {
-    if(event.type == sf::Event::MouseButtonReleased && this->getRectBounds().contains(sf::Mouse::getPosition(window)))
+    if(event.type == sf::Event::MouseMoved)
     {
-        mIsSelected = true;
-        tellMeVector();
+        // take the real position in the world
+        sf::Vector2i positionView = static_cast<sf::Vector2i>(view.getCenter()) - (static_cast<sf::Vector2i>(view.getSize()) / 2);
+        sf::Vector2i positionMouse = sf::Mouse::getPosition(window) + positionView;
+
+        // Check if in this tuile we have the mouse
+        if(this->getRectBounds().contains(positionMouse))
+        {
+            mIsSelected = true;
+            mSprite.setColor(sf::Color(255, 255, 255, 128));
+        }
     }
     else
     {

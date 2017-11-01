@@ -10,6 +10,8 @@
 #include "SFML/Graphics/Transformable.hpp"
 #include "SFML/Graphics/Drawable.hpp"
 #include "SFML/Window/Event.hpp"
+#include "SFML/Window/Window.hpp"
+#include "SFML/Graphics/View.hpp"
 
 
 // STD library
@@ -34,8 +36,8 @@ public:
         void                    attachChild(Ptr child);
         Ptr                     detachChild(const SceneNode& node);
 
-        virtual void            handleEvent(const sf::Event& event, const sf::Window& window);
-        virtual void            handleChildrenEvent(const sf::Event& event, const sf::Window &window);
+        virtual void            handleEvent(const sf::Event& event, const sf::Window &window, const sf::View &view);
+        virtual void            handleChildrenEvent(const sf::Event& event, const sf::Window &window, const sf::View &view);
 
         void                    update(sf::Time dt, CommandQueue &commands);
         sf::Vector2f            getWorldPosition() const;

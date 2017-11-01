@@ -90,7 +90,7 @@ void World::draw()
 bool World::handleEvent(const sf::Event &event)
 {
     mMainContainer.handleEvent(event);
-    mSceneGraph.handleEvent(event,mTarget);
+    mSceneGraph.handleEvent(event,mTarget,mWorldView);
     viewEvent(event);
 
     return false;

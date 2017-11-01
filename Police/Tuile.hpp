@@ -5,6 +5,7 @@
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics/RenderTarget.hpp"
+#include "SFML/Graphics/View.hpp"
 
 // Core Library
 #include "SceneNode.hpp"
@@ -25,7 +26,7 @@ public:
 
     virtual void                        draw(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void                        drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void                        handleEvent(const sf::Event& event,const sf::Window &window);
+    virtual void                        handleEvent(const sf::Event& event,const sf::Window &window, const sf::View &view);
 
     const sf::Vector2u&                 getPixSize() const;
 
