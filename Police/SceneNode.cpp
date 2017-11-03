@@ -57,18 +57,18 @@ void SceneNode::updatechildren(sf::Time dt, CommandQueue& commands)
     }
 }
 
-void SceneNode::handleEvent(const sf::Event &event, const sf::Window &window, const sf::View &view)
+void SceneNode::handleEvent(const sf::Event &event, const sf::Vector2i& positionMouse)
 {
-    handleChildrenEvent(event,window,view);
+    handleChildrenEvent(event,positionMouse);
 
     // Do nothing after that
 }
 
-void SceneNode::handleChildrenEvent(const sf::Event &event, const sf::Window &window, const sf::View &view)
+void SceneNode::handleChildrenEvent(const sf::Event &event, const sf::Vector2i& positionMouse)
 {
     FOREACH (Ptr& child, mChildren)
     {
-        child->handleEvent(event,window,view);
+        child->handleEvent(event,positionMouse);
     }
 }
 
@@ -185,6 +185,20 @@ bool SceneNode::isDestroyed() const
 {
     // By default, scene node needn't be removed
     return false;
+}
+
+void SceneNode::checkTuileChildInCurrentView(const sf::View& view)
+{
+    sf::Vector2f positionView = view.getCenter() - view.getSize() / 2.f;
+    sf::FloatRect boundsView(positionView,view.getSize());
+
+    FOREACH(Ptr& child, mChildren)
+    {
+        if(boundsView.contains(child->getPosition()))
+        {
+            child->setActivate();
+        }
+    }
 }
 
 bool collision(const SceneNode& lhs, const SceneNode& rhs)

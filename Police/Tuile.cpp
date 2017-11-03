@@ -25,7 +25,7 @@ Tuile::Tuile(unsigned int& count, sf::Vector2u &pixSize, sf::Sprite& sprite, Cat
     , mTuileCategory(tuileCategory)
     , mPixSize(pixSize)
     , mSprite(sprite)
-    , mIsActive(true)
+    , mIsActive(false)
     , mIsSelected(false)
     , mCount(count)
 {
@@ -56,14 +56,10 @@ void Tuile::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 
 }
 
-void Tuile::handleEvent(const sf::Event &event, const sf::Window &window, const sf::View &view)
+void Tuile::handleEvent(const sf::Event &event, const sf::Vector2i& positionMouse)
 {
-    if(event.type == sf::Event::MouseMoved)
+    if(event.type == sf::Event::MouseMoved && mIsActive)
     {
-        // take the real position in the world
-        sf::Vector2i positionView = static_cast<sf::Vector2i>(view.getCenter()) - (static_cast<sf::Vector2i>(view.getSize()) / 2);
-        sf::Vector2i positionMouse = sf::Mouse::getPosition(window) + positionView;
-
         // Check if in this tuile we have the mouse
         if(this->getRectBounds().contains(positionMouse))
         {
@@ -91,6 +87,11 @@ bool Tuile::isActive() const
 void Tuile::deactivate()
 {
     mIsActive = false;
+}
+
+void Tuile::setActivate()
+{
+    mIsActive = true;
 }
 
 bool Tuile::isSelected() const

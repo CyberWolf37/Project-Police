@@ -26,12 +26,13 @@ public:
 
     virtual void                        draw(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void                        drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void                        handleEvent(const sf::Event& event,const sf::Window &window, const sf::View &view);
+    virtual void                        handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
 
     const sf::Vector2u&                 getPixSize() const;
 
     bool                                isActive() const;
     void                                deactivate();
+    void                                setActivate();
 
     bool                                isSelected() const;
     void                                deSelect();

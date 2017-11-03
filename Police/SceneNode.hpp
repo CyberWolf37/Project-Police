@@ -36,8 +36,8 @@ public:
         void                    attachChild(Ptr child);
         Ptr                     detachChild(const SceneNode& node);
 
-        virtual void            handleEvent(const sf::Event& event, const sf::Window &window, const sf::View &view);
-        virtual void            handleChildrenEvent(const sf::Event& event, const sf::Window &window, const sf::View &view);
+        virtual void            handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
+        virtual void            handleChildrenEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
 
         void                    update(sf::Time dt, CommandQueue &commands);
         sf::Vector2f            getWorldPosition() const;
@@ -53,6 +53,7 @@ public:
         virtual bool			isMarkedForRemoval() const;
         virtual bool			isDestroyed() const;
 
+        void                    checkTuileChildInCurrentView(const sf::View &view);
 private:
         virtual void            updateCurrent(sf::Time dt, CommandQueue& commands);
         void                    updatechildren(sf::Time dt, CommandQueue &commands);

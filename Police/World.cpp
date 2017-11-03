@@ -49,7 +49,6 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
 
     // Build File
     buildFile();
-
     buildUI();
 
     // Prepare the view
@@ -90,7 +89,7 @@ void World::draw()
 bool World::handleEvent(const sf::Event &event)
 {
     mMainContainer.handleEvent(event);
-    mSceneGraph.handleEvent(event,mTarget,mWorldView);
+    mSceneGraph.handleEvent(event,getPositionMouse());
     viewEvent(event);
 
     return false;
@@ -168,6 +167,16 @@ void World::loadFile()
 
 }
 
+const sf::Vector2i World::getPositionMouse()
+{
+    // take the real position in the world
+    sf::Vector2i positionView = static_cast<sf::Vector2i>(mWorldView.getCenter()) - (static_cast<sf::Vector2i>(mWorldView.getSize()) / 2);
+    sf::Vector2i positionMouse = sf::Mouse::getPosition(mTarget) + positionView;
+
+    // return the real position
+    return positionMouse;
+}
+
 // Build the different layout in a game
 void World::buildScene()
 {
@@ -217,6 +226,11 @@ void World::checkView()
             mWorldView.move((mWorldViewRect.width - intersection.width),(mWorldViewRect.height - intersection.height));
         }
     }
+}
+
+void World::getCurrentTuileView()
+{
+
 }
 
 // Split the world for get position
