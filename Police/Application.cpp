@@ -11,7 +11,7 @@
 const sf::Time Application::TimePerFrame = sf::seconds(1.f/60.f);
 
 Application::Application()
-    : mWindow(sf::VideoMode(1280,924), "Police", sf::Style::Close)
+    : mWindow(sf::VideoMode(1280,912), "Police", sf::Style::Close)
     , mTextures()
     , mFonts()
     , mStateStack(State::Context(mWindow, mTextures, mFonts))

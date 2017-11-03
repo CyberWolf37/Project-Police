@@ -63,7 +63,6 @@ private:
 
         void                                buildScene();
         void                                checkView();
-        void                                getCurrentTuileView();
 
         ArrayVector2f                       splitWorldBounds();
         ArrayUi                             splitResourceSprite(sf::Texture &texture);

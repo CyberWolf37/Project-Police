@@ -14,10 +14,9 @@ Tuile::Tuile(const Tuile &copy)
     , mPixSize(copy.getPixSize())
     , mSprite(copy.getSprite())
     , mCount(copy.getCount())
-    , mIsActive(copy.isActive())
-    , mIsSelected(copy.isSelected())
 {
-
+    setActivate(false);
+    setSelected(false);
 }
 
 Tuile::Tuile(unsigned int& count, sf::Vector2u &pixSize, sf::Sprite& sprite, Category::Layers layerCategory, TuileState::ID tuileCategory)
@@ -25,11 +24,10 @@ Tuile::Tuile(unsigned int& count, sf::Vector2u &pixSize, sf::Sprite& sprite, Cat
     , mTuileCategory(tuileCategory)
     , mPixSize(pixSize)
     , mSprite(sprite)
-    , mIsActive(false)
-    , mIsSelected(false)
     , mCount(count)
 {
-
+    setActivate(false);
+    setSelected(false);
 }
 
 Tuile::~Tuile()
@@ -39,14 +37,13 @@ Tuile::~Tuile()
 void Tuile::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     // If is active drawing the tuile
-    if(mIsActive)
+    if(isActive())
     {
         // Apply Transform of current Node
         states.transform *= getTransform();
 
         // Draw the Tuile
         target.draw(mSprite, states);
-
     }
 
 }
@@ -58,18 +55,23 @@ void Tuile::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
 
 void Tuile::handleEvent(const sf::Event &event, const sf::Vector2i& positionMouse)
 {
-    if(event.type == sf::Event::MouseMoved && mIsActive)
+    if(!isActive())
+    {
+        return;
+    }
+
+    if(event.type == sf::Event::MouseMoved)
     {
         // Check if in this tuile we have the mouse
         if(this->getRectBounds().contains(positionMouse))
         {
-            mIsSelected = true;
+            setSelected(true);
             mSprite.setColor(sf::Color(255, 255, 255, 128));
         }
     }
     else
     {
-        deSelect();
+        setSelected(false);
     }
 
 }
@@ -77,31 +79,6 @@ void Tuile::handleEvent(const sf::Event &event, const sf::Vector2i& positionMous
 const sf::Vector2u& Tuile::getPixSize() const
 {
     return mPixSize;
-}
-
-bool Tuile::isActive() const
-{
-    return mIsActive;
-}
-
-void Tuile::deactivate()
-{
-    mIsActive = false;
-}
-
-void Tuile::setActivate()
-{
-    mIsActive = true;
-}
-
-bool Tuile::isSelected() const
-{
-    return mIsSelected;
-}
-
-void Tuile::deSelect()
-{
-    mIsSelected = false;
 }
 
 TuileState::ID Tuile::getTuileCategory() const

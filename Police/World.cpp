@@ -52,8 +52,9 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     buildUI();
 
     // Prepare the view
-    mWorldView.setCenter(784,1408);
+    mWorldView.setCenter(800,808);
     checkView();
+    mSceneLayers[Background]->checkTuileChildInCurrentView(mWorldView);
 
 }
 
@@ -103,36 +104,36 @@ void World::viewEvent(const sf::Event &event)
         switch(event.key.code)
         {
             case sf::Keyboard::Z:
-            mWorldView.move(0.f,-10.f);
+            mWorldView.move(0.f,-16.f);
 
             break;
 
             case sf::Keyboard::Up:
-            mWorldView.move(0.f,-10.f);
+            mWorldView.move(0.f,-16.f);
             break;
 
             case sf::Keyboard::Q:
-            mWorldView.move(-10.f,0.f);
+            mWorldView.move(-16.f,0.f);
             break;
 
             case sf::Keyboard::Left:
-            mWorldView.move(-10.f,0.f);
+            mWorldView.move(-16.f,0.f);
             break;
 
             case sf::Keyboard::D:
-            mWorldView.move(10.f,0.f);
+            mWorldView.move(16.f,0.f);
             break;
 
             case sf::Keyboard::Right:
-            mWorldView.move(10.f,0.f);
+            mWorldView.move(16.f,0.f);
             break;
 
             case sf::Keyboard::S:
-            mWorldView.move(0.f,10.f);
+            mWorldView.move(0.f,16.f);
             break;
 
             case sf::Keyboard::Down:
-            mWorldView.move(0.f,10.f);
+            mWorldView.move(0.f,16.f);
             break;
 
             default:
@@ -140,6 +141,7 @@ void World::viewEvent(const sf::Event &event)
 
         }
         checkView();
+        mSceneLayers[Background]->checkTuileChildInCurrentView(mWorldView);
     }
 }
 
@@ -226,11 +228,6 @@ void World::checkView()
             mWorldView.move((mWorldViewRect.width - intersection.width),(mWorldViewRect.height - intersection.height));
         }
     }
-}
-
-void World::getCurrentTuileView()
-{
-
 }
 
 // Split the world for get position

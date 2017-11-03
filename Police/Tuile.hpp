@@ -19,35 +19,27 @@
 class Tuile : public SceneNode
 {
 public:
-                                        Tuile();
-                                        Tuile(const Tuile &copy);
-    explicit                            Tuile(unsigned int& count, sf::Vector2u &pixSize, sf::Sprite& sprite, Category::Layers layerCategory = Category::Layers::None , TuileState::ID tuileCategory = TuileState::ID::None);
+                                    Tuile();
+                                    Tuile(const Tuile &copy);
+    explicit                        Tuile(unsigned int& count, sf::Vector2u &pixSize, sf::Sprite& sprite, Category::Layers layerCategory = Category::Layers::None , TuileState::ID tuileCategory = TuileState::ID::None);
     ~Tuile();
 
-    virtual void                        draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void                        drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void                        handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
+    virtual void                    draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void                    drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void                    handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
 
-    const sf::Vector2u&                 getPixSize() const;
+    const sf::Vector2u&             getPixSize() const;
 
-    bool                                isActive() const;
-    void                                deactivate();
-    void                                setActivate();
+    TuileState::ID                  getTuileCategory() const;
+    void                            setTuileCategory(TuileState::ID id);
 
-    bool                                isSelected() const;
-    void                                deSelect();
-    void                                Select();
+    const unsigned int              getCount()const;
+    void                            setCount(unsigned int& count);
 
-    TuileState::ID                      getTuileCategory() const;
-    void                                setTuileCategory(TuileState::ID id);
+    const sf::Sprite&               getSprite() const;
+    void                            setSprite(sf::Sprite& sprite);
 
-    const unsigned int                  getCount()const;
-    void                                setCount(unsigned int& count);
-
-    const sf::Sprite&                   getSprite() const;
-    void                                setSprite(sf::Sprite& sprite);
-
-    const sf::IntRect                   getRectBounds();
+    const sf::IntRect               getRectBounds();
 
 private:
 

@@ -54,10 +54,16 @@ public:
         virtual bool			isDestroyed() const;
 
         void                    checkTuileChildInCurrentView(const sf::View &view);
+
+        virtual bool            isActive() const;
+        virtual void            setActivate(const bool& r);
+
+        virtual bool            isSelected() const;
+        virtual void            setSelected(const bool& r);
+
 private:
         virtual void            updateCurrent(sf::Time dt, CommandQueue& commands);
         void                    updatechildren(sf::Time dt, CommandQueue &commands);
-
 
         virtual void            draw(sf::RenderTarget& target, sf::RenderStates states) const;
         virtual void            drawCurrent (sf::RenderTarget& target, sf::RenderStates states) const;
@@ -68,6 +74,9 @@ private:
         std::vector<Ptr>        mChildren;
         SceneNode*              mParent;
         Category::Layers        mDefaultCategory;
+
+        bool                    mIsActive;
+        bool                    mIsSelected;
 };
 
 bool	collision(const SceneNode& lhs, const SceneNode& rhs);

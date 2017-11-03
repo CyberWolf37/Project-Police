@@ -17,6 +17,8 @@ SceneNode::SceneNode(Category::Layers category)
     : mChildren()
     , mParent(nullptr)
     , mDefaultCategory(category)
+    , mIsActive(true)
+    , mIsSelected(false)
 {
 }
 
@@ -196,9 +198,29 @@ void SceneNode::checkTuileChildInCurrentView(const sf::View& view)
     {
         if(boundsView.contains(child->getPosition()))
         {
-            child->setActivate();
+            child->setActivate(true);
         }
     }
+}
+
+bool SceneNode::isActive() const
+{
+    return mIsActive;
+}
+
+void SceneNode::setActivate(const bool& r)
+{
+    mIsActive = r;
+}
+
+bool SceneNode::isSelected() const
+{
+    return mIsSelected;
+}
+
+void SceneNode::setSelected(const bool &r)
+{
+    mIsSelected = r;
 }
 
 bool collision(const SceneNode& lhs, const SceneNode& rhs)
