@@ -5,6 +5,7 @@
 #include "build.hpp"
 #include "ResourceHolder.hpp"
 #include "ResourceIdentifiers.hpp"
+#include "Tuile.hpp"
 
 // SFML Library
 #include "SFML/Graphics/Rect.hpp"
@@ -18,7 +19,9 @@ class RectangleRoom : public BUILD_OBJECT::Build
 {
 
 public:
-    enum Type
+
+    // Enum for the tuile we use for drawing
+    enum TypeTuile
     {
         TopLeft,
         TopRight,
@@ -28,7 +31,14 @@ public:
         BottomRight,
     };
 
-    typedef std::map<RectangleRoom::Type,sf::Sprite> SpritesMap;
+    // Enum for the type we build
+    enum TypeBuild
+    {
+        Chamber,
+        TypeCount,
+    };
+
+    typedef std::map<RectangleRoom::TypeTuile,Tuile> TuileMap;
 
 public:
 
@@ -54,7 +64,7 @@ private:
     bool                    mIsFirst;
 
     TextureHolder&          mTexture;
-    SpritesMap              mStackSprite;
+    TuileMap                mStackTuile;
     sf::RenderTexture       mRenderTexture;
 
     sf::Vector2i            mPositionBegin;

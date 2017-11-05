@@ -66,7 +66,6 @@ void Tuile::handleEvent(const sf::Event &event, const sf::Vector2i& positionMous
         if(this->getRectBounds().contains(positionMouse))
         {
             setSelected(true);
-            mSprite.setColor(sf::Color(255, 255, 255, 128));
         }
     }
     else

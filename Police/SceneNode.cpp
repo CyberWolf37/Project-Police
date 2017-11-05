@@ -200,6 +200,10 @@ void SceneNode::checkTuileChildInCurrentView(const sf::View& view)
         {
             child->setActivate(true);
         }
+        else
+        {
+            child->setActivate(false);
+        }
     }
 }
 
