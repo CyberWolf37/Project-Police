@@ -21,4 +21,5 @@ INPUT(
 ./release\RectangleRoom.o
 ./release\Tuile.o
 ./release\TextureSpliter.o
+./release\DataTables.o
 );

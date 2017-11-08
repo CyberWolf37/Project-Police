@@ -9,6 +9,9 @@ std::vector<BuildData> initializeBuildData()
 
     data[RectangleRoom::TypeBuild::Chamber].hitpoints = 100;
 
+    // Set the Tuile
+
+
     // Set the Tuile map
     data[RectangleRoom::TypeBuild::Chamber].TuileMap[RectangleRoom::TypeTuile::TopLeft]       =
     data[RectangleRoom::TypeBuild::Chamber].TuileMap[RectangleRoom::TypeTuile::TopRight]      =
