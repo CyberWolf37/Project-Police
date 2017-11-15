@@ -41,12 +41,11 @@ void TextureSpliter::split(sf::Vector2u &pix)
             {
                 index.left = 0;
 
-                // Add in Tuile
-                sf::Sprite sprite (*this,index);
-                Ptr tuile(new Tuile(counter,pix,sprite));
+                // Add in Sprite
+                Ptr sprite(new sf::Sprite(*this,index));
 
                 // Insert in a map
-                (*m_TuileMap)[counter] = tuile;
+                (*m_TuileMap)[counter] = sprite;
             }
             else
             {
@@ -54,11 +53,10 @@ void TextureSpliter::split(sf::Vector2u &pix)
                 index.left += pix.x;
 
                 // Add in sprite
-                sf::Sprite sprite (*this,index);
-                Ptr tuile(new Tuile(counter, pix, sprite));
+                Ptr sprite(new sf::Sprite(*this,index));
 
                 // Insert in map
-                (*m_TuileMap)[counter] = tuile;
+                (*m_TuileMap)[counter] = sprite;
             }
         }
 

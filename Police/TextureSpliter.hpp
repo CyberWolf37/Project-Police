@@ -16,7 +16,7 @@ class TextureSpliter : public sf::Texture
 public:
 
     // Typedef
-    typedef std::shared_ptr<Tuile> Ptr;
+    typedef std::shared_ptr<sf::Sprite> Ptr;
     typedef std::shared_ptr<std::map<unsigned int, Ptr>> MapPtr;
 
     // Function
@@ -24,10 +24,8 @@ public:
     TextureSpliter(const sf::Texture& copy);
     ~TextureSpliter();
 
-    void                            split(sf::Vector2u& pix);
-    MapPtr    getSplitMap();
-
-
+    void        split(sf::Vector2u& pix);
+    MapPtr      getSplitMap();
 
 private:
 

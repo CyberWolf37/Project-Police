@@ -3,6 +3,8 @@
 
 // Core Library
 #include "ResourceIdentifiers.hpp"
+#include "TextureSpliter.hpp"
+#include "ResourceHolder.hpp"
 #include "Tuile.hpp"
 #include "RectangleRoom.hpp"
 
@@ -16,12 +18,13 @@
 #include <map>
 #include <functional>
 
+using namespace BUILD_OBJECT;
+
 struct BuildData
 {
-    int                                         hitpoints;
     std::map<RectangleRoom::TypeTuile,Tuile>    TuileMap;
 };
 
-std::vector<BuildData>       initializeBuildData();
+std::vector<BuildData>       initializeBuildData(const TextureSpliter::MapPtr &ptr);
 
 #endif // DATATABLES_H

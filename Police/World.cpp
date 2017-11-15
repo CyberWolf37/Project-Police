@@ -339,7 +339,7 @@ void World::buildFile()
     // Set the Tuile
     for(size_t i = 0; i < file->Layouts[0]->layerTile.size() ; i++)
     {
-        std::shared_ptr<Tuile> Ptuile (new Tuile(*(*PtrMap)[file->Layouts[0]->layerTile[i]]));
+        std::shared_ptr<Tuile> Ptuile (new Tuile((*PtrMap)[file->Layouts[0]->layerTile[i]]));
         Ptuile->setPosition(arrayPosition[i]);
         mSceneLayers[Background]->attachChild(std::move(Ptuile));
     }

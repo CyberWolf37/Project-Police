@@ -407,9 +407,9 @@ IOFile::MapTuile& IOFile::splitTexture(Category::Layers categoryLayer, TuileStat
                 index.left = 0;
 
                 // Add in Tuile
-                sf::Sprite sprite (texture,index);
-                sprite.setPosition(index.left,index.top);
-                std::unique_ptr<Tuile> tuile(new Tuile(counter,pix,sprite,categoryLayer));
+                std::shared_ptr<sf::Sprite> sprite(new sf::Sprite(texture,index));
+                sprite->setPosition(index.left,index.top);
+                std::unique_ptr<Tuile> tuile(new Tuile(std::move(sprite), categoryLayer, tuileCategory));
 
                 // Insert in vector in a map
                 vector.push_back(std::move(tuile));
@@ -420,9 +420,9 @@ IOFile::MapTuile& IOFile::splitTexture(Category::Layers categoryLayer, TuileStat
                 index.left += pix.x;
 
                 // Add in sprite
-                sf::Sprite sprite (texture,index);
-                sprite.setPosition(index.left,index.top);
-                std::unique_ptr<Tuile> tuile(new Tuile(counter, pix, sprite, categoryLayer, tuileCategory));
+                std::shared_ptr<sf::Sprite> sprite(new sf::Sprite(texture,index));
+                sprite->setPosition(index.left,index.top);
+                std::unique_ptr<Tuile> tuile(new Tuile(std::move(sprite), categoryLayer, tuileCategory));
 
                 // Insert in vector
                 vector.push_back(std::move(tuile));

@@ -51,9 +51,6 @@ public:
     void                    insertRoom(const sf::Vector2i& position);
     bool                    getCurrentTuile(const sf::Vector2i& position)const;
 
-    void                    setStackTexture();
-
-
 private:
 
 
