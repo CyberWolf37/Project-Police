@@ -7,7 +7,7 @@ std::vector<BuildData> initializeBuildData(const TextureSpliter::MapPtr &ptr)
 {
     // Init data vector
     std::vector<BuildData> data(RectangleRoom::TypeBuild::TypeCount);
-    std::pair<RectangleRoom::TypeTuile,Tuile> pairTuileMap;
+    std::pair<RectangleRoom::TypeTuile,std::unique_ptr<Tuile>> pairTuileMap;
 
     // Set the Tuile map for chamber
     std::unique_ptr<Tuile> tuileTopLeft(new Tuile((*ptr)[1]));

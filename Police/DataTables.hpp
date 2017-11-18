@@ -22,7 +22,7 @@ using namespace BUILD_OBJECT;
 
 struct BuildData
 {
-    std::map<RectangleRoom::TypeTuile,Tuile>    TuileMap;
+    std::map<RectangleRoom::TypeTuile,std::unique_ptr<Tuile>>    TuileMap;
 };
 
 std::vector<BuildData>       initializeBuildData(const TextureSpliter::MapPtr &ptr);
