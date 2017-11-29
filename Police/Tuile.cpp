@@ -91,6 +91,11 @@ void Tuile::setSprite(std::shared_ptr<sf::Sprite> sprite)
     mSprite = sprite;
 }
 
+const bool &Tuile::getIsActive() const
+{
+    return mIsActive;
+}
+
 const sf::IntRect Tuile::getRectBounds()
 {
     sf::IntRect result(mSprite->getGlobalBounds());

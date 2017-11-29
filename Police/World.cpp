@@ -30,6 +30,8 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     , mFile()
     , mSpawnPosition(0,0)
     , mMainContainer(mTarget)
+    , mBuildState(false)
+    , mBuildRoom(mTextures, mSceneGraph)
 {
     // Set Key repeted True
     mTarget.setKeyRepeatEnabled(true);
@@ -89,6 +91,11 @@ void World::draw()
 
 bool World::handleEvent(const sf::Event &event)
 {
+    if(mBuildState)
+    {
+        mBuildRoom.handleEvent(event, getPositionMouse());
+    }
+
     mMainContainer.handleEvent(event);
     mSceneGraph.handleEvent(event,getPositionMouse());
     viewEvent(event);
@@ -371,6 +378,7 @@ void World::buildUI()
     buildButton->setCallback([this] ()
     {
         std::cout << "Pick the button Build" << std::endl;
+        mBuildState = true;
 
     });
 

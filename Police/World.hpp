@@ -2,16 +2,17 @@
 #define WORLD_H
 
 // ALL about resources
-#include <ResourceHolder.hpp>
-#include <ResourceIdentifiers.hpp>
-#include <IOFile.hpp>
+#include "ResourceHolder.hpp"
+#include "ResourceIdentifiers.hpp"
+#include "IOFile.hpp"
 #include "TextureSpliter.hpp"
-#include <SceneNode.hpp>
-#include <SpriteNode.hpp>
-#include <Utility.hpp>
-#include <Container.hpp>
-#include <Button.hpp>
+#include "SceneNode.hpp"
+#include "SpriteNode.hpp"
+#include "Utility.hpp"
+#include "Container.hpp"
+#include "Button.hpp"
 #include "Tuile.hpp"
+#include "RectangleRoom.hpp"
 
 // System SFML
 #include <SFML/System/Time.hpp>
@@ -98,8 +99,9 @@ private:
         SceneNode                           mSceneGraph;
         std::array<SceneNode*, LayerCount>  mSceneLayers;
 
-        //IOFile                              mFile;
-        //IOFile::File*                       mSauv;
+        bool                                mBuildState;
+        BUILD_OBJECT::RectangleRoom         mBuildRoom;
+
 
         GUI::Container                      mMainContainer;
 

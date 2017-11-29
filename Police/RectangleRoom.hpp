@@ -6,6 +6,7 @@
 #include "ResourceHolder.hpp"
 #include "ResourceIdentifiers.hpp"
 #include "Tuile.hpp"
+#include "Foreach.hpp"
 
 // SFML Library
 #include "SFML/Graphics/Rect.hpp"
@@ -15,7 +16,7 @@
 
 namespace BUILD_OBJECT
 {
-class RectangleRoom : public BUILD_OBJECT::Build
+class RectangleRoom : public Build
 {
 
 public:
@@ -42,22 +43,23 @@ public:
 
 public:
 
-    explicit                RectangleRoom(TextureHolder &texture);
+    explicit                RectangleRoom(TextureHolder &texture,const SceneNode& worldScene);
 
     virtual void            drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 
-    virtual void            handleEvent(const sf::Event& event);
+    virtual void            handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
+
+    virtual bool            checkColision(sf::Vector2i& position);
 
     void                    insertRoom(const sf::Vector2i& position);
-    bool                    getCurrentTuile(const sf::Vector2i& position)const;
+
 
 private:
-
-
+    void                    setRoomTexture();
+    Tuile&                  getCurrentTuile(const sf::Vector2i& position);
 
 private:
     bool                    mIsSet;
-    bool                    mIsCurrent;
     bool                    mIsFirst;
 
     TextureHolder&          mTexture;
@@ -65,6 +67,8 @@ private:
     sf::RenderTexture       mRenderTexture;
 
     sf::Vector2i            mPositionBegin;
+    sf::Vector2i            mPositionEnd;
+    const SceneNode&        mWorldScene;
 
     sf::IntRect             mBounds;
 

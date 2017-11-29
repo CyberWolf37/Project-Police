@@ -35,6 +35,8 @@ public:
     const std::shared_ptr<sf::Sprite>   getSprite() const;
     void                                setSprite(std::shared_ptr<sf::Sprite> sprite);
 
+    const bool&                         getIsActive() const;
+
     const sf::IntRect                   getRectBounds();
 
 private:

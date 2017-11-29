@@ -25,7 +25,7 @@ public:
     virtual sf::IntRect         getBoundingRect() const;
     virtual void                setBoundingRect(const sf::IntRect bounds);
 
-    virtual bool                isSelectable() const = 0;
+    virtual bool                isSelectable() const;
     bool                        isSelected() const;
     virtual void                select();
     virtual void                deselect();
@@ -39,8 +39,6 @@ public:
     const sf::Time              getProgressClock() const;
     void                        startClock();
     bool                        checkIsFinish() const;
-
-    virtual void                handleEvent(const sf::Event& event) = 0;
 
     virtual bool                checkColision(sf::Vector2i& position) = 0;
 
