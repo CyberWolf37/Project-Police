@@ -67,4 +67,5 @@ HEADERS += \
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \
-    object_script.Police.Debug
+    object_script.Police.Debug \
+    uml_project.qmodel
