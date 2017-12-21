@@ -43,7 +43,7 @@ public:
 
 public:
 
-    explicit                RectangleRoom(TextureHolder &texture,const SceneNode& worldScene);
+    explicit                RectangleRoom(TextureHolder &texture,SceneNode& worldScene);
 
     virtual void            drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -55,8 +55,8 @@ public:
 
 
 private:
-    void                    setRoomTexture();
-    Tuile&                  getCurrentTuile(const sf::Vector2i& position);
+    void                        setRoomTexture();
+    std::shared_ptr<Tuile>      getCurrentTuile(const sf::Vector2i& position);
 
 private:
     bool                    mIsSet;
@@ -68,7 +68,7 @@ private:
 
     sf::Vector2i            mPositionBegin;
     sf::Vector2i            mPositionEnd;
-    const SceneNode&        mWorldScene;
+    SceneNode&              mWorldScene;
 
     sf::IntRect             mBounds;
 

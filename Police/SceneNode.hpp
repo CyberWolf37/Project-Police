@@ -54,7 +54,7 @@ public:
         virtual bool			isDestroyed() const;
 
         void                        checkTuileChildInCurrentView(const sf::View &view);
-        std::shared_ptr<SceneNode>& getCurrentSceneNode(const sf::Vector2i& position);
+        std::shared_ptr<SceneNode>  getCurrentSceneNode(const sf::Vector2i& position);
 
         virtual bool            isActive() const;
         virtual void            setActivate(const bool& r);

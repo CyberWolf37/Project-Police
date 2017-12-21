@@ -207,7 +207,7 @@ void SceneNode::checkTuileChildInCurrentView(const sf::View& view)
     }
 }
 
-std::shared_ptr<SceneNode>& SceneNode::getCurrentSceneNode(const sf::Vector2i &position)
+std::shared_ptr<SceneNode> SceneNode::getCurrentSceneNode(const sf::Vector2i &position)
 {
     FOREACH(Ptr& child, mChildren)
     {

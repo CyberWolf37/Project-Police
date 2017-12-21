@@ -91,7 +91,8 @@ OBJECTS       = release/main.o \
 		release/DataTables.o
 
 DIST          = Media/Textures/Title_Screen.png \
-		object_script.Police.Debug Application.hpp \
+		object_script.Police.Debug \
+		uml_project.qmodel Application.hpp \
 		GameState.hpp \
 		State.hpp \
 		Stateidentifiers.hpp \
@@ -406,6 +407,9 @@ release/Application.o: Application.cpp Application.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Glsl.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Glsl.inl \
 		Button.hpp \
+		RectangleRoom.hpp \
+		build.hpp \
+		Foreach.hpp \
 		MenuState.hpp \
 		ProgressBar.hpp \
 		LoadingState.hpp \
@@ -562,7 +566,10 @@ release/GameState.o: GameState.cpp GameState.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Glsl.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Glsl.inl \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Text.hpp \
-		Button.hpp
+		Button.hpp \
+		RectangleRoom.hpp \
+		build.hpp \
+		Foreach.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\GameState.o GameState.cpp
 
 release/State.o: State.cpp State.hpp \
@@ -980,6 +987,9 @@ release/World.o: World.cpp World.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Glsl.inl \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Text.hpp \
 		Button.hpp \
+		RectangleRoom.hpp \
+		build.hpp \
+		Foreach.hpp \
 		foreach.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\World.o World.cpp
 
@@ -2011,6 +2021,7 @@ release/RectangleRoom.o: RectangleRoom.cpp RectangleRoom.hpp \
 		../../../Qt_Home/5.7/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.7/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.7/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Foreach.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Texture.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Image.hpp
@@ -2249,26 +2260,31 @@ release/TextureSpliter.o: TextureSpliter.cpp TextureSpliter.hpp \
 
 release/DataTables.o: DataTables.cpp DataTables.hpp \
 		ResourceIdentifiers.hpp \
-		Tuile.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Sprite.hpp \
+		TextureSpliter.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Texture.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Export.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Config.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Drawable.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderStates.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/BlendMode.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Transform.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Image.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Color.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Rect.hpp \
 		SFML-2.4.1\ DW2/include/SFML/System/Vector2.hpp \
 		SFML-2.4.1\ DW2/include/SFML/System/Vector2.inl \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Rect.inl \
+		SFML-2.4.1\ DW2/include/SFML/Window/GlResource.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/Export.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/NonCopyable.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Export.hpp \
+		Tuile.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Sprite.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Drawable.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderStates.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/BlendMode.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Transform.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Transformable.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Vertex.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Color.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Window/Event.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Window/Joystick.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/Export.hpp \
 		SFML-2.4.1\ DW2/include/SFML/System/String.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/Export.hpp \
 		SFML-2.4.1\ DW2/include/SFML/System/Utf.hpp \
 		SFML-2.4.1\ DW2/include/SFML/System/Utf.inl \
 		SFML-2.4.1\ DW2/include/SFML/System/String.inl \
@@ -2281,7 +2297,6 @@ release/DataTables.o: DataTables.cpp DataTables.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTarget.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/View.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/PrimitiveType.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/NonCopyable.hpp \
 		SceneNode.hpp \
 		Category.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Window/Window.hpp \
@@ -2289,7 +2304,6 @@ release/DataTables.o: DataTables.cpp DataTables.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Window/VideoMode.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Window/WindowHandle.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Window/WindowStyle.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/GlResource.hpp \
 		SFML-2.4.1\ DW2/include/SFML/System/Clock.hpp \
 		ResourceHolder.hpp \
 		ResourceHolder.inl \
@@ -2362,9 +2376,8 @@ release/DataTables.o: DataTables.cpp DataTables.hpp \
 		../../../Qt_Home/5.7/mingw53_32/include/QtCore/qsharedpointer_impl.h \
 		RectangleRoom.hpp \
 		build.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Texture.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Image.hpp
+		Foreach.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\DataTables.o DataTables.cpp
 
 ####### Install
