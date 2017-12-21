@@ -68,13 +68,13 @@ void RectangleRoom::insertRoom(const sf::Vector2i &position)
     {
         mPositionEnd = position;
 
-        SceneNode& tuile_Begin (*getCurrentTuile(mPositionBegin));
-        SceneNode& tuile_End (*getCurrentTuile(mPositionEnd));
+        auto tuile_Begin (getCurrentSceneNode(mPositionBegin));
+        auto tuile_End (getCurrentSceneNode(mPositionEnd));
 
         sf::Vector2f positionNext (tuile_Begin.getPosition() - tuile_End.getPosition());
         positionNext /= 16.f;
 
-        std::vector<SceneNode&> stackTuile;
+        std::vector<SceneNode> stackTuile;
         stackTuile.push_back(tuile_Begin);
 
         // In Axe X
@@ -82,9 +82,8 @@ void RectangleRoom::insertRoom(const sf::Vector2i &position)
         {
             for(size_t i = 0; i < positionNext.x ; i++)
             {
-                stackTuile.push_back(*getCurrentTuile(tuile_Begin.getPosition().x + (16 * i)));
-                stackTuile.push_Back(*getCurrentTuile(tuile_End.getPosition().x - (16 * i)));
-
+                stackTuile.push_back(*getCurrentSceneNode(tuile_Begin.getPosition().x + (16 * i)));
+                stackTuile.push_Back(*getCurrentSceneNode(tuile_End.getPosition().x - (16 * i)));
             }
         }
         else if(positionNext.x < 0)
@@ -92,8 +91,8 @@ void RectangleRoom::insertRoom(const sf::Vector2i &position)
             position_idx = positionNext.x *-1;
             for(size_t i = 0; i < position_idx ; i++)
             {
-                stackTuile.push_back(*getCurrentTuile(tuile_Begin.getPosition().x - (16 * i)));
-                stackTuile.push_back(*getCurrentTuile(tuile_Begin.getPosition().x + (16 * i)));
+                stackTuile.push_back(*getCurrentSceneNode(tuile_Begin.getPosition().x - (16 * i)));
+                stackTuile.push_back(*getCurrentSceneNode(tuile_Begin.getPosition().x + (16 * i)));
 
             }
         }
@@ -103,8 +102,8 @@ void RectangleRoom::insertRoom(const sf::Vector2i &position)
         {
             for(size_t i = 0; i < positionNext.x ; i++)
             {
-                stackTuile.push_back(*getCurrentTuile(tuile_Begin.getPosition().y + (16 * i)));
-                stackTuile.push_Back(*getCurrentTuile(tuile_End.getPosition().y - (16 * i)));
+                stackTuile.push_back(*getCurrentSceneNode(tuile_Begin.getPosition().y + (16 * i)));
+                stackTuile.push_Back(*getCurrentSceneNode(tuile_End.getPosition().y - (16 * i)));
             }
         }
         else if(positionNext.y < 0)
@@ -112,8 +111,8 @@ void RectangleRoom::insertRoom(const sf::Vector2i &position)
             position_idx = positionNext.x *-1;
             for(size_t i = 0; i < position_idx ; i++)
             {
-                stackTuile.push_back(*getCurrentTuile(tuile_Begin.getPosition().y - (16 * i)));
-                stackTuile.push_back(*getCurrentTuile(tuile_Begin.getPosition().y + (16 * i)));
+                stackTuile.push_back(*getCurrentSceneNode(tuile_Begin.getPosition().y - (16 * i)));
+                stackTuile.push_back(*getCurrentSceneNode(tuile_Begin.getPosition().y + (16 * i)));
             }
         }
 
@@ -133,11 +132,6 @@ void RectangleRoom::insertRoom(const sf::Vector2i &position)
         }
 
     }
-}
-
-std::shared_ptr<SceneNode> RectangleRoom::getCurrentTuile(const sf::Vector2i& position)
-{
-        return mWorldScene.getCurrentSceneNode(position);
 }
 
 void RectangleRoom::setRoomTexture()

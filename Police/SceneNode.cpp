@@ -207,13 +207,16 @@ void SceneNode::checkTuileChildInCurrentView(const sf::View& view)
     }
 }
 
-std::shared_ptr<SceneNode> SceneNode::getCurrentSceneNode(const sf::Vector2i &position)
+// Template for retreive the type
+template <typename Resource>
+Resource& SceneNode::getCurrentSceneNode(const sf::Vector2i &position)
 {
     FOREACH(Ptr& child, mChildren)
     {
         if(child->getBoundingRect().contains(position))
         {
-            return child;
+            auto idx = child;
+            return *idx;
         }
         else
         {

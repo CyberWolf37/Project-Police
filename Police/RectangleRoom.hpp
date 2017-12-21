@@ -55,8 +55,7 @@ public:
 
 
 private:
-    void                        setRoomTexture();
-    std::shared_ptr<Tuile>      getCurrentTuile(const sf::Vector2i& position);
+    void                    setRoomTexture();
 
 private:
     bool                    mIsSet;
