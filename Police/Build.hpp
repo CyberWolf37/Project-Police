@@ -25,7 +25,6 @@ public:
     virtual sf::IntRect         getBoundingRect() const;
     virtual void                setBoundingRect(const sf::IntRect bounds);
 
-    virtual bool                isSelectable() const;
     bool                        isSelected() const;
     virtual void                select();
     virtual void                deselect();

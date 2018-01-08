@@ -51,7 +51,9 @@ public:
 
     virtual bool            checkColision(sf::Vector2i& position);
 
-    void                    insertRoom(const sf::Vector2i& position);
+    bool                    insertRoom(const sf::Vector2i& position);
+
+    Tuile&                  getCurrentTuile(const sf::Vector2i& position);
 
 
 private:

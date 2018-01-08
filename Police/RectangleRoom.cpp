@@ -43,9 +43,12 @@ void RectangleRoom::handleEvent(const sf::Event &event, const sf::Vector2i& posi
         mIsFirst    = true;
         mIsSet      = true;
         insertRoom(positionMouse);
+        qDebug() << "Passe 1.1";
+
     }
     else if(event.type == sf::Event::MouseButtonReleased)
     {
+        qDebug() << "Passe 1.2";
         insertRoom(positionMouse);
         mIsSet      = false;
     }
@@ -56,13 +59,14 @@ bool RectangleRoom::checkColision(sf::Vector2i &position)
     // Do nothing now
 }
 
-void RectangleRoom::insertRoom(const sf::Vector2i &position)
+bool RectangleRoom::insertRoom(const sf::Vector2i &position)
 {
     // If is the first when we take the position we save it
     if(mIsFirst)
     {
         mPositionBegin = position;
         mIsFirst = false;
+        return false;
     }
     else if(mIsSet && !mIsFirst)
     {
@@ -71,10 +75,12 @@ void RectangleRoom::insertRoom(const sf::Vector2i &position)
         SceneNode& tuile_Begin (getCurrentSceneNode(mPositionBegin));
         SceneNode& tuile_End (getCurrentSceneNode(mPositionEnd));
 
+         qDebug() << "Passe 1.3";
+
         sf::Vector2f positionNext (tuile_Begin.getPosition() - tuile_End.getPosition());
         positionNext /= 16.f;
 
-        std::vector<SceneNode&> stackTuile;
+        std::vector<std::reference_wrapper<SceneNode>> stackTuile;
         stackTuile.push_back(tuile_Begin);
 
         // In Axe X
@@ -107,24 +113,32 @@ void RectangleRoom::insertRoom(const sf::Vector2i &position)
         {
             for(size_t i = 0; i < positionNext.y ; i++)
             {
-                stackTuile.push_back(*getCurrentSceneNode(tuile_Begin.getPosition().y + (16 * i)));
-                stackTuile.push_Back(*getCurrentSceneNode(tuile_End.getPosition().y - (16 * i)));
+                sf::Vector2i _position {static_cast<int>(tuile_Begin.getPosition().x),static_cast<int>(tuile_Begin.getPosition().y + (16 * i))};
+                stackTuile.push_back(getCurrentSceneNode(_position));
+
+                _position.x = static_cast<int>(tuile_Begin.getPosition().x);
+                _position.y = static_cast<int>(tuile_Begin.getPosition().y + (16 * i));
+                stackTuile.push_back(getCurrentSceneNode(_position));
             }
         }
         else if(positionNext.y < 0)
         {
-            position_idx = positionNext.y *-1;
-            for(size_t i = 0; i < position_idx ; i++)
+            sf::Vector2i position_idx {positionNext.x,static_cast<int>(positionNext.y *-1)};
+            for(size_t i = 0; i < position_idx.y ; i++)
             {
-                stackTuile.push_back(*getCurrentSceneNode(tuile_Begin.getPosition().y - (16 * i)));
-                stackTuile.push_back(*getCurrentSceneNode(tuile_Begin.getPosition().y + (16 * i)));
+                position_idx.y = static_cast<int>(tuile_Begin.getPosition().y - (16 * i));
+                stackTuile.push_back(getCurrentSceneNode(position_idx));
+                position_idx.y = static_cast<int>(tuile_Begin.getPosition().y + (16 * i));
+                stackTuile.push_back(getCurrentSceneNode(position_idx));
             }
         }
 
         // Finish with the Tuile End
         stackTuile.push_back(tuile_End);
 
-        for (Tuile& child : stackTuile)
+
+
+        /*for (SceneNode& child : stackTuile)
         {
             if(child.getIsActive())
             {
@@ -134,9 +148,24 @@ void RectangleRoom::insertRoom(const sf::Vector2i &position)
             {
                 child.getSprite()->setColor(sf::Color::Red);
             }
-        }
-
+        }*/
+    return true;
     }
+}
+
+Tuile &RectangleRoom::getCurrentTuile(const sf::Vector2i &position)
+{
+    qDebug() << "passe dynamic 1";
+    auto& node = getCurrentSceneNode(position);
+    qDebug() << "passe dynamic 1.1";
+    qDebug() << typeid(node).name();
+    if(typeid(node) == typeid(Tuile&))
+    {
+        qDebug() << "passe dynamic 2.1";
+        return dynamic_cast<Tuile&>(node);
+        qDebug() << "passe dynamic 2.2";
+    }
+
 }
 
 void RectangleRoom::setRoomTexture()

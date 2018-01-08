@@ -22,4 +22,6 @@ INPUT(
 ./debug\Tuile.o
 ./debug\TextureSpliter.o
 ./debug\DataTables.o
+./debug\Command.o
+./debug\CommandQueue.o
 );

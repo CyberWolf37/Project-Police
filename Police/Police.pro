@@ -1,4 +1,4 @@
-CONFIG += c++11
+CONFIG += c++14
 CONFIG += console
 LIBS += -L./"SFML-2.4.1 DW2"/lib
 
@@ -33,7 +33,11 @@ SOURCES += \
     RectangleRoom.cpp \
     Tuile.cpp \
     TextureSpliter.cpp \
-    DataTables.cpp
+    DataTables.cpp \
+    Command.cpp \
+    CommandQueue.cpp \
+    SceneNodeStack.cpp \
+    MapNode.cpp
 
 HEADERS += \
     Application.hpp \
@@ -63,9 +67,14 @@ HEADERS += \
     RectangleRoom.hpp \
     Tuile.hpp \
     TextureSpliter.hpp \
-    DataTables.hpp
+    DataTables.hpp \
+    CommandQueue.hpp \
+    SceneNodeStack.hpp \
+    Command.hpp \
+    MapNode.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \
     object_script.Police.Debug \
-    uml_project.qmodel
+    uml_project.qmodel \
+    uml_rendering.qmodel

@@ -22,4 +22,6 @@ INPUT(
 ./release\Tuile.o
 ./release\TextureSpliter.o
 ./release\DataTables.o
+./release\Command.o
+./release\CommandQueue.o
 );

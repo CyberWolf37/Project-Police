@@ -369,8 +369,6 @@ void World::buildUI()
     sf::Vector2f positionButton_2 = positionButton_1;
     positionButton_2.x += 200;
 
-    // Position button 3
-
     // Set button 1 for main container
     auto buildButton = std::make_shared<GUI::Button>(mFonts, mTextures);
     buildButton->setPosition(positionButton_1.x,positionButton_1.y);
