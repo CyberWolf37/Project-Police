@@ -13,14 +13,10 @@ SOURCES += \
     object.cpp \
     stack.inl \
     object_one.cpp \
-    object_two.cpp \
-    SceneNodeStack.cpp \
-    SceneNode.cpp
+    object_two.cpp
 
 HEADERS += \
     stack.hpp \
     object.hpp \
     object_one.hpp \
-    object_two.hpp \
-    SceneNodeStack.hpp \
-    SceneNode.hpp
+    object_two.hpp

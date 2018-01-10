@@ -24,4 +24,6 @@ INPUT(
 ./debug\DataTables.o
 ./debug\Command.o
 ./debug\CommandQueue.o
+./debug\SceneNodeStack.o
+./debug\MapNode.o
 );

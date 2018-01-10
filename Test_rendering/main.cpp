@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include "object_one.hpp"
 #include "object_two.hpp"
@@ -22,10 +23,11 @@ int main()
 
     auto& objectFound(stack.get(1));
 
+    objectFound.hello();
+
     if(typeid(objectFound) == typeid(Object_one))
     {
         Object_one& objectOne(dynamic_cast<Object_one&>(objectFound));
         objectOne.tellMe();
     }
-
 }

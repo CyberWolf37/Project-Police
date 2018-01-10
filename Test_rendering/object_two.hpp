@@ -12,6 +12,8 @@ public:
     virtual void            handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse){}
     virtual void            update(sf::Time dt){}
     virtual void            draw(sf::RenderTarget& target, sf::RenderStates states) const {}
+
+    virtual void            hello();
 };
 
 #endif // OBJECT_TWO_HPP

@@ -49,7 +49,7 @@
                          </base-DElement>
                          <object>{bb3f3ba4-91cf-4d64-b913-b12412bef971}</object>
                          <name>SceneNode</name>
-                         <pos>x:410;y:445</pos>
+                         <pos>x:390;y:435</pos>
                          <rect>x:-40;y:-30;w:80;h:60</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -347,7 +347,7 @@
                          </base-DElement>
                          <object>{fb2083db-0ab0-4149-8a3c-75632a8c857d}</object>
                          <name>Stack</name>
-                         <pos>x:375;y:685</pos>
+                         <pos>x:355;y:675</pos>
                          <rect>x:-140;y:-175;w:280;h:350</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
@@ -368,7 +368,7 @@
                          </base-DElement>
                          <object>{af4168ee-e91c-439d-ab83-aa968d329ea0}</object>
                          <name>Stack</name>
-                         <pos>x:280;y:445</pos>
+                         <pos>x:260;y:435</pos>
                          <rect>x:-40;y:-30;w:80;h:60</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -430,7 +430,7 @@
                          <object>{33ae63a4-151e-4432-8407-9a11de24078a}</object>
                          <context>Stack</context>
                          <name>Room</name>
-                         <pos>x:305;y:605</pos>
+                         <pos>x:285;y:595</pos>
                          <rect>x:-60;y:-55;w:120;h:110</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>6</visual-role>
@@ -452,7 +452,7 @@
                          <object>{7082dbe6-1dcb-452d-a342-5f05b76a6cac}</object>
                          <context>Stack</context>
                          <name>Building</name>
-                         <pos>x:440;y:620</pos>
+                         <pos>x:420;y:610</pos>
                          <rect>x:-65;y:-65;w:130;h:130</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>6</visual-role>
@@ -474,7 +474,7 @@
                          <object>{a5dafca8-a1ce-4f95-b97b-5f25d2894030}</object>
                          <context>Stack</context>
                          <name>Button</name>
-                         <pos>x:305;y:745</pos>
+                         <pos>x:285;y:735</pos>
                          <rect>x:-60;y:-70;w:120;h:140</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>6</visual-role>
@@ -496,7 +496,7 @@
                          <object>{0dc15ff2-0c9c-4273-9458-92e7e14f0ab4}</object>
                          <context>Stack</context>
                          <name>ProgressBar</name>
-                         <pos>x:445;y:760</pos>
+                         <pos>x:425;y:750</pos>
                          <rect>x:-60;y:-55;w:120;h:110</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>6</visual-role>
@@ -518,8 +518,8 @@
                          <object>{3ee669a9-8f2c-40be-9629-c1999da6f0e8}</object>
                          <context>Room</context>
                          <name>Room</name>
-                         <pos>x:305;y:605</pos>
-                         <rect>x:-25;y:-15;w:50;h:30</rect>
+                         <pos>x:285;y:595</pos>
+                         <rect>x:-25;y:-20;w:50;h:40</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -540,7 +540,7 @@
                          <object>{272fc963-55db-4175-9c31-3d30f55560d8}</object>
                          <context>Building</context>
                          <name>Building</name>
-                         <pos>x:440;y:610</pos>
+                         <pos>x:420;y:600</pos>
                          <rect>x:-30;y:-15;w:60;h:30</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -562,8 +562,8 @@
                          <object>{6c1ca48c-9167-49e3-90a8-b8e2a1573b4f}</object>
                          <context>Button</context>
                          <name>Button</name>
-                         <pos>x:300;y:735</pos>
-                         <rect>x:-25;y:-15;w:50;h:30</rect>
+                         <pos>x:280;y:725</pos>
+                         <rect>x:-25;y:-20;w:50;h:40</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -584,7 +584,7 @@
                          <object>{e9acd1c1-463a-4453-9f4e-ace9f92ea925}</object>
                          <context>ProgressBar</context>
                          <name>ProgressBar</name>
-                         <pos>x:445;y:760</pos>
+                         <pos>x:425;y:750</pos>
                          <rect>x:-40;y:-15;w:80;h:30</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
@@ -607,7 +607,7 @@
                          <object>{572e1b1b-5e2e-4c04-8b06-66227fd80980}</object>
                          <context>Building</context>
                          <name>Building</name>
-                         <pos>x:440;y:650</pos>
+                         <pos>x:420;y:640</pos>
                          <rect>x:-30;y:-15;w:60;h:30</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -629,8 +629,8 @@
                          <object>{64ee3019-44ca-4704-94e8-838902557080}</object>
                          <context>Button</context>
                          <name>Button</name>
-                         <pos>x:300;y:770</pos>
-                         <rect>x:-25;y:-15;w:50;h:30</rect>
+                         <pos>x:280;y:760</pos>
+                         <rect>x:-25;y:-20;w:50;h:40</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -651,7 +651,7 @@
                          <object>{248b7676-1fb6-42ad-96af-f214739bc581}</object>
                          <context>ProgressBar</context>
                          <name>ProgressBar</name>
-                         <pos>x:445;y:795</pos>
+                         <pos>x:425;y:785</pos>
                          <rect>x:-40;y:-15;w:80;h:30</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -673,8 +673,8 @@
                          <object>{5cd8dc76-610c-437b-97ad-a831c0fc7f36}</object>
                          <context>Room</context>
                          <name>Room</name>
-                         <pos>x:305;y:640</pos>
-                         <rect>x:-25;y:-15;w:50;h:30</rect>
+                         <pos>x:285;y:630</pos>
+                         <rect>x:-25;y:-20;w:50;h:40</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -691,7 +691,7 @@
                         </DElement>
                        </base-DElement>
                        <text>Stack rendering Object</text>
-                       <pos>x:360;y:630</pos>
+                       <pos>x:340;y:620</pos>
                        <rect>x:-165;y:-255;w:330;h:510</rect>
                       </DBoundary>
                      </instance>
@@ -710,9 +710,175 @@
                       </DBoundary>
                      </instance>
                     </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{23a3a1fb-0da1-481b-b13b-913420412409}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{f3ccdf2b-f21a-4e8c-abae-a856f7a80a60}</object>
+                         <name>MapNode</name>
+                         <pos>x:825;y:165</pos>
+                         <rect>x:-40;y:-30;w:80;h:60</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DClass">
+                      <DClass>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{b4a1a912-457b-4db8-a2b9-3db131a2d685}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{c351f137-2a9f-4487-96a2-1fe4cbdb95db}</object>
+                         <name>SceneNode</name>
+                         <pos>x:825;y:70</pos>
+                         <rect>x:-40;y:-30;w:80;h:60</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                      </DClass>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DAssociation">
+                      <DAssociation>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{51b428d8-38dd-4e26-84cf-2d12c1dcf2ca}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{0e08b5f6-a100-4ec9-be77-c1690f5d0ced}</object>
+                         <a>{b4a1a912-457b-4db8-a2b9-3db131a2d685}</a>
+                         <b>{23a3a1fb-0da1-481b-b13b-913420412409}</b>
+                        </DRelation>
+                       </base-DRelation>
+                       <a>
+                        <DAssociationEnd>
+                         <navigable>true</navigable>
+                        </DAssociationEnd>
+                       </a>
+                      </DAssociation>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DPackage">
+                      <DPackage>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{a5e91fe7-4805-4e22-99e3-e8a7a52ce586}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{30b977b1-2423-4435-89b0-305bd9adba1d}</object>
+                         <name>Stack</name>
+                         <pos>x:900;y:340</pos>
+                         <rect>x:-215;y:-115;w:430;h:230</rect>
+                         <auto-sized>false</auto-sized>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                      </DPackage>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DComponent">
+                      <DComponent>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{70cd5f5b-cc03-4df0-92e0-3ad9ae6a22ea}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{9039dbfc-c304-4fb2-8390-be324e1f749b}</object>
+                         <context>Stack</context>
+                         <name>Building</name>
+                         <pos>x:790;y:310</pos>
+                         <rect>x:-50;y:-30;w:100;h:60</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                      </DComponent>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DComponent">
+                      <DComponent>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{9f690f62-c98e-4ecf-9a68-00e0d07cddbb}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{ffe28240-fabe-4041-a92a-12a8e1f6ad0b}</object>
+                         <context>Stack</context>
+                         <name>Component</name>
+                         <pos>x:965;y:310</pos>
+                         <rect>x:-60;y:-30;w:120;h:60</rect>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                      </DComponent>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DComponent">
+                      <DComponent>
+                       <base-DObject>
+                        <DObject>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{1747c058-bd52-4d3d-a209-d1ac5800c580}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{f48121d1-06c5-460f-a174-07867c2884c7}</object>
+                         <context>Stack</context>
+                         <name>Player</name>
+                         <pos>x:790;y:395</pos>
+                         <rect>x:-50;y:-30;w:100;h:60</rect>
+                         <auto-sized>false</auto-sized>
+                         <visual-role>0</visual-role>
+                        </DObject>
+                       </base-DObject>
+                      </DComponent>
+                     </instance>
+                    </item>
+                    <item>
+                     <instance type="DDependency">
+                      <DDependency>
+                       <base-DRelation>
+                        <DRelation>
+                         <base-DElement>
+                          <DElement>
+                           <uid>{9bc76b91-3110-4c4b-9d60-6152b01f3669}</uid>
+                          </DElement>
+                         </base-DElement>
+                         <object>{4cf6e326-0810-4c35-ab2f-ce2725b5a970}</object>
+                         <a>{23a3a1fb-0da1-481b-b13b-913420412409}</a>
+                         <b>{a5e91fe7-4805-4e22-99e3-e8a7a52ce586}</b>
+                        </DRelation>
+                       </base-DRelation>
+                      </DDependency>
+                     </instance>
+                    </item>
                    </qlist>
                   </elements>
-                  <last-modified>1514558141413</last-modified>
+                  <last-modified>1515602363796</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
@@ -1470,6 +1636,205 @@
                  </MObject>
                 </base-MObject>
                </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{f3ccdf2b-f21a-4e8c-abae-a856f7a80a60}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{f3ccdf2b-f21a-4e8c-abae-a856f7a80a60}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>MapNode</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{4cf6e326-0810-4c35-ab2f-ce2725b5a970}</uid>
+                        <target>
+                         <instance type="MDependency">
+                          <MDependency>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{4cf6e326-0810-4c35-ab2f-ce2725b5a970}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{f3ccdf2b-f21a-4e8c-abae-a856f7a80a60}</a>
+                             <b>{30b977b1-2423-4435-89b0-305bd9adba1d}</b>
+                            </MRelation>
+                           </base-MRelation>
+                          </MDependency>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{c351f137-2a9f-4487-96a2-1fe4cbdb95db}</uid>
+             <target>
+              <instance type="MClass">
+               <MClass>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{c351f137-2a9f-4487-96a2-1fe4cbdb95db}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>SceneNode</name>
+                  <relations>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{0e08b5f6-a100-4ec9-be77-c1690f5d0ced}</uid>
+                        <target>
+                         <instance type="MAssociation">
+                          <MAssociation>
+                           <base-MRelation>
+                            <MRelation>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{0e08b5f6-a100-4ec9-be77-c1690f5d0ced}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <a>{c351f137-2a9f-4487-96a2-1fe4cbdb95db}</a>
+                             <b>{f3ccdf2b-f21a-4e8c-abae-a856f7a80a60}</b>
+                            </MRelation>
+                           </base-MRelation>
+                           <a>
+                            <MAssociationEnd>
+                             <navigable>true</navigable>
+                            </MAssociationEnd>
+                           </a>
+                          </MAssociation>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </relations>
+                 </MObject>
+                </base-MObject>
+               </MClass>
+              </instance>
+             </target>
+            </handle>
+           </item>
+           <item>
+            <handle>
+             <uid>{30b977b1-2423-4435-89b0-305bd9adba1d}</uid>
+             <target>
+              <instance type="MPackage">
+               <MPackage>
+                <base-MObject>
+                 <MObject>
+                  <base-MElement>
+                   <MElement>
+                    <uid>{30b977b1-2423-4435-89b0-305bd9adba1d}</uid>
+                   </MElement>
+                  </base-MElement>
+                  <name>Stack</name>
+                  <children>
+                   <handles>
+                    <handles>
+                     <qlist>
+                      <item>
+                       <handle>
+                        <uid>{9039dbfc-c304-4fb2-8390-be324e1f749b}</uid>
+                        <target>
+                         <instance type="MComponent">
+                          <MComponent>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{9039dbfc-c304-4fb2-8390-be324e1f749b}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <name>Building</name>
+                            </MObject>
+                           </base-MObject>
+                          </MComponent>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{ffe28240-fabe-4041-a92a-12a8e1f6ad0b}</uid>
+                        <target>
+                         <instance type="MComponent">
+                          <MComponent>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{ffe28240-fabe-4041-a92a-12a8e1f6ad0b}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <name>Component</name>
+                            </MObject>
+                           </base-MObject>
+                          </MComponent>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{f48121d1-06c5-460f-a174-07867c2884c7}</uid>
+                        <target>
+                         <instance type="MComponent">
+                          <MComponent>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{f48121d1-06c5-460f-a174-07867c2884c7}</uid>
+                              </MElement>
+                             </base-MElement>
+                             <name>Player</name>
+                            </MObject>
+                           </base-MObject>
+                          </MComponent>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                     </qlist>
+                    </handles>
+                   </handles>
+                  </children>
+                 </MObject>
+                </base-MObject>
+               </MPackage>
               </instance>
              </target>
             </handle>
