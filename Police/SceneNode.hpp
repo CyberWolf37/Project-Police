@@ -64,7 +64,7 @@ public:
         virtual bool            isSelected() const;
         virtual void            setSelected(const bool& r);
 
-private:
+public:
         virtual void            updateCurrent(sf::Time dt, CommandQueue& commands);
         void                    updatechildren(sf::Time dt, CommandQueue &commands);
 

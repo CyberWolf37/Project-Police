@@ -36,8 +36,7 @@ SOURCES += \
     DataTables.cpp \
     Command.cpp \
     CommandQueue.cpp \
-    SceneNodeStack.cpp \
-    MapNode.cpp
+    SettingsState.cpp
 
 HEADERS += \
     Application.hpp \
@@ -69,9 +68,8 @@ HEADERS += \
     TextureSpliter.hpp \
     DataTables.hpp \
     CommandQueue.hpp \
-    SceneNodeStack.hpp \
     Command.hpp \
-    MapNode.hpp
+    SettingsState.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \

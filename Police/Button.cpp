@@ -109,7 +109,7 @@ void Button::deactivate()
     }
 }
 
-void Button::handleEvent(const sf::Event &event)
+void Button::handleEvent(const sf::Event &event, const sf::Vector2i &positionMouse)
 {
     if(event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
     {

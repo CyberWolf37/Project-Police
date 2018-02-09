@@ -24,6 +24,5 @@ INPUT(
 ./release\DataTables.o
 ./release\Command.o
 ./release\CommandQueue.o
-./release\SceneNodeStack.o
-./release\MapNode.o
+./release\SettingsState.o
 );

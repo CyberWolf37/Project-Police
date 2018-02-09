@@ -5,6 +5,8 @@
 #include "SFML/Graphics/Drawable.hpp"
 #include "SFML/Graphics/Transformable.hpp"
 
+#include "SceneNode.hpp"
+
 #include <memory>
 
 namespace sf
@@ -15,7 +17,7 @@ namespace sf
 namespace GUI
 {
 
-class Component : public sf::Drawable, public sf::Transformable, private sf::NonCopyable
+class Component : public SceneNode
 {
 public:
 
@@ -34,7 +36,6 @@ public:
     virtual void                activate();
     virtual void                deactivate();
 
-    virtual void                handleEvent(const sf::Event& event) = 0;
     virtual bool                checkColision(sf::Vector2i& position);
 
 private:

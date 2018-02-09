@@ -96,7 +96,7 @@ bool World::handleEvent(const sf::Event &event)
         mBuildRoom.handleEvent(event, getPositionMouse());
     }
 
-    mMainContainer.handleEvent(event);
+    mMainContainer.handleEvent(event,getPositionMouse());
     mSceneGraph.handleEvent(event,getPositionMouse());
     viewEvent(event);
 

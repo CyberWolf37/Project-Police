@@ -31,19 +31,12 @@ MenuState::MenuState(StateStack& stack, Context context)
         requestStackPush(States::Game);
     });
 
-    auto testProgressBar = std::make_shared<GUI::ProgressBar>(*context.fonts, *context.textures);
-    testProgressBar->setPosition(500,500);
-    testProgressBar->setSelectable(true);
-    testProgressBar->setValue(50);
-
-
     auto settingsButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
     settingsButton->setPosition(100,550);
     settingsButton->setText("Settings");
     settingsButton->setCallback([this] ()
     {
-        //requestStackPush(States::Settings);
-        std::cout << "Nothing by default" << std::endl;
+        requestStackPush(States::Settings);
     });
 
     auto exitButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);
@@ -57,7 +50,6 @@ MenuState::MenuState(StateStack& stack, Context context)
     mGuiContainer.pack(playButton);
     mGuiContainer.pack(settingsButton);
     mGuiContainer.pack(exitButton);
-    mGuiContainer.pack(testProgressBar);
 
 }
 
@@ -77,6 +69,7 @@ bool MenuState::update(sf::Time dt)
 
 bool MenuState::handleEvent(const sf::Event &event)
 {
-    mGuiContainer.handleEvent(event);
+    sf::Vector2i position(0,0);
+    mGuiContainer.handleEvent(event,position);
     return false;
 }

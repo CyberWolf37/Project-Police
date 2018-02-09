@@ -43,7 +43,7 @@ public:
 public:
     ProgressBar(const FontHolder& fonts, const TextureHolder& textures);
 
-    virtual void                handleEvent(const sf::Event& event);
+    virtual void                handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
     virtual bool                checkColision(sf::Vector2i &position);
 
     void                        setSelectable(bool select);

@@ -46,7 +46,7 @@ public:
     virtual void            activate();
     virtual void            deactivate();
 
-    virtual void            handleEvent(const sf::Event& event);
+    virtual void            handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
     sf::FloatRect           getBoundingRect();
     virtual bool            checkColision(sf::Vector2i& position);
 

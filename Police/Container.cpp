@@ -29,13 +29,13 @@ bool Container::isSelectable() const
     return false;
 }
 
-void Container::handleEvent(const sf::Event &event)
+void Container::handleEvent(const sf::Event &event, const sf::Vector2i &positionMouse)
 {
 
     //If we pressed Left button on mouse when activate a button
     if ( event.mouseButton.button == sf::Mouse::Left)
     {
-        mChildren[mSelectedChild]->handleEvent(event);
+        mChildren[mSelectedChild]->handleEvent(event,positionMouse);
     }
 
     else if (event.MouseMoved)

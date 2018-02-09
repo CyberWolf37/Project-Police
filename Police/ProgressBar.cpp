@@ -63,7 +63,7 @@ void ProgressBar::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 }
 
-void ProgressBar::handleEvent(const sf::Event& event)
+void ProgressBar::handleEvent(const sf::Event& event, const sf::Vector2i &positionMouse)
 {
     if(event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
     {
