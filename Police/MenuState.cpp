@@ -50,7 +50,6 @@ MenuState::MenuState(StateStack& stack, Context context)
     mGuiContainer.pack(playButton);
     mGuiContainer.pack(settingsButton);
     mGuiContainer.pack(exitButton);
-
 }
 
 void MenuState::draw()
@@ -68,7 +67,7 @@ bool MenuState::update(sf::Time dt)
 }
 
 bool MenuState::handleEvent(const sf::Event &event)
-{
+{   
     sf::Vector2i position(0,0);
     mGuiContainer.handleEvent(event,position);
     return false;

@@ -25,4 +25,6 @@ INPUT(
 ./debug\Command.o
 ./debug\CommandQueue.o
 ./debug\SettingsState.o
+./debug\Ui.o
+./debug\Animation.o
 );

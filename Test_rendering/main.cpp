@@ -23,6 +23,8 @@ int main()
 
     auto& objectFound(stack.get(1));
 
+    objectFound.tell();
+
     if(typeid(objectFound) == typeid(Object_one))
     {
         Object_one& objectOne(dynamic_cast<Object_one&>(objectFound));

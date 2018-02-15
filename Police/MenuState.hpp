@@ -6,6 +6,7 @@
 #include "Container.hpp"
 #include "Button.hpp"
 #include "ProgressBar.hpp"
+#include "Animation.hpp"
 
 
 // SFML Library

@@ -13,6 +13,7 @@
 #include "Button.hpp"
 #include "Tuile.hpp"
 #include "RectangleRoom.hpp"
+#include "Ui.hpp"
 
 // System SFML
 #include <SFML/System/Time.hpp>
@@ -66,10 +67,7 @@ private:
         void                                checkView();
 
         ArrayVector2f                       splitWorldBounds();
-        ArrayUi                             splitResourceSprite(sf::Texture &texture);
         void                                buildFile();
-
-        void                                buildUI();
 
 // Private enum to manage my layouts
 private:
@@ -102,8 +100,8 @@ private:
         bool                                mBuildState;
         BUILD_OBJECT::RectangleRoom         mBuildRoom;
 
+        Ui                                  mUi;
 
-        GUI::Container                      mMainContainer;
 
 };
 

@@ -36,7 +36,9 @@ SOURCES += \
     DataTables.cpp \
     Command.cpp \
     CommandQueue.cpp \
-    SettingsState.cpp
+    SettingsState.cpp \
+    Ui.cpp \
+    Animation.cpp
 
 HEADERS += \
     Application.hpp \
@@ -69,10 +71,14 @@ HEADERS += \
     DataTables.hpp \
     CommandQueue.hpp \
     Command.hpp \
-    SettingsState.hpp
+    SettingsState.hpp \
+    Ui.hpp \
+    Animation.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \
     object_script.Police.Debug \
     uml_project.qmodel \
-    uml_rendering.qmodel
+    uml_rendering.qmodel \
+    Media/Textures/Explosion.png \
+    Media/Textures/police_sprites.gif

@@ -25,4 +25,6 @@ INPUT(
 ./release\Command.o
 ./release\CommandQueue.o
 ./release\SettingsState.o
+./release\Ui.o
+./release\Animation.o
 );

@@ -29,18 +29,15 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     , mWorldBounds(0.f,0.f,PIX_WORLD*100,PIX_WORLD*100) // World Bounds for 100 tuile to 16 pix
     , mFile()
     , mSpawnPosition(0,0)
-    , mMainContainer(mTarget)
     , mBuildState(false)
     , mBuildRoom(mTextures, mSceneGraph)
+    , mUi(window,fonts,mTextures,mSceneGraph)
 {
     // Set Key repeted True
     mTarget.setKeyRepeatEnabled(true);
 
     // Layer texture for draw world
     mSceneTexture.create(mTarget.getSize().x, mTarget.getSize().y);
-
-    // Layer texture for User interface
-    mUiTexture.create(mTarget.getSize().x, mTarget.getSize().y);
 
     // Load decor
     loadTextures();
@@ -51,7 +48,9 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
 
     // Build File
     buildFile();
-    buildUI();
+
+    // Build UI
+    mUi.buildUi();
 
     // Prepare the view
     mWorldView.setCenter(800,808);
@@ -75,28 +74,18 @@ void World::draw()
     mSceneTexture.display();
 
 
-    // Drawing the User interface
-    mUiTexture.setView(mUiView);
-    mUiTexture.draw(mMainContainer);
-    mUiTexture.display();
-
-
     // Finaly draw the texture Scene
     mTarget.clear();
     mTarget.draw(sf::Sprite(mSceneTexture.getTexture()));
-    mTarget.draw(sf::Sprite(mUiTexture.getTexture()));
 
-
+    // And Draw UI
+    mUi.draw();
 }
 
 bool World::handleEvent(const sf::Event &event)
 {
-    if(mBuildState)
-    {
-        mBuildRoom.handleEvent(event, getPositionMouse());
-    }
+    mUi.handleEvent(event);
 
-    mMainContainer.handleEvent(event,getPositionMouse());
     mSceneGraph.handleEvent(event,getPositionMouse());
     viewEvent(event);
 
@@ -280,54 +269,6 @@ World::ArrayVector2f World::splitWorldBounds()
     return array;
 }
 
-// split the ressources to get an array of rect
-World::ArrayUi World::splitResourceSprite(sf::Texture& texture)
-{
-    // Get world number of tile
-    size_t countX = texture.getSize().x/PIX_WORLD;
-    size_t countY = texture.getSize().y/PIX_WORLD;
-
-    // Counter to split tile
-    unsigned int counter = 0;
-
-    // For save the split world in arrayUI
-    World::ArrayUi array;
-
-    // Index
-    sf::IntRect index(0,0,PIX_WORLD,PIX_WORLD);
-
-    // Split the texture
-    for(size_t i = 0;i < countY; i++)
-    {
-        for(size_t j = 0;j < countX; j++ , counter++)
-        {
-            // si j = 0 on remet à zero l'index
-            if(j == 0)
-            {
-                index.left = 0;
-
-                // Add in ArrayUI
-                array[counter] = index;
-            }
-            else
-            {
-                // On ajoute 16 sur X
-                index.left += PIX_WORLD;
-
-                // Ensuite on ajoute l'index
-                array[counter] = index;
-            }
-        }
-
-        // On ajoute 16 sur y
-        index.top += PIX_WORLD;
-    }
-
-    // Return Array
-    return array;
-
-}
-
 // Build the file we get
 void World::buildFile()
 {
@@ -350,47 +291,6 @@ void World::buildFile()
         Ptuile->setPosition(arrayPosition[i]);
         mSceneLayers[Background]->attachChild(std::move(Ptuile));
     }
-
-}
-
-// Build User interface
-void World::buildUI()
-{
-    // Get the size of the defaultView
-    sf::Vector2f centerView = mUiView.getSize();
-
-
-    // Position button 1
-    sf::Vector2f positionButton_1;
-    positionButton_1.x = 0;
-    positionButton_1.y = centerView.y - 50;
-
-    // Position button 2
-    sf::Vector2f positionButton_2 = positionButton_1;
-    positionButton_2.x += 200;
-
-    // Set button 1 for main container
-    auto buildButton = std::make_shared<GUI::Button>(mFonts, mTextures);
-    buildButton->setPosition(positionButton_1.x,positionButton_1.y);
-    buildButton->setText("Build");
-    buildButton->setCallback([this] ()
-    {
-        std::cout << "Pick the button Build" << std::endl;
-        mBuildState = true;
-
-    });
-
-    // Set button 2 for main container
-    auto shareButton = std::make_shared<GUI::Button>(mFonts, mTextures);
-    shareButton->setPosition(positionButton_2.x,positionButton_2.y);
-    shareButton->setText("Quit");
-    shareButton->setCallback([this] ()
-    {
-        mTarget.close();
-    });
-
-    mMainContainer.pack(buildButton);
-    mMainContainer.pack(shareButton);
 
 }
 

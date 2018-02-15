@@ -15,16 +15,19 @@ Button::Button(const FontHolder& fonts, const TextureHolder& textures)
     : mCallback()
     , mSprite(textures.get(Textures::Buttons))
     , mRectangleBackground()
-    , mText("", fonts.get(Fonts::Main), 16)
+    , mText("", fonts.get(Fonts::Main), 22)
     , mIsToggle(false)
 {
     changeTexture(Normal);
 
     sf::FloatRect bounds = mSprite.getLocalBounds();
     mText.setPosition(bounds.width / 2.f, bounds.height / 2.f);
+    mText.setColor(sf::Color::Black);
+    mText.setStyle(sf::Text::Bold);
 
     // Set position of rectangle background
-    mRectangleBackground.setFillColor(sf::Color::Black);
+    sf::Color backColor(231,184,58);
+    mRectangleBackground.setFillColor(backColor);
 
 
 }
@@ -60,6 +63,8 @@ void Button::select()
     Component::select();
 
     changeTexture(Selected);
+    sf::Color backColor(46,29,223);
+    mRectangleBackground.setFillColor(backColor);
 }
 
 void Button::deselect()
@@ -67,6 +72,8 @@ void Button::deselect()
     Component::deselect();
 
     changeTexture(Normal);
+    sf::Color backColor(231,184,58);
+    mRectangleBackground.setFillColor(backColor);
 }
 
 void Button::activate()

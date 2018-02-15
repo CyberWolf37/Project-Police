@@ -18,6 +18,7 @@ Application::Application()
     , mStateStack(State::Context(mWindow, mTextures, mFonts))
 {
     mTextures.load(Textures::TitleScreen,"Media/Textures/Title_Screen.png");
+    mTextures.load(Textures::Explosion,"Media/Textures/Explosion.png");
     mFonts.load(Fonts::Main, "Media/Font/BreeSerif.ttf");
     mTextures.load(Textures::Buttons,"Media/Textures/ButtonsPolice.png" );
     mTextures.load(Textures::ProgressBar,"Media/Textures/ProgressBar.png");

@@ -20,6 +20,7 @@ namespace Textures
         TileSetBuild,
         Buttons,
         ProgressBar,
+        Explosion,
     };
 
 }
