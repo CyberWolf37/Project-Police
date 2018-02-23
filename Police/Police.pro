@@ -38,7 +38,10 @@ SOURCES += \
     CommandQueue.cpp \
     SettingsState.cpp \
     Ui.cpp \
-    Animation.cpp
+    Animation.cpp \
+    Entity.cpp \
+    Sbires.cpp \
+    WorkerSbire.cpp
 
 HEADERS += \
     Application.hpp \
@@ -73,7 +76,10 @@ HEADERS += \
     Command.hpp \
     SettingsState.hpp \
     Ui.hpp \
-    Animation.hpp
+    Animation.hpp \
+    Entity.hpp \
+    Sbires.hpp \
+    WorkerSbire.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \

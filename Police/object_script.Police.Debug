@@ -27,4 +27,7 @@ INPUT(
 ./debug\SettingsState.o
 ./debug\Ui.o
 ./debug\Animation.o
+./debug\Entity.o
+./debug\Sbires.o
+./debug\WorkerSbire.o
 );

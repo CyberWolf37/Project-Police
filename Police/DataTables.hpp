@@ -7,6 +7,8 @@
 #include "ResourceHolder.hpp"
 #include "Tuile.hpp"
 #include "RectangleRoom.hpp"
+#include "Category.hpp"
+#include "Animation.hpp"
 
 // SFML Library
 #include "SFML/System/Time.hpp"
@@ -25,6 +27,23 @@ struct BuildData
     std::map<RectangleRoom::TypeTuile,std::unique_ptr<Tuile>>    TuileMap;
 };
 
-std::vector<BuildData>       initializeBuildData(const TextureSpliter::MapPtr &ptr);
+struct SbireData
+{
+    // Sbire points
+    int lifePoints = 0;
+    int workPoints = 0;
+    int defensePoints = 0;
+    int attackPoints = 0;
+
+    // Sbire Animation
+    Animation moveUp;
+    Animation moveDown;
+    Animation moveRight;
+    Animation moveLeft;
+
+};
+
+std::vector<BuildData>      initializeBuildData(const TextureSpliter::MapPtr &ptr);
+std::vector<SbireData>      initializeSbireData();
 
 #endif // DATATABLES_H

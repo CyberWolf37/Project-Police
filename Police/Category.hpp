@@ -34,4 +34,15 @@ namespace TuileState
     };
 }
 
+namespace Category_Sbires
+{
+    enum ID
+    {
+        WorkerSbire,
+        OfficeSbire,
+        NoneSbire,
+
+    };
+}
+
 #endif // CATEGORY_HPP

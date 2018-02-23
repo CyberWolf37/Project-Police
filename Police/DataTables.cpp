@@ -36,3 +36,49 @@ std::vector<BuildData> initializeBuildData(const TextureSpliter::MapPtr &ptr)
 
     return data;
 }
+
+std::vector<SbireData> initializeSbireData()
+{
+    std::vector<SbireData> data(Category_Sbires::NoneSbire);
+
+    // Set Worker Sbire data
+    data[Category_Sbires::WorkerSbire].lifePoints = 10;
+    data[Category_Sbires::WorkerSbire].workPoints = 20;
+    data[Category_Sbires::WorkerSbire].defensePoints = 10;
+    data[Category_Sbires::WorkerSbire].attackPoints = 10;
+
+    // Set Worker Sbire Animation
+    data[Category_Sbires::WorkerSbire].moveUp;
+    data[Category_Sbires::WorkerSbire].moveDown;
+    data[Category_Sbires::WorkerSbire].moveRight;
+    data[Category_Sbires::WorkerSbire].moveLeft;
+
+    // Set Worker Sbire data
+    data[Category_Sbires::OfficeSbire].lifePoints = 20;
+    data[Category_Sbires::OfficeSbire].workPoints = 20;
+    data[Category_Sbires::OfficeSbire].defensePoints = 20;
+    data[Category_Sbires::OfficeSbire].attackPoints = 20;
+
+    // Set Worker Sbire Animation
+    data[Category_Sbires::OfficeSbire].moveUp;
+    data[Category_Sbires::OfficeSbire].moveDown;
+    data[Category_Sbires::OfficeSbire].moveRight;
+    data[Category_Sbires::OfficeSbire].moveLeft;
+
+    // Set None Sbire data
+    data[Category_Sbires::NoneSbire].lifePoints = 10;
+    data[Category_Sbires::NoneSbire].workPoints = 10;
+    data[Category_Sbires::NoneSbire].defensePoints = 10;
+    data[Category_Sbires::NoneSbire].attackPoints = 10;
+
+    // Set None Sbire Animation
+    data[Category_Sbires::NoneSbire].moveUp;
+    data[Category_Sbires::NoneSbire].moveDown;
+    data[Category_Sbires::NoneSbire].moveRight;
+    data[Category_Sbires::NoneSbire].moveLeft;
+
+    return data;
+
+
+}
+

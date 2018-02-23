@@ -1,10 +1,12 @@
 #include "Animation.hpp"
 
+
 #include "SFML/Graphics/RenderTarget.hpp"
-#include "SFML/Graphics/Texture.hpp"
 
 Animation::Animation()
     : mSprite()
+    , mTexture()
+    , mIndexSprite()
     , mFrameSize()
     , mNumFrames(0)
     , mCurrentFrame(0)
@@ -15,8 +17,16 @@ Animation::Animation()
 
 }
 
+void Animation::loadFromFile(const std::string &filename)
+{
+    mTexture.loadFromFile(filename);
+    mSprite.setTexture(mTexture);
+}
+
 Animation::Animation(const sf::Texture &texture)
     : mSprite(texture)
+    , mTexture(texture)
+    , mIndexSprite()
     , mFrameSize()
     , mNumFrames(0)
     , mCurrentFrame(0)
@@ -24,6 +34,7 @@ Animation::Animation(const sf::Texture &texture)
     , mElapsedTime(sf::Time::Zero)
     , mRepeat(false)
 {
+
 }
 
 void Animation::setTexture(const sf::Texture &texture)
@@ -44,6 +55,16 @@ void Animation::setFrameSize(sf::Vector2i frameSize)
 sf::Vector2i Animation::getFrameSize()const
 {
     return mFrameSize;
+}
+
+void Animation::setIndex(sf::Vector2i index)
+{
+    mIndexSprite = index;
+}
+
+sf::Vector2i Animation::getIndex() const
+{
+    return mIndexSprite;
 }
 
 void Animation::setNumFrames(std::size_t numFrames)
@@ -105,7 +126,7 @@ void Animation::update(sf::Time dt)
     sf::IntRect textureRect = mSprite.getTextureRect();
 
     if(mCurrentFrame == 0)
-        textureRect = sf::IntRect(0,0, mFrameSize.x, mFrameSize.y);
+        textureRect = sf::IntRect(mIndexSprite.x,mIndexSprite.y, mFrameSize.x, mFrameSize.y);
 
     // While we have a frame to process
     while (mElapsedTime >= timePerFrame && (mCurrentFrame <= mNumFrames || mRepeat))

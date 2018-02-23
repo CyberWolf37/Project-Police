@@ -27,4 +27,7 @@ INPUT(
 ./release\SettingsState.o
 ./release\Ui.o
 ./release\Animation.o
+./release\Entity.o
+./release\Sbires.o
+./release\WorkerSbire.o
 );

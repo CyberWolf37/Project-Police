@@ -3,6 +3,7 @@
 
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/System/Time.hpp"
+#include "SFML/Graphics/Texture.hpp"
 
 class Animation : public sf::Drawable, public sf::Transformable
 {
@@ -10,11 +11,16 @@ public:
     Animation();
     explicit                    Animation(const sf::Texture& texture);
 
+    void                        loadFromFile(const std::string& filename);
+
     void                        setTexture(const sf::Texture& texture);
     const sf::Texture*          getTexture() const;
 
     void                        setFrameSize(sf::Vector2i frameSize);
     sf::Vector2i                getFrameSize() const;
+
+    void                        setIndex(sf::Vector2i index);
+    sf::Vector2i                getIndex() const;
 
     void                        setNumFrames(std::size_t numFrames);
     std::size_t                 getNumFrames() const;
@@ -38,6 +44,8 @@ private:
 
 private:
     sf::Sprite                  mSprite;
+    sf::Texture                 mTexture;
+    sf::Vector2i                mIndexSprite;
     sf::Vector2i                mFrameSize;
     std::size_t                 mNumFrames;
     std::size_t                 mCurrentFrame;
