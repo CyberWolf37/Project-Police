@@ -39,7 +39,7 @@ public:
 
     void                        update(sf::Time dt);
 
-private:
+public:
     void                        draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:

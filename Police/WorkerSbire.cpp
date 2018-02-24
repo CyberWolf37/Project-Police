@@ -1,7 +1,7 @@
 #include "WorkerSbire.hpp"
 
-WorkerSbire::WorkerSbire()
-    :Sbires(Category_Sbires::WorkerSbire)
+WorkerSbire::WorkerSbire(const sf::Texture &textures)
+    :Sbires(textures,Category_Sbires::WorkerSbire)
 {
 
 }

@@ -22,6 +22,7 @@ namespace Textures
         Buttons,
         ProgressBar,
         Explosion,
+        PoliceAnimation,
     };
 
 }

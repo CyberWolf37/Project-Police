@@ -28,7 +28,7 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     , mSceneLayers()
     , mWorldBounds(0.f,0.f,PIX_WORLD*100,PIX_WORLD*100) // World Bounds for 100 tuile to 16 pix
     , mFile()
-    , mSpawnPosition(0,0)
+    , mSpawnPosition(800,808)
     , mBuildState(false)
     , mBuildRoom(mTextures, mSceneGraph)
     , mUi(window,fonts,mTextures,mSceneGraph)
@@ -53,7 +53,7 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     mUi.buildUi();
 
     // Prepare the view
-    mWorldView.setCenter(800,808);
+    mWorldView.setCenter(mSpawnPosition);
     checkView();
     mSceneLayers[Background]->checkTuileChildInCurrentView(mWorldView);
 

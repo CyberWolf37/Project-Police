@@ -44,6 +44,6 @@ struct SbireData
 };
 
 std::vector<BuildData>      initializeBuildData(const TextureSpliter::MapPtr &ptr);
-std::vector<SbireData>      initializeSbireData();
+std::vector<SbireData>      initializeSbireData(const sf::Texture& textures);
 
 #endif // DATATABLES_H

@@ -13,7 +13,7 @@
 class Sbires : public SceneNode
 {
 public:
-    explicit            Sbires(Category_Sbires::ID category = Category_Sbires::NoneSbire);
+    explicit            Sbires(const sf::Texture& texture, Category_Sbires::ID category = Category_Sbires::NoneSbire);
 
     void                setLifePoints(int& lifeP);
     const int&          getLifePoints() const;
@@ -38,8 +38,6 @@ public:
     virtual void        updateCurrent(sf::Time dt, CommandQueue& commands);
 
     virtual void        draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void        drawCurrent (sf::RenderTarget& target, sf::RenderStates states) const;
-
 
 protected:
 
@@ -53,6 +51,7 @@ private:
     Animation                           mCurrentAnimation;
     Category_Sbires::ID                 mCategory;
     bool                                mInMovment;
+    sf::Texture                         mTexture;
 
 
 

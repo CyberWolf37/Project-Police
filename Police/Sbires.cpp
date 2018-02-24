@@ -1,7 +1,8 @@
 #include "Sbires.hpp"
 
-Sbires::Sbires(Category_Sbires::ID category)
-    :mData(initializeSbireData())
+Sbires::Sbires(const sf::Texture& texture, Category_Sbires::ID category)
+    :mData(initializeSbireData(texture))
+    ,mCurrentAnimation()
     ,mInMovment(false)
     ,mCategory(category)
 {
@@ -69,17 +70,13 @@ void Sbires::printData()
 
 void Sbires::updateCurrent(sf::Time dt, CommandQueue &commands)
 {
-
+    getCurrentAnimation().setRepeating(true);
+    getCurrentAnimation().update(dt);
 }
 
 void Sbires::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-
-}
-
-void Sbires::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
-{
-
+    mCurrentAnimation.draw(target,states);
 }
 
 void Sbires::setCurrentAnimation(Animation &animation)

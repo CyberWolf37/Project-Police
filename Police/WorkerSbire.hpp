@@ -7,7 +7,7 @@
 class WorkerSbire : public Sbires
 {
 public:
-    WorkerSbire();
+    WorkerSbire(const sf::Texture& textures);
 
     void        printData();
 };

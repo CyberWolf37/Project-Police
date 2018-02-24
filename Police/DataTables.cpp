@@ -37,8 +37,9 @@ std::vector<BuildData> initializeBuildData(const TextureSpliter::MapPtr &ptr)
     return data;
 }
 
-std::vector<SbireData> initializeSbireData()
+std::vector<SbireData> initializeSbireData(const sf::Texture& textures)
 {
+
     std::vector<SbireData> data(Category_Sbires::NoneSbire);
 
     // Set Worker Sbire data
@@ -48,10 +49,33 @@ std::vector<SbireData> initializeSbireData()
     data[Category_Sbires::WorkerSbire].attackPoints = 10;
 
     // Set Worker Sbire Animation
-    data[Category_Sbires::WorkerSbire].moveUp;
-    data[Category_Sbires::WorkerSbire].moveDown;
-    data[Category_Sbires::WorkerSbire].moveRight;
-    data[Category_Sbires::WorkerSbire].moveLeft;
+    Animation a_moveUp(textures);
+    a_moveUp.setFrameSize(sf::Vector2i(24,32));
+    a_moveUp.setIndex(sf::Vector2i(0,128));
+    a_moveUp.setDuration(sf::seconds(1));
+    a_moveUp.setNumFrames(3);
+    data[Category_Sbires::WorkerSbire].moveUp = a_moveUp;
+
+    Animation a_moveDown(textures);
+    a_moveUp.setFrameSize(sf::Vector2i(24,32));
+    a_moveUp.setIndex(sf::Vector2i(0,192));
+    a_moveUp.setDuration(sf::seconds(1));
+    a_moveUp.setNumFrames(3);
+    data[Category_Sbires::WorkerSbire].moveDown = a_moveDown;
+
+    Animation a_moveRight(textures);
+    a_moveUp.setFrameSize(sf::Vector2i(24,32));
+    a_moveUp.setIndex(sf::Vector2i(0,160));
+    a_moveUp.setDuration(sf::seconds(1));
+    a_moveUp.setNumFrames(3);
+    data[Category_Sbires::WorkerSbire].moveRight = a_moveRight;
+
+    Animation a_moveLeft(textures);
+    a_moveUp.setFrameSize(sf::Vector2i(24,32));
+    a_moveUp.setIndex(sf::Vector2i(0,224));
+    a_moveUp.setDuration(sf::seconds(1));
+    a_moveUp.setNumFrames(3);
+    data[Category_Sbires::WorkerSbire].moveLeft = a_moveLeft;
 
     // Set Worker Sbire data
     data[Category_Sbires::OfficeSbire].lifePoints = 20;
