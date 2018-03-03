@@ -12,5 +12,12 @@ SbireManager::SbireManager(SceneNode &sceneGraph, sf::Texture &texture)
 
 void SbireManager::createSbire(Category_Sbires::ID category)
 {
+    // create object sbire
+    SbirePtr sbireStack(new Sbires(mTextureSbire,category));
+    SbirePtr sbireScene = sbireStack;
 
+    // push in the stack
+    mStackSbire.push_back(std::move(sbire));
+
+    // push in the scene graph
 }

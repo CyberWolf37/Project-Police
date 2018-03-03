@@ -41,7 +41,8 @@ SOURCES += \
     Animation.cpp \
     Entity.cpp \
     Sbires.cpp \
-    WorkerSbire.cpp
+    WorkerSbire.cpp \
+    SbireManager.cpp
 
 HEADERS += \
     Application.hpp \
@@ -79,7 +80,8 @@ HEADERS += \
     Animation.hpp \
     Entity.hpp \
     Sbires.hpp \
-    WorkerSbire.hpp
+    WorkerSbire.hpp \
+    SbireManager.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \
