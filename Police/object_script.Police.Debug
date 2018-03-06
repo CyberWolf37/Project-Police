@@ -30,4 +30,5 @@ INPUT(
 ./debug\Entity.o
 ./debug\Sbires.o
 ./debug\WorkerSbire.o
+./debug\SbireManager.o
 );

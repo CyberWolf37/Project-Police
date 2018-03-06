@@ -7,7 +7,6 @@ SbireManager::SbireManager(SceneNode &sceneGraph, sf::Texture &texture)
     ,mTextureSbire(texture)
     ,mStackSbire()
 {
-
 }
 
 void SbireManager::createSbire(Category_Sbires::ID category)
@@ -17,7 +16,8 @@ void SbireManager::createSbire(Category_Sbires::ID category)
     SbirePtr sbireScene = sbireStack;
 
     // push in the stack
-    mStackSbire.push_back(std::move(sbire));
+    mStackSbire.push_back(std::move(sbireStack));
 
     // push in the scene graph
+    mSceneGraph.attachChild(std::move(sbireScene));
 }
