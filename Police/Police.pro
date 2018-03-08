@@ -42,7 +42,8 @@ SOURCES += \
     Entity.cpp \
     Sbires.cpp \
     WorkerSbire.cpp \
-    SbireManager.cpp
+    SbireManager.cpp \
+    Tasks.cpp
 
 HEADERS += \
     Application.hpp \
@@ -81,7 +82,8 @@ HEADERS += \
     Entity.hpp \
     Sbires.hpp \
     WorkerSbire.hpp \
-    SbireManager.hpp
+    SbireManager.hpp \
+    Tasks.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \

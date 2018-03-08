@@ -38,6 +38,7 @@ public:
     virtual void        updateCurrent(sf::Time dt, CommandQueue& commands);
 
     virtual void        draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual bool        isDestroyed() const;
 
 protected:
 
@@ -52,6 +53,7 @@ private:
     Category_Sbires::ID                 mCategory;
     bool                                mInMovment;
     sf::Texture                         mTexture;
+    bool                                mIsDestroyed;
 
 
 

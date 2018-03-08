@@ -21,3 +21,8 @@ void SbireManager::createSbire(Category_Sbires::ID category)
     // push in the scene graph
     mSceneGraph.attachChild(std::move(sbireScene));
 }
+
+void SbireManager::update(sf::Time dt)
+{
+
+}

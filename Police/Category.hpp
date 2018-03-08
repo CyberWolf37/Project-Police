@@ -45,4 +45,14 @@ namespace Category_Sbires
     };
 }
 
+namespace Category_Tasks
+{
+    enum ID
+    {
+        Working,
+        Building,
+        None,
+    };
+}
+
 #endif // CATEGORY_HPP

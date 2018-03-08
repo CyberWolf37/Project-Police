@@ -5,6 +5,7 @@ Sbires::Sbires(const sf::Texture& texture, Category_Sbires::ID category)
     ,mCurrentAnimation()
     ,mInMovment(false)
     ,mCategory(category)
+    ,mIsDestroyed(false)
 {
 
 }
@@ -77,6 +78,11 @@ void Sbires::updateCurrent(sf::Time dt, CommandQueue &commands)
 void Sbires::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     mCurrentAnimation.draw(target,states);
+}
+
+bool Sbires::isDestroyed() const
+{
+    return mIsDestroyed;
 }
 
 void Sbires::setCurrentAnimation(Animation &animation)
