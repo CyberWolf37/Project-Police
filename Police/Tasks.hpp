@@ -21,20 +21,21 @@ public:
 
     Tasks(Category_Tasks::ID category = Category_Tasks::ID::None);
 
-    void                            assigneSbire(std::shared_ptr<Sbires> sbireAssigne);
-    std::vector<sf::Vector2i>&      getSbiresAssigne() const;
+    void                                    assigneSbire(std::shared_ptr<Sbires> sbireAssigne);
+    std::vector<std::shared_ptr<Sbires>>&   getSbiresAssigne();
+    bool                                    removeSbire(std::shared_ptr<Sbires> sbireRemove);
 
-    void                            setTime(sf::Time time);
-    sf::Time&                       getTime() const;
+    void                                    setTime(sf::Time time);
+    sf::Time&                               getTime();
 
-    void                            setCategory(Category_Tasks::ID category);
-    Category_Tasks::ID              getCategory() const;
+    void                                    setCategory(Category_Tasks::ID category);
+    Category_Tasks::ID                      getCategory() const;
 
-    void                            setPosition(std::vector<sf::Vector2i> positionStack);
-    void                            setPosition(sf::Vector2i position);
-    sf::Vector2i&                   getDisponiblePosition() const;
+    void                                    setPosition(std::vector<sf::Vector2i>& positionStack);
+    void                                    setPosition(sf::Vector2i position);
+    const sf::Vector2i&                     getDisponiblePosition();
 
-    void                            update(sf::Time dt);
+    void                                    update(sf::Time dt);
 
 private:
 

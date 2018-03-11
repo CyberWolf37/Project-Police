@@ -31,4 +31,5 @@ INPUT(
 ./debug\Sbires.o
 ./debug\WorkerSbire.o
 ./debug\SbireManager.o
+./debug\Tasks.o
 );
