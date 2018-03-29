@@ -13,6 +13,7 @@ Animation::Animation()
     , mDuration(sf::Time::Zero)
     , mElapsedTime(sf::Time::Zero)
     , mRepeat(false)
+    , mReverse(false)
 {
 
 }
@@ -33,6 +34,7 @@ Animation::Animation(const sf::Texture &texture)
     , mDuration(sf::Time::Zero)
     , mElapsedTime(sf::Time::Zero)
     , mRepeat(false)
+    , mReverse(false)
 {
 
 }
@@ -97,6 +99,16 @@ bool Animation::isRepeating() const
     return mRepeat;
 }
 
+void Animation::setReverse(bool flag)
+{
+    mReverse = flag;
+}
+
+bool Animation::isReverse() const
+{
+    return mReverse;
+}
+
 void Animation::restart()
 {
     mCurrentFrame = 0;
@@ -149,7 +161,7 @@ void Animation::update(sf::Time dt)
             mCurrentFrame = (mCurrentFrame+1) % mNumFrames;
 
             if(mCurrentFrame == 0)
-                textureRect = sf::IntRect(0,0,mFrameSize.x,mFrameSize.y);
+                textureRect = sf::IntRect(mIndexSprite.x,mIndexSprite.y,mFrameSize.x,mFrameSize.y);
 
         }
         else

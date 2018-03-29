@@ -25,6 +25,7 @@ public:
 private:
     sf::Sprite                      mBackgroundSprite;
     GUI::Container                  mGuiContainer;
+    Animation                       mAnimation;
     
 };
 

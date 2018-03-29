@@ -32,4 +32,5 @@ INPUT(
 ./release\WorkerSbire.o
 ./release\SbireManager.o
 ./release\Tasks.o
+./release\TaskManager.o
 );

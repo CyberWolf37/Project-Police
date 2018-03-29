@@ -2,8 +2,8 @@
 
 Tasks::Tasks(Category_Tasks::ID category)
     :mSbireAssigne()
-    ,mPositionAssigne()
     ,mCategoryTask(category)
+    ,mPositionAssigne()
     ,mTime(sf::Time::Zero)
 {
 
@@ -55,30 +55,38 @@ Category_Tasks::ID Tasks::getCategory() const
 
 void Tasks::setPosition(std::vector<sf::Vector2i>& positionStack)
 {
-    for(size_t i = 0; i < positionStack.size(); i++)
+    for(auto& position : positionStack )
     {
-        sf::Vector2i found {positionStack[i]};
-        positionStack.erase(positionStack.begin()+i);
-        //mPositionAssigne.insert(std::make_pair(found,false));
-        //mPositionAssigne[found] = false;
+        auto ptrPosition = std::make_shared<sf::Vector2i>(position);
+        mPositionAssigne[std::move(ptrPosition)] = false;
     }
 }
 
 void Tasks::setPosition(sf::Vector2i position)
 {
-    //mPositionAssigne.insert(std::pair<sf::Vector2i,bool>(position,false));
-    //mPositionAssigne[position] = false;
+    auto ptrPosition = std::make_shared<sf::Vector2i>(position);
+    mPositionAssigne[std::move(ptrPosition)] = false;
 }
 
-const sf::Vector2i& Tasks::getDisponiblePosition()
+void Tasks::setPosition(std::shared_ptr<sf::Vector2i> position)
 {
-    for(const auto it : mPositionAssigne)
+    mPositionAssigne[std::move(position)] = false;
+}
+
+std::shared_ptr<sf::Vector2i> Tasks::getDisponiblePosition()
+{
+    for(auto& it : mPositionAssigne)
     {
         if(it.second == false)
         {
             return it.first;
         }
     }
+}
+
+void Tasks::update(sf::Time dt)
+{
+    // Do nothing for now
 }
 
 

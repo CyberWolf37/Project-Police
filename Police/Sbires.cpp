@@ -2,10 +2,22 @@
 
 Sbires::Sbires(const sf::Texture& texture, Category_Sbires::ID category)
     :mData(initializeSbireData(texture))
-    ,mCurrentAnimation()
+    ,mCurrentAnimation(mData[category].moveDown)
     ,mInMovment(false)
     ,mCategory(category)
     ,mIsDestroyed(false)
+    ,mTask()
+{
+    getCurrentAnimation().setRepeating(true);
+}
+
+Sbires::Sbires()
+    :mData()
+    ,mCurrentAnimation()
+    ,mInMovment(false)
+    ,mCategory(Category_Sbires::ID::NoneSbire)
+    ,mIsDestroyed(false)
+    ,mTask()
 {
 
 }
@@ -50,6 +62,16 @@ const int &Sbires::getAttackPoints() const
     return mData[mCategory].attackPoints;
 }
 
+void Sbires::setTask(std::shared_ptr<Tasks> tasks)
+{
+    mTask = std::move(tasks);
+}
+
+std::shared_ptr<Tasks> &Sbires::getTask()
+{
+    return mTask;
+}
+
 void Sbires::setCategorySbire(Category_Sbires::ID category)
 {
     mCategory = category;
@@ -71,13 +93,12 @@ void Sbires::printData()
 
 void Sbires::updateCurrent(sf::Time dt, CommandQueue &commands)
 {
-    getCurrentAnimation().setRepeating(true);
-    getCurrentAnimation().update(dt);
+    mCurrentAnimation.update(dt);
 }
 
 void Sbires::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    mCurrentAnimation.draw(target,states);
+    target.draw(mCurrentAnimation);
 }
 
 bool Sbires::isDestroyed() const

@@ -31,6 +31,9 @@ public:
     void                        setRepeating(bool flag);
     bool                        isRepeating() const;
 
+    void                        setReverse(bool flag);
+    bool                        isReverse() const;
+
     void                        restart();
     bool                        isFinished() const;
 
@@ -52,6 +55,8 @@ private:
     sf::Time                    mDuration;
     sf::Time                    mElapsedTime;
     bool                        mRepeat;
+    bool                        mReverse;
+    bool                        mReturn;
 };
 
 #endif // ANIMATION_H

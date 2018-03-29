@@ -2,7 +2,6 @@
 #define TASKS_H
 
 // CORE LIBRARY
-#include "Sbires.hpp"
 #include "Category.hpp"
 
 // SFML LIBRARY
@@ -14,12 +13,14 @@
 #include <map>
 #include <memory>
 
+class Sbires;
 
 class Tasks
 {
 public:
 
-    Tasks(Category_Tasks::ID category = Category_Tasks::ID::None);
+    explicit                                Tasks(Category_Tasks::ID category = Category_Tasks::ID::None);
+                                            Tasks();
 
     void                                    assigneSbire(std::shared_ptr<Sbires> sbireAssigne);
     std::vector<std::shared_ptr<Sbires>>&   getSbiresAssigne();
@@ -33,16 +34,17 @@ public:
 
     void                                    setPosition(std::vector<sf::Vector2i>& positionStack);
     void                                    setPosition(sf::Vector2i position);
-    const sf::Vector2i&                     getDisponiblePosition();
+    void                                    setPosition(std::shared_ptr<sf::Vector2i> position);
+    std::shared_ptr<sf::Vector2i>           getDisponiblePosition();
 
     void                                    update(sf::Time dt);
 
 private:
 
-    std::vector<std::shared_ptr<Sbires>>    mSbireAssigne;
-    std::map<sf::Vector2i,bool>             mPositionAssigne;
-    Category_Tasks::ID                      mCategoryTask;
-    sf::Time                                mTime;
+    std::vector<std::shared_ptr<Sbires>>            mSbireAssigne;
+    std::map<std::shared_ptr<sf::Vector2i>,bool>    mPositionAssigne;
+    Category_Tasks::ID                              mCategoryTask;
+    sf::Time                                        mTime;
 
 };
 

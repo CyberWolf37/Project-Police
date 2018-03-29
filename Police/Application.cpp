@@ -22,6 +22,7 @@ Application::Application()
     mFonts.load(Fonts::Main, "Media/Font/BreeSerif.ttf");
     mTextures.load(Textures::Buttons,"Media/Textures/ButtonsPolice.png" );
     mTextures.load(Textures::ProgressBar,"Media/Textures/ProgressBar.png");
+    mTextures.load(Textures::PoliceAnimation,"Media/Textures/police_sprites.png");
 
     mWindow.setKeyRepeatEnabled(false);
 

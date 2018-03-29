@@ -11,6 +11,9 @@
 #include "Container.hpp"
 #include "Button.hpp"
 #include "RectangleRoom.hpp"
+#include "SbireManager.hpp"
+#include "TaskManager.hpp"
+#include "Category.hpp"
 
 // System SFML
 #include <SFML/System/Time.hpp>
@@ -18,6 +21,7 @@
 #include <SFML/Graphics/View.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTexture.hpp>
+#include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
 // STD library
@@ -25,6 +29,9 @@
 #include <queue>
 #include <string>
 #include <vector>
+
+// Test debug
+#include <QDebug>
 
 //Forward declaration
 namespace sf
@@ -51,6 +58,8 @@ private:
     SceneNode&          mSceneGraph;
     sf::RenderTexture   mUiTexture;
     GUI::Container      mMainContainer;
+    SbireManager        mSbireManager;
+    TaskManager         mTaskManager;
 
 
 };

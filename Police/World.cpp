@@ -155,6 +155,7 @@ void World::loadTextures()
 
     // Texture for tileset
     mTextures.load(Textures::Buttons,"Media/Textures/ButtonsPolice.png" );
+
 }
 
 // Load the file how we have some layout

@@ -54,27 +54,31 @@ std::vector<SbireData> initializeSbireData(const sf::Texture& textures)
     a_moveUp.setIndex(sf::Vector2i(0,128));
     a_moveUp.setDuration(sf::seconds(1));
     a_moveUp.setNumFrames(3);
+    a_moveUp.setRepeating(true);
     data[Category_Sbires::WorkerSbire].moveUp = a_moveUp;
 
     Animation a_moveDown(textures);
-    a_moveUp.setFrameSize(sf::Vector2i(24,32));
-    a_moveUp.setIndex(sf::Vector2i(0,192));
-    a_moveUp.setDuration(sf::seconds(1));
-    a_moveUp.setNumFrames(3);
+    a_moveDown.setFrameSize(sf::Vector2i(24,32));
+    a_moveDown.setIndex(sf::Vector2i(0,192));
+    a_moveDown.setDuration(sf::seconds(1));
+    a_moveDown.setNumFrames(3);
+    a_moveDown.setRepeating(true);
     data[Category_Sbires::WorkerSbire].moveDown = a_moveDown;
 
     Animation a_moveRight(textures);
-    a_moveUp.setFrameSize(sf::Vector2i(24,32));
-    a_moveUp.setIndex(sf::Vector2i(0,160));
-    a_moveUp.setDuration(sf::seconds(1));
-    a_moveUp.setNumFrames(3);
+    a_moveRight.setFrameSize(sf::Vector2i(24,32));
+    a_moveRight.setIndex(sf::Vector2i(0,160));
+    a_moveRight.setDuration(sf::seconds(1));
+    a_moveRight.setNumFrames(3);
+    a_moveRight.setRepeating(true);
     data[Category_Sbires::WorkerSbire].moveRight = a_moveRight;
 
     Animation a_moveLeft(textures);
-    a_moveUp.setFrameSize(sf::Vector2i(24,32));
-    a_moveUp.setIndex(sf::Vector2i(0,224));
-    a_moveUp.setDuration(sf::seconds(1));
-    a_moveUp.setNumFrames(3);
+    a_moveLeft.setFrameSize(sf::Vector2i(24,32));
+    a_moveLeft.setIndex(sf::Vector2i(0,224));
+    a_moveLeft.setDuration(sf::seconds(1));
+    a_moveLeft.setNumFrames(3);
+    a_moveLeft.setRepeating(true);
     data[Category_Sbires::WorkerSbire].moveLeft = a_moveLeft;
 
     // Set Worker Sbire data

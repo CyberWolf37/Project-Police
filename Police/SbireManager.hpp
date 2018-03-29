@@ -15,24 +15,33 @@
 #include <vector>
 #include <memory>
 
+// Test Debug
+#include <QDebug>
+
 
 class SbireManager
 {
 public:
-    typedef std::shared_ptr<Sbires>              SbirePtr;
-
+    typedef std::shared_ptr<Sbires>             SbirePtr;
     typedef std::vector<SbirePtr>               SbireStack;
 
 public:
-    SbireManager(SceneNode& sceneGraph, sf::Texture& texture);
+    SbireManager(SceneNode& sceneGraph);
 
-    void                    createSbire(Category_Sbires::ID category);
+    void                    createSbire(Category_Sbires::ID category,sf::Vector2i& position);
+    void                    setTexture(sf::Texture& texture);
+    sf::Texture&            getTexture();
+
+    SbireStack&             getSbireStack();
+
     void                    update(sf::Time dt);
+
+    void                    draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
     SbireStack              mStackSbire;
     SceneNode&              mSceneGraph;
-    sf::Texture&            mTextureSbire;
+    sf::Texture             mTextureSbire;
 
 
 

@@ -18,6 +18,7 @@
 MenuState::MenuState(StateStack& stack, Context context)
     : State(stack, context)
     , mGuiContainer(*context.window)
+    , mAnimation(context.textures->get(Textures::PoliceAnimation))
 {
     sf::Texture& texture = context.textures->get(Textures::TitleScreen);
     mBackgroundSprite.setTexture(texture);
@@ -58,11 +59,13 @@ void MenuState::draw()
     window.setView(window.getDefaultView());
     window.draw(mBackgroundSprite);
     window.draw(mGuiContainer);
+    window.draw(mAnimation);
 
 }
 
 bool MenuState::update(sf::Time dt)
 {
+    mAnimation.update(dt);
     return true;
 }
 
