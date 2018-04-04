@@ -24,7 +24,7 @@ public:
     typedef std::shared_ptr<Tasks>      TaskPtr;
     typedef std::shared_ptr<Sbires>     SbirePtr;
 
-    typedef std::vector<SbirePtr>       SbiresStack;
+    typedef std::vector<Sbires*>        SbiresStack;
     typedef std::vector<TaskPtr>        TasksStack;
 
 

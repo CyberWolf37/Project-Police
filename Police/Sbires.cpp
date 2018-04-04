@@ -8,7 +8,9 @@ Sbires::Sbires(const sf::Texture& texture, Category_Sbires::ID category)
     ,mIsDestroyed(false)
     ,mTask()
 {
+    qDebug() << "Passer 2.1";
     getCurrentAnimation().setRepeating(true);
+    qDebug() << "Passer 2.2";
 }
 
 Sbires::Sbires()
@@ -19,7 +21,7 @@ Sbires::Sbires()
     ,mIsDestroyed(false)
     ,mTask()
 {
-
+    getCurrentAnimation().setRepeating(true);
 }
 
 void Sbires::setLifePoints(int &lifeP)
@@ -93,12 +95,13 @@ void Sbires::printData()
 
 void Sbires::updateCurrent(sf::Time dt, CommandQueue &commands)
 {
+    mCurrentAnimation.setPosition(this->getPosition());
     mCurrentAnimation.update(dt);
 }
 
 void Sbires::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    target.draw(mCurrentAnimation);
+    mCurrentAnimation.draw(target,states);
 }
 
 bool Sbires::isDestroyed() const

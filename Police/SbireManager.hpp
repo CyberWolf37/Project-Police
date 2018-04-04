@@ -23,7 +23,7 @@ class SbireManager
 {
 public:
     typedef std::shared_ptr<Sbires>             SbirePtr;
-    typedef std::vector<SbirePtr>               SbireStack;
+    typedef std::vector<Sbires*>                SbireStack;
 
 public:
     SbireManager(SceneNode& sceneGraph);

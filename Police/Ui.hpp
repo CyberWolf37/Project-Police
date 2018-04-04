@@ -11,7 +11,8 @@
 #include "Container.hpp"
 #include "Button.hpp"
 #include "RectangleRoom.hpp"
-#include "SbireManager.hpp"
+//#include "SbireManager.hpp"
+#include "Sbires.hpp"
 #include "TaskManager.hpp"
 #include "Category.hpp"
 
@@ -29,6 +30,7 @@
 #include <queue>
 #include <string>
 #include <vector>
+#include <memory>
 
 // Test debug
 #include <QDebug>
@@ -43,7 +45,7 @@ namespace sf
 class Ui : private sf::NonCopyable
 {
 public:
-    explicit            Ui(sf::RenderWindow& window, FontHolder& fonts, TextureHolder& texture, SceneNode& SceneGraph);
+    explicit            Ui(sf::RenderWindow& window, FontHolder& fonts, TextureHolder& texture, std::array<SceneNode*,2>& SceneLayers);
     void                update(sf::Time dt);
     void                draw();
     bool                handleEvent(const sf::Event &event);
@@ -51,15 +53,15 @@ public:
 
 private:
 
-    sf::RenderWindow&   mTarget;
-    sf::View            mUiView;
-    FontHolder&         mFonts;
-    TextureHolder&      mTextures;
-    SceneNode&          mSceneGraph;
-    sf::RenderTexture   mUiTexture;
-    GUI::Container      mMainContainer;
-    SbireManager        mSbireManager;
-    TaskManager         mTaskManager;
+    sf::RenderWindow&                   mTarget;
+    sf::View                            mUiView;
+    FontHolder&                         mFonts;
+    TextureHolder&                      mTextures;
+    std::array<SceneNode*,2>&        mSceneLayers;
+    sf::RenderTexture                   mUiTexture;
+    GUI::Container                      mMainContainer;
+    //SbireManager                      mSbireManager;
+    //TaskManager                       mTaskManager;
 
 
 };

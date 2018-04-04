@@ -14,6 +14,7 @@
 #include "Tuile.hpp"
 #include "RectangleRoom.hpp"
 #include "Ui.hpp"
+#include "CommandQueue.hpp"
 
 // System SFML
 #include <SFML/System/Time.hpp>
@@ -74,6 +75,7 @@ private:
         enum Layer
         {
             Background,
+            Sbires,
             //Building,
             //Object,
             LayerCount
@@ -93,6 +95,7 @@ private:
         sf::IntRect                         mWorldBounds;
         ArrayVector2f                       mGridWorld;
         sf::Vector2f                        mSpawnPosition;
+        CommandQueue                        mComandeQueue;
 
         SceneNode                           mSceneGraph;
         std::array<SceneNode*, LayerCount>  mSceneLayers;

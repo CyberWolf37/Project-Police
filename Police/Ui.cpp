@@ -2,16 +2,16 @@
 
 
 
-Ui::Ui(sf::RenderWindow &window, FontHolder &fonts, TextureHolder &texture, SceneNode &SceneGraph)
+Ui::Ui(sf::RenderWindow &window, FontHolder &fonts, TextureHolder &texture, std::array<SceneNode *, 2> &SceneLayers)
     :mTarget(window)
     ,mUiView(mTarget.getView())
     ,mFonts(fonts)
     ,mTextures(texture)
-    ,mSceneGraph(SceneGraph)
+    ,mSceneLayers(SceneLayers)
     ,mUiTexture()
     ,mMainContainer(window)
-    ,mSbireManager(mSceneGraph)
-    ,mTaskManager(mSbireManager)
+    //,mSbireManager(mSceneGraph)
+    //,mTaskManager(mSbireManager)
 
 {
     qDebug() << "passer";
@@ -22,14 +22,14 @@ Ui::Ui(sf::RenderWindow &window, FontHolder &fonts, TextureHolder &texture, Scen
     mTextures.load(Textures::PoliceAnimation,"Media/Textures/police_sprites.png");
 
     // SbireManager set texture
-    mSbireManager.setTexture(mTextures.get(Textures::PoliceAnimation));
+    //mSbireManager.setTexture(mTextures.get(Textures::PoliceAnimation));
 
 }
 
 void Ui::update(sf::Time dt)
 {
-    mTaskManager.update(dt);
-    mSbireManager.update(dt);
+    //mSbireManager.update(dt);
+    //mTaskManager.update(dt);
 }
 
 void Ui::draw()
@@ -41,7 +41,7 @@ void Ui::draw()
 
     // Finaly draw the texture Scene
     mTarget.draw(sf::Sprite(mUiTexture.getTexture()));
-    mSbireManager.draw(mTarget,sf::RenderStates::Default);
+    //mSbireManager.draw(mTarget,sf::RenderStates::Default);
 }
 
 bool Ui::handleEvent(const sf::Event &event)
@@ -71,7 +71,13 @@ void Ui::buildUi()
     {
         std::cout << "Pick the button Sbire" << std::endl;
         sf::Vector2i positionSbire (800,808);
-        mSbireManager.createSbire(Category_Sbires::ID::WorkerSbire,positionSbire);
+        //mSbireManager.createSbire(Category_Sbires::ID::WorkerSbire,positionSbire);
+
+        qDebug() << "Passer 2";
+        std::shared_ptr<Sbires> sbire(new Sbires(mTextures.get(Textures::PoliceAnimation),Category_Sbires::WorkerSbire));
+
+        qDebug() << "Passer 3";
+        mSceneLayers[0]->attachChild(std::move(sbire));
 
     });
 

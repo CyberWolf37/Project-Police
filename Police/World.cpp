@@ -31,7 +31,8 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     , mSpawnPosition(800,808)
     , mBuildState(false)
     , mBuildRoom(mTextures, mSceneGraph)
-    , mUi(window,fonts,mTextures,mSceneGraph)
+    , mUi(window,fonts,mTextures,mSceneLayers)
+    , mComandeQueue()
 {
     // Set Key repeted True
     mTarget.setKeyRepeatEnabled(true);
@@ -62,6 +63,8 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
 // Update the world
 void World::update(sf::Time dt)
 {
+    mUi.update(dt);
+    mSceneGraph.update(dt,mComandeQueue);
 }
 
 // Drawing the world of the game
