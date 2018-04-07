@@ -75,10 +75,7 @@ private:
         enum Layer
         {
             Background,
-            Sbires,
-            //Building,
-            //Object,
-            LayerCount
+            LayerCount,
         };
 
 // Variables I need in my object

@@ -23,7 +23,7 @@ class SbireManager
 {
 public:
     typedef std::shared_ptr<Sbires>             SbirePtr;
-    typedef std::vector<Sbires*>                SbireStack;
+    typedef std::vector<SbirePtr>               SbireStack;
 
 public:
     SbireManager(SceneNode& sceneGraph);
@@ -33,10 +33,6 @@ public:
     sf::Texture&            getTexture();
 
     SbireStack&             getSbireStack();
-
-    void                    update(sf::Time dt);
-
-    void                    draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
     SbireStack              mStackSbire;

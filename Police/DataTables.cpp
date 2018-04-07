@@ -1,5 +1,7 @@
 #include "DataTables.hpp"
 
+#include <QDebug>
+
 
 using namespace std::placeholders;
 
@@ -40,7 +42,7 @@ std::vector<BuildData> initializeBuildData(const TextureSpliter::MapPtr &ptr)
 std::vector<SbireData> initializeSbireData(const sf::Texture& textures)
 {
 
-    std::vector<SbireData> data(Category_Sbires::NoneSbire);
+    std::vector<SbireData> data(Category_Sbires::CountSbire);
 
     // Set Worker Sbire data
     data[Category_Sbires::WorkerSbire].lifePoints = 10;
@@ -99,14 +101,14 @@ std::vector<SbireData> initializeSbireData(const sf::Texture& textures)
     data[Category_Sbires::NoneSbire].defensePoints = 10;
     data[Category_Sbires::NoneSbire].attackPoints = 10;
 
+
+
     // Set None Sbire Animation
     data[Category_Sbires::NoneSbire].moveUp;
     data[Category_Sbires::NoneSbire].moveDown;
     data[Category_Sbires::NoneSbire].moveRight;
     data[Category_Sbires::NoneSbire].moveLeft;
 
-    return data;
-
-
+    return data;   
 }
 

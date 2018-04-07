@@ -31,7 +31,7 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     , mSpawnPosition(800,808)
     , mBuildState(false)
     , mBuildRoom(mTextures, mSceneGraph)
-    , mUi(window,fonts,mTextures,mSceneLayers)
+    , mUi(window,fonts,mTextures,mSceneGraph)
     , mComandeQueue()
 {
     // Set Key repeted True

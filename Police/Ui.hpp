@@ -45,7 +45,7 @@ namespace sf
 class Ui : private sf::NonCopyable
 {
 public:
-    explicit            Ui(sf::RenderWindow& window, FontHolder& fonts, TextureHolder& texture, std::array<SceneNode*,2>& SceneLayers);
+    explicit            Ui(sf::RenderWindow& window, FontHolder& fonts, TextureHolder& texture, SceneNode& SceneLayers);
     void                update(sf::Time dt);
     void                draw();
     bool                handleEvent(const sf::Event &event);
@@ -57,11 +57,11 @@ private:
     sf::View                            mUiView;
     FontHolder&                         mFonts;
     TextureHolder&                      mTextures;
-    std::array<SceneNode*,2>&        mSceneLayers;
+    SceneNode&                          mSceneGraph;
     sf::RenderTexture                   mUiTexture;
     GUI::Container                      mMainContainer;
-    //SbireManager                      mSbireManager;
-    //TaskManager                       mTaskManager;
+    SbireManager                        mSbireManager;
+    TaskManager                         mTaskManager;
 
 
 };

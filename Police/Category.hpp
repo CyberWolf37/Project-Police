@@ -9,9 +9,9 @@ namespace Category
         None                = 0,
         SceneGroundLayer    = 1 << 0,
         SceneBuildingLayer  = 1 << 1,
+        SceneSbiresLayer    = 1 << 2,
         //SceneObjectLayer    = 1 << 2,
     };
-
 }
 
 namespace Category_Build
@@ -41,6 +41,7 @@ namespace Category_Sbires
         WorkerSbire,
         OfficeSbire,
         NoneSbire,
+        CountSbire,
 
     };
 }

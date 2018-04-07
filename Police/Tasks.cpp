@@ -9,22 +9,22 @@ Tasks::Tasks(Category_Tasks::ID category)
 
 }
 
-void Tasks::assigneSbire(std::shared_ptr<Sbires> sbireAssigne)
+void Tasks::assigneSbire(std::shared_ptr<Sbires> &sbireAssigne)
 {
-    Sbires* CpySbire = sbireAssigne.get();
+    std::shared_ptr<Sbires>& CpySbire = sbireAssigne;
     mSbireAssigne.push_back(std::move(CpySbire));
 }
 
-std::vector<Sbires*>& Tasks::getSbiresAssigne()
+std::vector<std::shared_ptr<Sbires>> &Tasks::getSbiresAssigne()
 {
     return mSbireAssigne;
 }
 
 bool Tasks::removeSbire(std::shared_ptr<Sbires> sbireRemove)
 {
-    for(std::vector<Sbires*>::iterator it = mSbireAssigne.begin(); it != mSbireAssigne.end();it++)
+    for(std::vector<std::shared_ptr<Sbires>>::iterator it = mSbireAssigne.begin(); it != mSbireAssigne.end();it++)
     {
-        if(*it == sbireRemove.get())
+        if(it->get() == sbireRemove.get())
         {
             mSbireAssigne.erase(it);
             return true;

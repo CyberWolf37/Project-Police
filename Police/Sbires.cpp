@@ -8,9 +8,7 @@ Sbires::Sbires(const sf::Texture& texture, Category_Sbires::ID category)
     ,mIsDestroyed(false)
     ,mTask()
 {
-    qDebug() << "Passer 2.1";
     getCurrentAnimation().setRepeating(true);
-    qDebug() << "Passer 2.2";
 }
 
 Sbires::Sbires()

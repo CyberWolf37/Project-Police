@@ -150,6 +150,11 @@ unsigned int SceneNode::getCategory() const
     return mDefaultCategory;
 }
 
+void SceneNode::setCategory(Category::Layers category)
+{
+    mDefaultCategory = category;
+}
+
 void SceneNode::checkSceneCollision(SceneNode &sceneGraph, std::set<Pair> &collisionPairs)
 {
     checkNodeCollision(sceneGraph, collisionPairs);
