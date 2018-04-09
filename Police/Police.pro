@@ -93,4 +93,5 @@ DISTFILES += \
     uml_project.qmodel \
     uml_rendering.qmodel \
     Media/Textures/Explosion.png \
-    Media/Textures/police_sprites.gif
+    Media/Textures/police_sprites.gif \
+    Media/Textures/police_sprites.png

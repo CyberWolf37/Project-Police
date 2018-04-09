@@ -11,7 +11,7 @@
 #include "Container.hpp"
 #include "Button.hpp"
 #include "RectangleRoom.hpp"
-//#include "SbireManager.hpp"
+#include "SbireManager.hpp"
 #include "Sbires.hpp"
 #include "TaskManager.hpp"
 #include "Category.hpp"

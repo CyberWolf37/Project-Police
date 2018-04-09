@@ -119,7 +119,8 @@ DIST          = Media/Textures/Title_Screen.png \
 		uml_project.qmodel \
 		uml_rendering.qmodel \
 		Media/Textures/Explosion.png \
-		Media/Textures/police_sprites.gif Application.hpp \
+		Media/Textures/police_sprites.gif \
+		Media/Textures/police_sprites.png Application.hpp \
 		GameState.hpp \
 		State.hpp \
 		Stateidentifiers.hpp \
@@ -470,9 +471,17 @@ release/Application.o: Application.cpp Application.hpp \
 		RectangleRoom.hpp \
 		build.hpp \
 		Ui.hpp \
+		Sbires.hpp \
+		Animation.hpp \
+		DataTables.hpp \
+		Tasks.hpp \
+		TaskManager.hpp \
+		SbireManager.hpp \
+		CommandQueue.hpp \
+		Command.hpp \
+		category.hpp \
 		MenuState.hpp \
 		ProgressBar.hpp \
-		Animation.hpp \
 		LoadingState.hpp \
 		ParallelTask.hpp \
 		SettingsState.hpp
@@ -634,7 +643,16 @@ release/GameState.o: GameState.cpp GameState.hpp \
 		Button.hpp \
 		RectangleRoom.hpp \
 		build.hpp \
-		Ui.hpp
+		Ui.hpp \
+		Sbires.hpp \
+		Animation.hpp \
+		DataTables.hpp \
+		Tasks.hpp \
+		TaskManager.hpp \
+		SbireManager.hpp \
+		CommandQueue.hpp \
+		Command.hpp \
+		category.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\GameState.o GameState.cpp
 
 release/State.o: State.cpp State.hpp \
@@ -1062,6 +1080,15 @@ release/World.o: World.cpp World.hpp \
 		RectangleRoom.hpp \
 		build.hpp \
 		Ui.hpp \
+		Sbires.hpp \
+		Animation.hpp \
+		DataTables.hpp \
+		Tasks.hpp \
+		TaskManager.hpp \
+		SbireManager.hpp \
+		CommandQueue.hpp \
+		Command.hpp \
+		category.hpp \
 		foreach.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\World.o World.cpp
 
@@ -2852,7 +2879,13 @@ release/Ui.o: Ui.cpp Ui.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Text.hpp \
 		Button.hpp \
 		RectangleRoom.hpp \
-		build.hpp
+		build.hpp \
+		Sbires.hpp \
+		Animation.hpp \
+		DataTables.hpp \
+		Tasks.hpp \
+		TaskManager.hpp \
+		SbireManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Ui.o Ui.cpp
 
 release/Animation.o: Animation.cpp Animation.hpp \
@@ -3306,130 +3339,12 @@ release/SbireManager.o: SbireManager.cpp SbireManager.hpp \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\SbireManager.o SbireManager.cpp
 
 release/Tasks.o: Tasks.cpp Tasks.hpp \
-		Sbires.hpp \
-		SceneNode.hpp \
 		Category.hpp \
-		Foreach.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/NonCopyable.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Time.hpp \
 		SFML-2.4.1\ DW2/include/SFML/System/Export.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Config.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/Time.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Transformable.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Export.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Transform.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Rect.hpp \
 		SFML-2.4.1\ DW2/include/SFML/System/Vector2.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/Vector2.inl \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Rect.inl \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Drawable.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderStates.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/BlendMode.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/Event.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/Joystick.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/Export.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/String.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/Utf.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/Utf.inl \
-		SFML-2.4.1\ DW2/include/SFML/System/String.inl \
-		SFML-2.4.1\ DW2/include/SFML/Window/Keyboard.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/Mouse.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/Sensor.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/Vector3.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/Vector3.inl \
-		SFML-2.4.1\ DW2/include/SFML/Window/Window.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/ContextSettings.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/VideoMode.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/WindowHandle.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/WindowStyle.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Window/GlResource.hpp \
-		SFML-2.4.1\ DW2/include/SFML/System/Clock.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/View.hpp \
-		Animation.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Sprite.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Vertex.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Color.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Texture.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Image.hpp \
-		DataTables.hpp \
-		ResourceIdentifiers.hpp \
-		TextureSpliter.hpp \
-		Tuile.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTarget.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/PrimitiveType.hpp \
-		ResourceHolder.hpp \
-		ResourceHolder.inl \
-		Utility.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/RectangleShape.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/Shape.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/VertexArray.hpp \
-		Utility.inl \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/QDebug \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qdebug.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qalgorithms.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qglobal.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qconfig.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qtcore-config.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsystemdetection.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qprocessordetection.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcompilerdetection.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qtypeinfo.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsysinfo.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qlogging.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qflags.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qatomic.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qbasicatomic.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qatomic_bootstrap.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qgenericatomic.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qatomic_cxx11.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qatomic_msvc.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qglobalstatic.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qmutex.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qnumeric.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qversiontagging.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qhash.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qchar.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qiterator.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qlist.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qrefcount.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qarraydata.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qhashfunctions.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstring.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qbytearray.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qnamespace.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringliteral.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringalgorithms.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringview.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringbuilder.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qpair.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qbytearraylist.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringlist.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qregexp.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringmatcher.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qmap.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qtextstream.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qiodevice.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qobject.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qobjectdefs.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qobjectdefs_impl.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcoreevent.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qscopedpointer.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qmetatype.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qvarlengtharray.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontainerfwd.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qobject_impl.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qlocale.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qvariant.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qshareddata.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qvector.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qpoint.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qset.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
-		RectangleRoom.hpp \
-		build.hpp \
-		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp
+		SFML-2.4.1\ DW2/include/SFML/System/Vector2.inl
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Tasks.o Tasks.cpp
 
 release/TaskManager.o: TaskManager.cpp TaskManager.hpp \

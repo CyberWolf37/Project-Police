@@ -2,7 +2,7 @@
 
 Sbires::Sbires(const sf::Texture& texture, Category_Sbires::ID category)
     :mData(initializeSbireData(texture))
-    ,mCurrentAnimation(mData[category].moveDown)
+    ,mCurrentAnimation(mData[category].moveLeft)
     ,mInMovment(false)
     ,mCategory(category)
     ,mIsDestroyed(false)
