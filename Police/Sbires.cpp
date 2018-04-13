@@ -95,6 +95,11 @@ void Sbires::updateCurrent(sf::Time dt, CommandQueue &commands)
 {
     mCurrentAnimation.setPosition(this->getPosition());
     mCurrentAnimation.update(dt);
+
+    if(isSelected())
+    {
+        printData();
+    }
 }
 
 void Sbires::draw(sf::RenderTarget &target, sf::RenderStates states) const

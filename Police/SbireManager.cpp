@@ -42,3 +42,14 @@ SbireManager::SbireStack &SbireManager::getSbireStack()
 {
     return mStackSbire;
 }
+
+SbireManager::SbirePtr &SbireManager::getSbire()
+{
+    FOREACH (SbirePtr& child, mStackSbire)
+    {
+        if(child->isActive())
+        {
+            return child;
+        }
+    }
+}

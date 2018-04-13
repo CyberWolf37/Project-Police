@@ -56,6 +56,7 @@ public:
         virtual bool			isDestroyed() const;
 
         void                    checkTuileChildInCurrentView(const sf::View &view);
+        void                    checkSceneNodePointer(const sf::Vector2i& position);
 
         SceneNode&              getCurrentSceneNode(const sf::Vector2i& position);
 

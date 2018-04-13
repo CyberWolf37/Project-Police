@@ -212,6 +212,21 @@ void SceneNode::checkTuileChildInCurrentView(const sf::View& view)
     }
 }
 
+void SceneNode::checkSceneNodePointer(const sf::Vector2i &position)
+{
+    FOREACH(Ptr& child, mChildren)
+    {
+        if(child->isActive() && child->getBoundingRect().contains(position))
+        {
+            child->setSelected(true);
+        }
+        else
+        {
+            child->setSelected(false);
+        }
+    }
+}
+
 
 SceneNode& SceneNode::getCurrentSceneNode(const sf::Vector2i &position)
 {
