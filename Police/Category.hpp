@@ -56,4 +56,16 @@ namespace Category_Tasks
     };
 }
 
+namespace Category_Direction
+{
+    enum ID
+    {
+        Up,
+        Down,
+        Left,
+        Right,
+        None,
+    };
+}
+
 #endif // CATEGORY_HPP

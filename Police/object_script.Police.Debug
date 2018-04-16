@@ -33,4 +33,5 @@ INPUT(
 ./debug\SbireManager.o
 ./debug\Tasks.o
 ./debug\TaskManager.o
+./debug\Position.o
 );

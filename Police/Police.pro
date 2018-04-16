@@ -44,7 +44,8 @@ SOURCES += \
     WorkerSbire.cpp \
     SbireManager.cpp \
     Tasks.cpp \
-    TaskManager.cpp
+    TaskManager.cpp \
+    Position.cpp
 
 HEADERS += \
     Application.hpp \
@@ -85,7 +86,9 @@ HEADERS += \
     WorkerSbire.hpp \
     SbireManager.hpp \
     Tasks.hpp \
-    TaskManager.hpp
+    TaskManager.hpp \
+    Position.hpp \
+    Settings.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \
