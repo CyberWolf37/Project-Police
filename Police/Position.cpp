@@ -12,6 +12,18 @@ Position::Position()
 
 }
 
+Position::Position(const Position &copy)
+    :mObject()
+    ,mPositionRaw(copy.getPositionRaw())
+    ,mIsMoving(false)
+    ,mTimeMoving(sf::Time::Zero)
+    ,mElapsedTime(sf::Time::Zero)
+    ,mPositionInitial()
+    ,mCurrentDirection(copy.getCurrentDirection())
+{
+
+}
+
 Position::Position(sf::Transformable &object)
     :mObject(&object)
     ,mPositionRaw(mObject->getPosition())
@@ -71,6 +83,11 @@ const sf::Vector2i Position::getPositionTuile()
     }
 }
 
+const Category_Direction::ID &Position::getCurrentDirection() const
+{
+    return mCurrentDirection;
+}
+
 void Position::moveTuile(Category_Direction::ID direction, const sf::Time &dt)
 {
     if(!mIsMoving)
@@ -125,6 +142,23 @@ void Position::update(const sf::Time &dt)
         mPositionInitial = sf::Vector2f(0.f,0.f);
         mIsMoving = false;
     }
+}
+
+void Position::afficher(std::ostream &flux) const
+{
+    flux << " Position X : " << getPositionRaw().x
+         << " Position Y : " << getPositionRaw().y;
+}
+
+std::ostream &Position::operator<<(std::ostream &flux)
+{
+    this->afficher(flux);
+}
+
+Position &Position::operator=(Position &left, Position &right)
+{
+    left.setPositionRaw(right.getPositionRaw());
+    return left;
 }
 
 const sf::Vector2i Position::calculePositionTuile(const sf::Vector2f& positionRaw)

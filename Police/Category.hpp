@@ -2,7 +2,7 @@
 #define CATEGORY_HPP
 
 // Entity used to dispatch commands
-namespace Category
+namespace Category_Layers
 {
     enum Layers
     {
@@ -24,7 +24,17 @@ namespace Category_Build
     };
 }
 
-namespace TuileState
+namespace Category_Window
+{
+    enum Type
+    {
+        Selected,
+        Activate,
+        None,
+    };
+}
+
+/*namespace TuileState
 {
     enum ID
     {
@@ -32,7 +42,7 @@ namespace TuileState
         GroundTuile,
         ObjectTuile,
     };
-}
+}*/
 
 namespace Category_Sbires
 {

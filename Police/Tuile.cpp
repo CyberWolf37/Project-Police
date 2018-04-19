@@ -17,15 +17,6 @@ Tuile::Tuile(const Tuile &copy)
     setSelected(false);
 }
 
-Tuile::Tuile(std::shared_ptr<sf::Sprite> sprite, Category::Layers layerCategory, TuileState::ID tuileCategory)
-    : SceneNode(layerCategory)
-    , mTuileCategory(tuileCategory)
-    , mSprite(sprite)
-{
-    setActivate(false);
-    setSelected(false);
-}
-
 Tuile::~Tuile()
 {
 }

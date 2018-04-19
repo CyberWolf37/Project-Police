@@ -6,46 +6,46 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics/RenderTarget.hpp"
 #include "SFML/Graphics/View.hpp"
+#include "SFML/Graphics/Transformable.hpp"
+#include "SFML/System/Vector2.hpp"
 
 // Core Library
 #include "SceneNode.hpp"
 #include "ResourceHolder.hpp"
 #include "ResourceIdentifiers.hpp"
 #include "Utility.hpp"
+#include "Position.hpp"
 
 // STD library
 #include <memory>
 
-class Tuile : public SceneNode
+class Tuile
 {
 public:
-                                        Tuile();
-                                        Tuile(const Tuile &copy);
-    explicit                            Tuile(std::shared_ptr<sf::Sprite>  sprite, Category::Layers layerCategory = Category::Layers::None , TuileState::ID tuileCategory = TuileState::ID::None);
+
+    Tuile(sf::Transformable& object);
     ~Tuile();
 
-    virtual void                        draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void                        drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void                        handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
-
-    TuileState::ID                      getTuileCategory() const;
-    void                                setTuileCategory(TuileState::ID id);
-
-
-    const std::shared_ptr<sf::Sprite>   getSprite() const;
-    void                                setSprite(std::shared_ptr<sf::Sprite> sprite);
+    void                                handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
 
     const bool&                         getIsActive() const;
+    void                                setIsActive(const bool& active);
 
-    const sf::IntRect                   getRectBounds();
+    const bool&                         getIsSelected() const;
+    void                                setIsSelected();
+
+
+    const sf::IntRect                   getRectBounds() const;
+    void                                setRectBounds(const sf::Vector2f& bounds);
 
 private:
 
-    TuileState::ID                      mTuileCategory;
-    std::shared_ptr<sf::Sprite>         mSprite;
-
+    sf::Transformable&                  mObject;
+    Position                            mPosition;
     bool                                mIsActive;
     bool                                mIsSelected;
+
+
 
 
 };
