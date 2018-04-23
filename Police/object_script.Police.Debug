@@ -34,4 +34,5 @@ INPUT(
 ./debug\Tasks.o
 ./debug\TaskManager.o
 ./debug\Position.o
+./debug\ObjectBox.o
 );

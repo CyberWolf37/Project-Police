@@ -34,4 +34,5 @@ INPUT(
 ./release\Tasks.o
 ./release\TaskManager.o
 ./release\Position.o
+./release\ObjectBox.o
 );

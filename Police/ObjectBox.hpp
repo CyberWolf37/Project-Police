@@ -7,6 +7,7 @@
 #include "Position.hpp"
 #include "Settings.hpp"
 #include "Animation.hpp"
+#include "Utility.hpp"
 
 // SFML Library
 #include "SFML/System/NonCopyable.hpp"
@@ -16,6 +17,8 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Window.hpp"
 #include "SFML/Graphics/View.hpp"
+#include "SFML/Graphics/RectangleShape.hpp"
+#include "SFML/Graphics/RenderTexture.hpp"
 
 // STD library
 #include <vector>
@@ -36,42 +39,47 @@ public:
     ObjectBox(const sf::Texture& texture,Category_Layers::Layers layerCategory = Category_Layers::None);
     ObjectBox(Position& position,const sf::Texture &texture, Category_Layers::Layers layerCategory = Category_Layers::None);
 
-    virtual void            draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void            handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
-    virtual void            update(sf::Time dt, CommandQueue &commands);
+    virtual void                draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void                handleEvent(const sf::Event& event, const sf::Vector2f &positionMouse);
+    virtual void                update(sf::Time dt, CommandQueue &commands);
 
-    sf::Sprite&             getSprite() const;
-    void                    setSprite(const sf::Sprite sprite);
+    sf::Sprite&                 getSprite() const;
+    void                        setSprite(const sf::Sprite& sprite);
 
-    Animation&              getAnimation() const;
-    void                    setAnimation(Animation& animation);
+    void                        setTextureBackground(const sf::Texture& texture);
 
-    const bool&             getIsActive() const;
-    void                    setIsActive(const bool& active);
+    Animation&                  getAnimation() const;
+    void                        setAnimation(Animation& animation);
 
-    const bool&             getIsSelected() const;
-    void                    setIsSelected(const bool& selected);
+    const bool&                 getIsActive() const;
+    void                        setIsActive(const bool& active);
 
-    const Category_Window&  getCategoryWindow() const;
-    void                    setCategoryWindow(const Category_Window& category);
+    const bool&                 getIsSelected() const;
+    void                        setIsSelected(const bool& selected);
 
-    const Category_Layers&  getCategoryLayers() const;
-    void                    setCategoryLayers(const Category_Layers& category);
+    const Category_Window&      getCategoryWindow() const;
+    void                        setCategoryWindow(const Category_Window& category);
+
+    const Category_Layers&      getCategoryLayers() const;
+    void                        setCategoryLayers(const Category_Layers& category);
 
 private:
-    sf::RenderTarget        drawBoundsWindow();
+    const sf::RectangleShape    drawBoundsWindow();
 
 private:
 
-    Position                mPosition;
-    bool                    mIsActive;
-    bool                    mIsSelected;
+    Position                    mPosition;
+    bool                        mIsActive;
+    bool                        mIsSelected;
 
-    sf::Sprite              mSprite;
-    Animation*              mAnimation;
+    sf::Sprite                  mSprite;
+    Animation*                  mAnimation;
+    sf::RectangleShape          mWindows;
 
-    Category_Window         mCategoryWindows;
-    Category_Layers         mCategoryLayers;
+    sf::Sprite                  mSpriteBackGround;
+
+    Category_Window             mCategoryWindows;
+    Category_Layers             mCategoryLayers;
 
 };
 

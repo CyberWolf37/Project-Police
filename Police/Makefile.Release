@@ -79,7 +79,8 @@ SOURCES       = main.cpp \
 		SbireManager.cpp \
 		Tasks.cpp \
 		TaskManager.cpp \
-		Position.cpp 
+		Position.cpp \
+		ObjectBox.cpp 
 OBJECTS       = release/main.o \
 		release/Application.o \
 		release/GameState.o \
@@ -114,7 +115,8 @@ OBJECTS       = release/main.o \
 		release/SbireManager.o \
 		release/Tasks.o \
 		release/TaskManager.o \
-		release/Position.o
+		release/Position.o \
+		release/ObjectBox.o
 
 DIST          = Media/Textures/Title_Screen.png \
 		object_script.Police.Debug \
@@ -162,7 +164,8 @@ DIST          = Media/Textures/Title_Screen.png \
 		Tasks.hpp \
 		TaskManager.hpp \
 		Position.hpp \
-		Settings.hpp main.cpp \
+		Settings.hpp \
+		ObjectBox.hpp main.cpp \
 		Application.cpp \
 		GameState.cpp \
 		State.cpp \
@@ -196,7 +199,8 @@ DIST          = Media/Textures/Title_Screen.png \
 		SbireManager.cpp \
 		Tasks.cpp \
 		TaskManager.cpp \
-		Position.cpp
+		Position.cpp \
+		ObjectBox.cpp
 QMAKE_TARGET  = Police
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = Police.exe
@@ -216,10 +220,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) Police.zip $(SOURCES) $(DIST) Police.pro ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\spec_pre.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\qdevice.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\device_config.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\g++-base.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\angle.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\windows-vulkan.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\sanitize.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\gcc-base.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\qconfig.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3drender.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_charts.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_core.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_dbus.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_help.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_location.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_location_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_network.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_repparser.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_script.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_script_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_scxml.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_websockets.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qt_functions.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qt_config.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\win32-g++\qmake.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\exclusive_builds.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\toolchain.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\default_pre.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\win32\default_pre.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\resolve_config.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\default_post.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\build_pass.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\win32\console.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qml_debug.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\precompile_header.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\warn_on.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qt.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\resources.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\moc.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\win32\opengl.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qmake_use.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\file_copies.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\testcase_targets.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\exceptions.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\yacc.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\lex.prf Police.pro ..\..\..\Qt_Home\5.10.0\mingw53_32\lib\Qt5Gui.prl ..\..\..\Qt_Home\5.10.0\mingw53_32\lib\Qt5Core.prl    ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\data\dummy.cpp Application.hpp GameState.hpp State.hpp Stateidentifiers.hpp StateStack.hpp TitleState.hpp ResourceIdentifiers.hpp ResourceHolder.hpp Foreach.hpp Utility.hpp World.hpp MapIdentifier.hpp SceneNode.hpp Category.hpp IOFile.hpp SpriteNode.hpp Button.hpp Component.hpp Container.hpp MenuState.hpp ProgressBar.hpp LoadingState.hpp ParallelTask.hpp Build.hpp RectangleRoom.hpp Tuile.hpp TextureSpliter.hpp DataTables.hpp CommandQueue.hpp Command.hpp SettingsState.hpp Ui.hpp Animation.hpp Entity.hpp Sbires.hpp WorkerSbire.hpp SbireManager.hpp Tasks.hpp TaskManager.hpp Position.hpp Settings.hpp  main.cpp Application.cpp GameState.cpp State.cpp StateStack.cpp TitleState.cpp Utility.cpp World.cpp SceneNode.cpp IOFile.cpp SpriteNode.cpp Button.cpp Component.cpp Container.cpp MenuState.cpp ProgressBar.cpp LoadingStates.cpp ParallelTask.cpp Build.cpp RectangleRoom.cpp Tuile.cpp TextureSpliter.cpp DataTables.cpp Command.cpp CommandQueue.cpp SettingsState.cpp Ui.cpp Animation.cpp Entity.cpp Sbires.cpp WorkerSbire.cpp SbireManager.cpp Tasks.cpp TaskManager.cpp Position.cpp    
+	$(ZIP) Police.zip $(SOURCES) $(DIST) Police.pro ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\spec_pre.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\qdevice.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\device_config.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\g++-base.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\angle.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\windows-vulkan.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\sanitize.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\common\gcc-base.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\qconfig.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3drender.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_charts.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_core.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_dbus.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_help.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_location.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_location_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_network.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_repparser.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_script.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_script_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_scxml.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_websockets.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qt_functions.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qt_config.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\win32-g++\qmake.conf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\exclusive_builds.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\toolchain.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\default_pre.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\win32\default_pre.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\resolve_config.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\default_post.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\build_pass.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\win32\console.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qml_debug.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\precompile_header.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\warn_on.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qt.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\resources.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\moc.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\win32\opengl.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\qmake_use.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\file_copies.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\testcase_targets.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\exceptions.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\yacc.prf ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\lex.prf Police.pro ..\..\..\Qt_Home\5.10.0\mingw53_32\lib\Qt5Gui.prl ..\..\..\Qt_Home\5.10.0\mingw53_32\lib\Qt5Core.prl    ..\..\..\Qt_Home\5.10.0\mingw53_32\mkspecs\features\data\dummy.cpp Application.hpp GameState.hpp State.hpp Stateidentifiers.hpp StateStack.hpp TitleState.hpp ResourceIdentifiers.hpp ResourceHolder.hpp Foreach.hpp Utility.hpp World.hpp MapIdentifier.hpp SceneNode.hpp Category.hpp IOFile.hpp SpriteNode.hpp Button.hpp Component.hpp Container.hpp MenuState.hpp ProgressBar.hpp LoadingState.hpp ParallelTask.hpp Build.hpp RectangleRoom.hpp Tuile.hpp TextureSpliter.hpp DataTables.hpp CommandQueue.hpp Command.hpp SettingsState.hpp Ui.hpp Animation.hpp Entity.hpp Sbires.hpp WorkerSbire.hpp SbireManager.hpp Tasks.hpp TaskManager.hpp Position.hpp Settings.hpp ObjectBox.hpp  main.cpp Application.cpp GameState.cpp State.cpp StateStack.cpp TitleState.cpp Utility.cpp World.cpp SceneNode.cpp IOFile.cpp SpriteNode.cpp Button.cpp Component.cpp Container.cpp MenuState.cpp ProgressBar.cpp LoadingStates.cpp ParallelTask.cpp Build.cpp RectangleRoom.cpp Tuile.cpp TextureSpliter.cpp DataTables.cpp Command.cpp CommandQueue.cpp SettingsState.cpp Ui.cpp Animation.cpp Entity.cpp Sbires.cpp WorkerSbire.cpp SbireManager.cpp Tasks.cpp TaskManager.cpp Position.cpp ObjectBox.cpp    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.o release\Application.o release\GameState.o release\State.o release\StateStack.o release\TitleState.o release\Utility.o release\World.o release\SceneNode.o release\IOFile.o release\SpriteNode.o release\Button.o release\Component.o release\Container.o release\MenuState.o release\ProgressBar.o release\LoadingStates.o release\ParallelTask.o release\Build.o release\RectangleRoom.o release\Tuile.o release\TextureSpliter.o release\DataTables.o release\Command.o release\CommandQueue.o release\SettingsState.o release\Ui.o release\Animation.o release\Entity.o release\Sbires.o release\WorkerSbire.o release\SbireManager.o release\Tasks.o release\TaskManager.o release\Position.o
+	-$(DEL_FILE) release\main.o release\Application.o release\GameState.o release\State.o release\StateStack.o release\TitleState.o release\Utility.o release\World.o release\SceneNode.o release\IOFile.o release\SpriteNode.o release\Button.o release\Component.o release\Container.o release\MenuState.o release\ProgressBar.o release\LoadingStates.o release\ParallelTask.o release\Build.o release\RectangleRoom.o release\Tuile.o release\TextureSpliter.o release\DataTables.o release\Command.o release\CommandQueue.o release\SettingsState.o release\Ui.o release\Animation.o release\Entity.o release\Sbires.o release\WorkerSbire.o release\SbireManager.o release\Tasks.o release\TaskManager.o release\Position.o release\ObjectBox.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -445,6 +449,8 @@ release/Application.o: Application.cpp Application.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		TextureSpliter.hpp \
 		SpriteNode.hpp \
 		Container.hpp \
@@ -612,6 +618,8 @@ release/GameState.o: GameState.cpp GameState.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Texture.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Image.hpp \
 		TextureSpliter.hpp \
@@ -1048,6 +1056,8 @@ release/World.o: World.cpp World.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Texture.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Image.hpp \
 		TextureSpliter.hpp \
@@ -1325,6 +1335,8 @@ release/IOFile.o: IOFile.cpp IOFile.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Texture.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Image.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\IOFile.o IOFile.cpp
@@ -2195,6 +2207,8 @@ release/RectangleRoom.o: RectangleRoom.cpp RectangleRoom.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Texture.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Image.hpp
@@ -2314,7 +2328,9 @@ release/Tuile.o: Tuile.cpp Tuile.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qset.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Tuile.o Tuile.cpp
 
 release/TextureSpliter.o: TextureSpliter.cpp TextureSpliter.hpp \
@@ -2434,7 +2450,9 @@ release/TextureSpliter.o: TextureSpliter.cpp TextureSpliter.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qset.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
-		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\TextureSpliter.o TextureSpliter.cpp
 
 release/DataTables.o: DataTables.cpp DataTables.hpp \
@@ -2556,6 +2574,8 @@ release/DataTables.o: DataTables.cpp DataTables.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		RectangleRoom.hpp \
 		build.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp \
@@ -2852,6 +2872,8 @@ release/Ui.o: Ui.cpp Ui.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		SpriteNode.hpp \
 		Container.hpp \
 		Component.hpp \
@@ -3081,6 +3103,8 @@ release/Sbires.o: Sbires.cpp Sbires.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		RectangleRoom.hpp \
 		build.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp \
@@ -3209,6 +3233,8 @@ release/WorkerSbire.o: WorkerSbire.cpp WorkerSbire.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		RectangleRoom.hpp \
 		build.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp \
@@ -3337,6 +3363,8 @@ release/SbireManager.o: SbireManager.cpp SbireManager.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		RectangleRoom.hpp \
 		build.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp \
@@ -3474,6 +3502,8 @@ release/TaskManager.o: TaskManager.cpp TaskManager.hpp \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
 		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		Position.hpp \
+		Settings.hpp \
 		RectangleRoom.hpp \
 		build.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp \
@@ -3490,8 +3520,130 @@ release/Position.o: Position.cpp Position.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Transform.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Rect.hpp \
 		SFML-2.4.1\ DW2/include/SFML/Graphics/Rect.inl \
-		Settings.hpp
+		SFML-2.4.1\ DW2/include/SFML/System/Time.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Export.hpp \
+		Settings.hpp \
+		Category.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Position.o Position.cpp
+
+release/ObjectBox.o: ObjectBox.cpp ObjectBox.hpp \
+		Category.hpp \
+		Foreach.hpp \
+		Position.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Vector2.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Vector2.inl \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Transformable.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Export.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Config.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Transform.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Rect.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Rect.inl \
+		SFML-2.4.1\ DW2/include/SFML/System/Time.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Export.hpp \
+		Settings.hpp \
+		Animation.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Sprite.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Drawable.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderStates.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/BlendMode.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Vertex.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Color.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Texture.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Image.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/GlResource.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/Export.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/NonCopyable.hpp \
+		Utility.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/Keyboard.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/RectangleShape.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/Shape.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/VertexArray.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/PrimitiveType.hpp \
+		Utility.inl \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/QDebug \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qdebug.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qalgorithms.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qglobal.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qconfig.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qtcore-config.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsystemdetection.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qprocessordetection.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcompilerdetection.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qtypeinfo.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsysinfo.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qlogging.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qflags.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qatomic.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qbasicatomic.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qgenericatomic.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qatomic_cxx11.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qatomic_msvc.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qglobalstatic.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qmutex.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qnumeric.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qversiontagging.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qhash.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qchar.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qiterator.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qlist.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qrefcount.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qarraydata.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qhashfunctions.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstring.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qbytearray.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qnamespace.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringliteral.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringalgorithms.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringview.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringbuilder.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qpair.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qbytearraylist.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringlist.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qregexp.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qstringmatcher.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qmap.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qtextstream.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qiodevice.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qobject.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qobjectdefs.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcoreevent.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qscopedpointer.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qmetatype.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qvarlengtharray.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontainerfwd.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qobject_impl.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qlocale.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qvariant.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qshareddata.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qvector.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qpoint.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qset.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
+		../../../Qt_Home/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		SFML-2.4.1\ DW2/include/SFML/Window/Event.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/Joystick.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/String.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Utf.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Utf.inl \
+		SFML-2.4.1\ DW2/include/SFML/System/String.inl \
+		SFML-2.4.1\ DW2/include/SFML/Window/Mouse.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/Sensor.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Vector3.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Vector3.inl \
+		SFML-2.4.1\ DW2/include/SFML/Window/Window.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/ContextSettings.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/VideoMode.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/WindowHandle.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Window/WindowStyle.hpp \
+		SFML-2.4.1\ DW2/include/SFML/System/Clock.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/View.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTexture.hpp \
+		SFML-2.4.1\ DW2/include/SFML/Graphics/RenderTarget.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\ObjectBox.o ObjectBox.cpp
 
 ####### Install
 
