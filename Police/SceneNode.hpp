@@ -4,15 +4,16 @@
 // GAME Library
 #include "Category.hpp"
 #include "Foreach.hpp"
+#include "Command.hpp"
 
 // SFML Library
 #include "SFML/System/NonCopyable.hpp"
 #include "SFML/System/Time.hpp"
-#include "SFML/Graphics/Transformable.hpp"
-#include "SFML/Graphics/Drawable.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Window.hpp"
 #include "SFML/Graphics/View.hpp"
+#include "SFML/Graphics/RenderStates.hpp"
+#include "SFML/Graphics/RenderTarget.hpp"
 
 
 // STD library
@@ -20,71 +21,48 @@
 #include <set>
 #include <memory>
 #include <utility>
+#include <algorithm>
+#include <cassert>
+#include <cmath>
+
+// Debug
+#include <QDebug>
 
 
 struct Command;
 struct CommandQueue;
 
-class SceneNode : public sf::Transformable, public sf::Drawable, private sf::NonCopyable
+template <typename Object>
+class SceneNode : private sf::NonCopyable
 {
 
 public:
-        typedef std::shared_ptr<SceneNode> Ptr;
-        typedef std::pair<SceneNode*, SceneNode*> Pair;
+        typedef std::unique_ptr<Object> Ptr;
 
 public:
-        explicit                SceneNode(Category::Layers category = Category::None);
+        explicit                SceneNode(Category_Layers::Layers category = Category_Layers::SceneNone);
         void                    attachChild(Ptr child);
         Ptr                     detachChild(const SceneNode& node);
 
-        virtual void            handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
-        virtual void            handleChildrenEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
-
         void                    update(sf::Time dt, CommandQueue &commands);
+        void                    updateCurrent(sf::Time dt, CommandQueue &commands);
+        void                    updateChildren(sf::Time dt, CommandQueue &commands);
         sf::Vector2f            getWorldPosition() const;
         sf::Transform           getWorldTransform() const;
 
-        //void                  onCommand(const Command& command, sf::Time dt);
-        virtual unsigned int    getCategory() const;
-        virtual void            setCategory(Category::Layers category);
-
-        void					checkSceneCollision(SceneNode& sceneGraph, std::set<Pair>& collisionPairs);
-        void					checkNodeCollision(SceneNode& node, std::set<Pair>& collisionPairs);
+        void                    onCommand(const Command& command, sf::Time dt);
         void					removeWrecks();
-        virtual sf::IntRect     getBoundingRect() const;
-        virtual bool			isMarkedForRemoval() const;
-        virtual bool			isDestroyed() const;
-
-        void                    checkTuileChildInCurrentView(const sf::View &view);
-        void                    checkSceneNodePointer(const sf::Vector2i& position);
-
-        SceneNode&              getCurrentSceneNode(const sf::Vector2i& position);
-
-        virtual bool            isActive() const;
-        virtual void            setActivate(const bool& r);
-
-        virtual bool            isSelected() const;
-        virtual void            setSelected(const bool& r);
+        bool                    collision(const SceneNode& lhs, const SceneNode& rhs);
 
 public:
-        virtual void            updateCurrent(sf::Time dt, CommandQueue& commands);
-        void                    updatechildren(sf::Time dt, CommandQueue &commands);
-
-        virtual void            draw(sf::RenderTarget& target, sf::RenderStates states) const;
-        virtual void            drawCurrent (sf::RenderTarget& target, sf::RenderStates states) const;
+        void                    draw(sf::RenderTarget& target, sf::RenderStates states) const;
         void                    drawChildren(sf::RenderTarget& target, sf::RenderStates states) const;
-        void                    drawBoundingRect(sf::RenderTarget& target, sf::RenderStates states) const;
+        void                    handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
+        void                    handleChildrenEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
 
 private:
         std::vector<Ptr>        mChildren;
-        SceneNode*              mParent;
-        Category::Layers        mDefaultCategory;
-
-        bool                    mIsActive;
-        bool                    mIsSelected;
+        Category_Layers::Layers mDefaultCategory;
 };
-
-bool	collision(const SceneNode& lhs, const SceneNode& rhs);
-float	distance(const SceneNode& lhs, const SceneNode& rhs);
 
 #endif // SCENENODE_H

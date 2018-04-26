@@ -46,7 +46,8 @@ SOURCES += \
     Tasks.cpp \
     TaskManager.cpp \
     Position.cpp \
-    ObjectBox.cpp
+    ObjectBox.cpp \
+    SceneManager.cpp
 
 HEADERS += \
     Application.hpp \
@@ -90,7 +91,8 @@ HEADERS += \
     TaskManager.hpp \
     Position.hpp \
     Settings.hpp \
-    ObjectBox.hpp
+    ObjectBox.hpp \
+    SceneManager.hpp
 
 DISTFILES += \
     Media/Textures/Title_Screen.png \

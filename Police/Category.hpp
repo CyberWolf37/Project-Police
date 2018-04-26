@@ -6,11 +6,11 @@ namespace Category_Layers
 {
     enum Layers
     {
-        None                = 0,
-        SceneGroundLayer    = 1 << 0,
-        SceneBuildingLayer  = 1 << 1,
-        SceneSbiresLayer    = 1 << 2,
-        //SceneObjectLayer    = 1 << 2,
+        SceneGroundLayer,
+        SceneBuildingLayer,
+        SceneObjectLayer,
+        SceneSbiresLayer,
+        SceneNone,
     };
 }
 
@@ -18,8 +18,8 @@ namespace Category_Build
 {
     enum Type
     {
-        None        = 0,
-        Room        = 1,
+        None,
+        Room,
 
     };
 }
@@ -33,16 +33,6 @@ namespace Category_Window
         None,
     };
 }
-
-/*namespace TuileState
-{
-    enum ID
-    {
-        None,
-        GroundTuile,
-        ObjectTuile,
-    };
-}*/
 
 namespace Category_Sbires
 {
