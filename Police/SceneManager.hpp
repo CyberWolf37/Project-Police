@@ -5,6 +5,7 @@
 #include "SceneNode.hpp"
 #include "CommandQueue.hpp"
 #include "Category.hpp"
+#include "Foreach.hpp"
 
 // SFML Library
 #include "SFML/System/Time.hpp"
@@ -15,25 +16,32 @@
 #include <map>
 #include <memory>
 
+class ObjectBox;
+class Sbires;
+
 
 class SceneManager
 {
 public:
-    typedef std::map<SceneNode, Category_Layers::SceneNone> MapScene;
+    typedef std::map<Category_Layers::Layers, SceneNode>    MapScene;
+    typedef std::unique_ptr<SceneNode>                PtrSceneNode;
 
 public:
     SceneManager();
 
-    void                    update(sf::Time dt, CommandQueue &commands);
-    void                    draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    void                    handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
+    void                        update(sf::Time dt, CommandQueue &commands);
+    void                        draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    void                        handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
+
+    PtrSceneNode                getSceneNode(Category_Layers::Layers id);
+    void                        insert(SceneNode item, Category_Layers::Layers category);
 
 private:
-    void                    loadScene();
-    bool                    collision(const SceneNode& lhs, const SceneNode& rhs);
+    void                        loadScene();
+    bool                        collision(const SceneNode& lhs, const SceneNode& rhs);
 
 private:
-    MapScene                mSceneStack;
+    MapScene                    mSceneStack;
 };
 
 #endif // SCENEMANAGER_HPP

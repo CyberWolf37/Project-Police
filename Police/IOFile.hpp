@@ -1,11 +1,14 @@
 #ifndef IOFILE_H
 #define IOFILE_H
 
+// Settings
+#include <Settings.hpp>
+
 // Category
 #include "Category.hpp"
 
 // Core Library
-#include "Tuile.hpp"
+#include "ObjectBox.hpp"
 #include "ResourceHolder.hpp"
 
 // Sfml library
@@ -31,19 +34,19 @@ class IOFile
 
 // Structure of IOFile
 public:
-    typedef std::map<Category::Layers,std::vector<std::unique_ptr<Tuile>>> MapTuile;
+    typedef std::map<Category_Layers::Layers,std::vector<std::unique_ptr<ObjectBox>>> MapTuile;
 
     struct Layout
     {
-        std::string                 nameLayout;
-        std::vector<unsigned int>   layerTile;
-        Category::Layers            category;
-        MapTuile                    mapTuile;
+        std::string                             nameLayout;
+        std::vector<unsigned int>               layerTile;
+        Category_Layers::Layers                 category;
+        MapTuile                                mapTuile;
     };
     struct Balise
     {
-        std::string         nameBalise;
-        std::string         nameParameter;
+        std::string                             nameBalise;
+        std::string                             nameParameter;
     };
 
     struct File
@@ -69,7 +72,7 @@ public:
 
     File*           getFile();
 
-    MapTuile&       splitTexture(Category::Layers categoryLayer, TuileState::ID tuileCategory, sf::Texture& texture, sf::Vector2u& pix);
+    MapTuile&       splitTexture(Category_Layers::Layers categoryLayer, sf::Texture& texture, sf::Vector2u& pix);
 
 
 // Private function read and wright

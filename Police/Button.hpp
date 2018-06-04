@@ -1,7 +1,7 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include "Component.hpp"
+#include <ObjectBox.hpp>
 #include "ResourceIdentifiers.hpp"
 #include "ResourceHolder.hpp"
 
@@ -14,13 +14,11 @@
 #include <memory>
 #include <functional>
 
-namespace GUI
-{
 
-class Button : public Component
+class Button : public ObjectBox
 {
 public:
-    typedef std::shared_ptr<Button>             Ptr;
+    typedef std::unique_ptr<Button>             Ptr;
     typedef std::function<void()>               Callback;
 
     enum Type
@@ -39,7 +37,6 @@ public:
     void                    setText(const std::string& text);
     void                    setToggle(bool flag);
 
-    virtual bool            isSelectable() const;
     virtual void            select();
     virtual void            deselect();
 
@@ -55,8 +52,6 @@ private:
     virtual void            draw(sf::RenderTarget& target, sf::RenderStates states) const;
             void            changeTexture(Type buttonType);
 
-
-
 private:
     Callback                mCallback;
     sf::Sprite              mSprite;
@@ -64,7 +59,5 @@ private:
     sf::Text                mText;
     bool                    mIsToggle;
 };
-
-}   // End of namespace
 
 #endif // BUTTON_H

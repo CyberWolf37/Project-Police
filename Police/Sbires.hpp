@@ -2,7 +2,7 @@
 #define SBIRES_HPP
 
 // CORE Library
-#include "SceneNode.hpp"
+#include "ObjectBox.hpp"
 #include "Animation.hpp"
 #include "Category.hpp"
 #include "DataTables.hpp"
@@ -12,7 +12,7 @@
 #include <iostream>
 
 
-class Sbires : public SceneNode
+class Sbires : public ObjectBox
 {
 public:
     explicit                Sbires(const sf::Texture& texture, Category_Sbires::ID category = Category_Sbires::NoneSbire);
@@ -38,18 +38,12 @@ public:
 
     virtual void            printData();
 
-    virtual void            updateCurrent(sf::Time dt, CommandQueue& commands);
+    virtual void            update(sf::Time dt, CommandQueue& commands);
 
     virtual void            draw(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual bool            isDestroyed() const;
 
-protected:
-
-    virtual void            setCurrentAnimation(Animation& animation);
-    virtual Animation&      getCurrentAnimation();
-
 private:
-
     std::shared_ptr<Tasks>              mTask;
     std::vector<SbireData>              mData;
     Animation                           mCurrentAnimation;

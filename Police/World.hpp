@@ -1,20 +1,26 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+// Settings
+#include <Settings.hpp>
+
 // ALL about resources
-#include "ResourceHolder.hpp"
-#include "ResourceIdentifiers.hpp"
-#include "IOFile.hpp"
-#include "TextureSpliter.hpp"
-#include "SceneNode.hpp"
-#include "SpriteNode.hpp"
-#include "Utility.hpp"
-#include "Container.hpp"
-#include "Button.hpp"
-#include "Tuile.hpp"
-#include "RectangleRoom.hpp"
-#include "Ui.hpp"
-#include "CommandQueue.hpp"
+#include <ResourceHolder.hpp>
+#include <ResourceIdentifiers.hpp>
+#include <IOFile.hpp>
+#include <TextureSpliter.hpp>
+#include <SceneManager.hpp>
+#include <SpriteNode.hpp>
+#include <Utility.hpp>
+#include <Container.hpp>
+#include <Button.hpp>
+#include <ObjectBox.hpp>
+#include <RectangleRoom.hpp>
+#include <Ui.hpp>
+#include <CommandQueue.hpp>
+#include <Category.hpp>
+#include <foreach.hpp>
+#include <Position.hpp>
 
 // System SFML
 #include <SFML/System/Time.hpp>
@@ -29,6 +35,9 @@
 #include <queue>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <cmath>
+#include <limits>
 
 // Configuration
 #define PIX_WORLD 16
@@ -64,45 +73,28 @@ private:
 
         const sf::Vector2i                  getPositionMouse();
 
-        void                                buildScene();
         void                                checkView();
 
         ArrayVector2f                       splitWorldBounds();
         void                                buildFile();
 
-// Private enum to manage my layouts
-private:
-        enum Layer
-        {
-            Background,
-            LayerCount,
-        };
-
 // Variables I need in my object
 private:
         sf::RenderWindow&                   mTarget;
+        Ui                                  mUi;
+
         sf::RenderTexture                   mSceneTexture;
-        sf::RenderTexture                   mUiTexture;
         sf::View                            mWorldView;
-        sf::View                            mUiView;
         TextureHolder                       mTextures;
         FontHolder&                         mFonts;
         FileHolder                          mFile;
         TextureSplite                       mTexturesSplite;
+
         sf::IntRect                         mWorldBounds;
-        ArrayVector2f                       mGridWorld;
-        sf::Vector2f                        mSpawnPosition;
+        Position                            mSpawnPosition;
         CommandQueue                        mComandeQueue;
 
-        SceneNode                           mSceneGraph;
-        std::array<SceneNode*, LayerCount>  mSceneLayers;
-
-        bool                                mBuildState;
-        BUILD_OBJECT::RectangleRoom         mBuildRoom;
-
-        Ui                                  mUi;
-
-
+        SceneManager                        mSceneGraph;
 };
 
 #endif // WORLD_H

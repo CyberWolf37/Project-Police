@@ -50,8 +50,6 @@ public:
         sf::Vector2f            getWorldPosition() const;
         sf::Transform           getWorldTransform() const;
 
-        void                    onCommand(const Command& command, sf::Time dt);
-        void					removeWrecks();
         bool                    collision(const SceneNode& lhs, const SceneNode& rhs);
 
 public:

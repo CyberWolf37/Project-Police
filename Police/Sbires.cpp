@@ -1,25 +1,26 @@
 #include "Sbires.hpp"
 
 Sbires::Sbires(const sf::Texture& texture, Category_Sbires::ID category)
-    :mData(initializeSbireData(texture))
+    :ObjectBox(Category_Layers::SceneSbiresLayer)
+    ,mData(initializeSbireData(texture))
     ,mCurrentAnimation(mData[category].moveLeft)
     ,mInMovment(false)
     ,mCategory(category)
     ,mIsDestroyed(false)
     ,mTask()
 {
-    getCurrentAnimation().setRepeating(true);
+    mCurrentAnimation->setRepeating(true);
 }
 
 Sbires::Sbires()
-    :mData()
-    ,mCurrentAnimation()
+    :ObjectBox(Category_Layers::SceneSbiresLayer)
+    ,mData()
     ,mInMovment(false)
     ,mCategory(Category_Sbires::ID::NoneSbire)
     ,mIsDestroyed(false)
     ,mTask()
 {
-    getCurrentAnimation().setRepeating(true);
+    mCurrentAnimation->setRepeating(true);
 }
 
 void Sbires::setLifePoints(int &lifeP)
@@ -91,10 +92,10 @@ void Sbires::printData()
                  "Attack points : " << getAttackPoints() << std::endl;
 }
 
-void Sbires::updateCurrent(sf::Time dt, CommandQueue &commands)
+void Sbires::update(sf::Time dt, CommandQueue &commands)
 {
-    mCurrentAnimation.setPosition(this->getPosition());
-    mCurrentAnimation.update(dt);
+    mCurrentAnimation->setPosition(this->getPosition());
+    mCurrentAnimation->update(dt);
 
     if(isSelected())
     {
@@ -104,22 +105,16 @@ void Sbires::updateCurrent(sf::Time dt, CommandQueue &commands)
 
 void Sbires::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    mCurrentAnimation.draw(target,states);
+    // Draw the bounds in object box
+    ObjectBox::draw(target,states);
+
+    // Draw the animation
+    mCurrentAnimation->draw(target,states);
 }
 
 bool Sbires::isDestroyed() const
 {
     return mIsDestroyed;
-}
-
-void Sbires::setCurrentAnimation(Animation &animation)
-{
-    mCurrentAnimation = animation;
-}
-
-Animation &Sbires::getCurrentAnimation()
-{
-    return mCurrentAnimation;
 }
 
 

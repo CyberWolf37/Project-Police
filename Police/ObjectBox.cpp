@@ -4,62 +4,41 @@ ObjectBox::ObjectBox(Category_Layers::Layers layerCategory)
     :mPosition(*this)
     ,mIsActive(false)
     ,mIsSelected(false)
-    ,mSprite()
-    ,mAnimation(nullptr)
-    ,mWindows()
-    ,mSpriteBackGround()
+    ,mBounds(0.f,0.f,PIXEL,PIXEL)
+    ,mFrames()
     ,mCategoryLayers(layerCategory)
     ,mCategoryWindows(Category_Window::Type::None)
 {
     // Settings
     mPosition.setPositionTuile(sf::Vector2i(0,0));
-
-    // Settings position
-    mSpriteBackGround.setTextureRect(sf::IntRect(mPosition.getPositionRaw().x,mPosition.getPositionRaw().y,PIXEL,PIXEL));
-    centerOrigin(mSpriteBackGround);
+    centerOrigin(mFrames);
 
 }
 
-ObjectBox::ObjectBox(const sf::Texture &texture, Category_Layers::Layers layerCategory)
+ObjectBox::ObjectBox(const Position &position, Category_Layers::Layers layerCategory)
     :mPosition(position)
     ,mIsActive(false)
     ,mIsSelected(false)
-    ,mSprite(texture)
-    ,mAnimation(nullptr)
-    ,mWindows()
-    ,mSpriteBackGround()
+    ,mBounds(0.f,0.f,PIXEL,PIXEL)
+    ,mFrames()
     ,mCategoryLayers(layerCategory)
     ,mCategoryWindows(Category_Window::Type::None)
 {
     // Settings
-    mPosition.setPositionTuile(sf::Vector2i(0,0));
-
-    // Settings position
-    mSpriteBackGround.setTextureRect(sf::IntRect(mPosition.getPositionRaw().x,mPosition.getPositionRaw().y,PIXEL,PIXEL));
-    centerOrigin(mSpriteBackGround);
+    centerOrigin(mFrames);
 }
 
-ObjectBox::ObjectBox(Position &position, const sf::Texture &texture, Category_Layers::Layers layerCategory)
-    :mPosition(position)
-    ,mIsActive(false)
-    ,mIsSelected(false)
-    ,mSprite(texture)
-    ,mAnimation(nullptr)
-    ,mWindows()
-    ,mSpriteBackGround()
-    ,mCategoryLayers(layerCategory)
-    ,mCategoryWindows(Category_Window::Type::None)
+ObjectBox::ObjectBox(const ObjectBox &object)
+    :mPosition(object.getPosition())
+    ,mIsActive(object.getIsActive())
+    ,mIsSelected(object.getIsSelected())
+    ,mBounds(object.getBounds())
+    ,mFrames()
+    ,mCategoryLayers(object.getCategoryLayers())
+    ,mCategoryWindows(object.getCategoryWindow())
 {
     // Settings
-    mPosition.setPositionTuile(sf::Vector2i(0,0));
-
-    // Settings position
-    mSpriteBackGround.setTextureRect(sf::IntRect(mPosition.getPositionRaw().x,mPosition.getPositionRaw().y,PIXEL,PIXEL));
-    centerOrigin(mSpriteBackGround);
-
-    // Settings Sprite
-    centerOrigin(mSprite);
-    mSprite.setPosition(mSpriteBackGround.getOrigin());
+    centerOrigin(mFrames);
 }
 
 void ObjectBox::draw(sf::RenderTarget &target, sf::RenderStates states) const
@@ -70,20 +49,11 @@ void ObjectBox::draw(sf::RenderTarget &target, sf::RenderStates states) const
     {
         target.draw(drawBoundsWindow(),states);
     }
-
-    if(mAnimation != nullptr)
-    {
-        mAnimation->draw(target,states);
-    }
-    else
-    {
-        target.draw(mSprite,States);
-    }
 }
 
 void ObjectBox::handleEvent(const sf::Event &event, const sf::Vector2f &positionMouse)
 {
-    if(mSpriteBackGround.getLocalBounds().contains(positionMouse) && mIsActive)
+    if(mBounds.contains(positionMouse) && mIsActive)
     {
         mIsSelected = true;
         mCategoryWindows = Category_Window::Type::Selected;
@@ -101,36 +71,22 @@ void ObjectBox::handleEvent(const sf::Event &event, const sf::Vector2f &position
 
 void ObjectBox::update(sf::Time dt, CommandQueue &commands)
 {
-    if(mAnimation != nullptr)
-    {
-        mAnimation->update(dt);
-    }
-
+    // Do nothing by default
 }
 
-sf::Sprite &ObjectBox::getSprite() const
+const sf::FloatRect &ObjectBox::getBounds() const
 {
-    return mSprite;
+    return mBounds;
 }
 
-void ObjectBox::setSprite(const sf::Sprite &sprite)
+void ObjectBox::setBounds(const sf::FloatRect &bounds)
 {
-    mSprite = sprite;
+    mBounds = bounds;
 }
 
-void ObjectBox::setTextureBackground(const sf::Texture &texture)
+bool Button::isSelectable() const
 {
-    mSpriteBackGround.setTexture(texture);
-}
-
-Animation &ObjectBox::getAnimation() const
-{
-    return mAnimation;
-}
-
-void ObjectBox::setAnimation(Animation &animation)
-{
-    mAnimation = animation;
+    return true;
 }
 
 const bool &ObjectBox::getIsActive() const
@@ -153,46 +109,44 @@ void ObjectBox::setIsSelected(const bool &selected)
     mIsSelected = selected;
 }
 
-const Category_Window &ObjectBox::getCategoryWindow() const
+const Category_Window::Type &ObjectBox::getCategoryWindow() const
 {
     return mCategoryWindows;
 }
 
-void ObjectBox::setCategoryWindow(const Category_Window &category)
+void ObjectBox::setCategoryWindow(Category_Window::Type &category)
 {
     mCategoryWindows = category;
 }
 
-const Category_Layers &ObjectBox::getCategoryLayers() const
+const Category_Layers::Layers &ObjectBox::getCategoryLayers() const
 {
     return mCategoryLayers;
 }
 
-void ObjectBox::setCategoryLayers(const Category_Layers &category)
+void ObjectBox::setCategoryLayers(const Category_Layers::Layers &category)
 {
     mCategoryLayers = category;
 }
 
 const sf::RectangleShape ObjectBox::drawBoundsWindow()
 {
-    sf::FloatRect bounds(mSpriteBackGround.getLocalBounds());
-    texture.create(bounds.width,bounds.height);
-
-    mWindows.setSize(sf::Vector2f(bounds.width,bounds.height));
-    mWindows.setOutlineThickness(-4.f);
+    mFrames.setPosition(mPosition.getPositionRaw());
+    mFrames.setSize(mBounds);
+    mFrames.setOutlineThickness(-4.f);
 
     if(mCategoryWindows == Category_Window::Type::Selected)
     {
-        mWindows.setOutlineColor(sf::Color::Cyan);
+        mFrames.setOutlineColor(sf::Color::Cyan);
     }
     else if(mCategoryWindows == Category_Window::Type::Activate)
     {
-        mWindows.setOutlineColor(sf::Color::Green);
+        mFrames.setOutlineColor(sf::Color::Green);
     }
     else if(mCategoryWindows == Category_Window::Type::None)
     {
-        mWindows.setOutlineColor(sf::Color::Transparent);
+        mFrames.setOutlineColor(sf::Color::Transparent);
     }
 
-    return mWindows;
+    return mFrames;
 }

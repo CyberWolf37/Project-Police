@@ -381,7 +381,7 @@ IOFile::File* IOFile::getFile()
 }
 
 //Get the tuile Map
-IOFile::MapTuile& IOFile::splitTexture(Category::Layers categoryLayer, TuileState::ID tuileCategory, sf::Texture& texture, sf::Vector2u& pix)
+IOFile::MapTuile& IOFile::splitTexture(Category_Layers::Layers categoryLayer, sf::Texture& texture, sf::Vector2u& pix)
 {
     // Get world number of tile
     size_t countX = texture.getSize().x / pix.x;
@@ -390,8 +390,8 @@ IOFile::MapTuile& IOFile::splitTexture(Category::Layers categoryLayer, TuileStat
     // Counter to split tile
     unsigned int counter = 0;
     MapTuile mapTuile;
-    std::vector<std::unique_ptr<Tuile>> vector;     // Vector for texture split
-    std::vector<std::unique_ptr<Tuile>> vector2;    // Vector for Maptuile
+    std::vector<std::unique_ptr<ObjectBox>> vector;     // Vector for texture split
+    std::vector<std::unique_ptr<ObjectBox>> vector2;    // Vector for Maptuile
 
     // Index
     sf::IntRect index(0,0,pix.x,pix.y);
@@ -406,26 +406,26 @@ IOFile::MapTuile& IOFile::splitTexture(Category::Layers categoryLayer, TuileStat
             {
                 index.left = 0;
 
-                // Add in Tuile
-                std::shared_ptr<sf::Sprite> sprite(new sf::Sprite(texture,index));
-                sprite->setPosition(index.left,index.top);
-                std::unique_ptr<Tuile> tuile(new Tuile(std::move(sprite), categoryLayer, tuileCategory));
+                // Add in Box
+                std::unique_ptr<ObjectBox> object(new ObjectBox(categoryLayer));
+                object->setSprite(sf::Sprite(texture,index));
+                object->setPosition(index.left,index.top);
 
                 // Insert in vector in a map
-                vector.push_back(std::move(tuile));
+                vector.push_back(std::move(object));
             }
             else
             {
                 // On ajoute pix sur X
                 index.left += pix.x;
 
-                // Add in sprite
-                std::shared_ptr<sf::Sprite> sprite(new sf::Sprite(texture,index));
-                sprite->setPosition(index.left,index.top);
-                std::unique_ptr<Tuile> tuile(new Tuile(std::move(sprite), categoryLayer, tuileCategory));
+                // Add in Box
+                std::unique_ptr<ObjectBox> object(new ObjectBox(categoryLayer));
+                object->setSprite(sf::Sprite(texture,index));
+                object->setPosition(index.left,index.top);
 
                 // Insert in vector
-                vector.push_back(std::move(tuile));
+                vector.push_back(std::move(object));
             }
         }
 
@@ -433,11 +433,11 @@ IOFile::MapTuile& IOFile::splitTexture(Category::Layers categoryLayer, TuileStat
         index.top += pix.y;
     }
 
-    // Set the file with the tuile i use
+    // Set the file with the box i use
     for(size_t i = 0; i < mFile->Layouts[0]->layerTile.size() ; i++)
     {
-        std::unique_ptr<Tuile> tuile(vector[mFile->Layouts[0]->layerTile[i]].get());
-        vector2.push_back(std::move(tuile));
+        std::unique_ptr<ObjectBox> object(vector[mFile->Layouts[0]->layerTile[i]].get());
+        vector2.push_back(std::move(object));
     }
 
     mapTuile[categoryLayer] = std::move(vector2);

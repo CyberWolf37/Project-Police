@@ -15,14 +15,14 @@
 #include "SFML/Graphics/RenderTexture.hpp"
 
 // CORE include
-#include "Component.hpp"
+#include "ObjectBox.hpp"
 #include "ResourceIdentifiers.hpp"
 #include "ResourceHolder.hpp"
 
 namespace GUI
 {
 
-class ProgressBar : public Component
+class ProgressBar : public ObjectBox
 {
 
 public:

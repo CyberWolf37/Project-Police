@@ -1,7 +1,7 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 
-#include "Component.hpp"
+#include "ObjectBox.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
@@ -11,7 +11,7 @@
 namespace GUI
 {
 
-class Container : public Component
+class Container : public ObjectBox
 
 {
 public:
@@ -20,7 +20,7 @@ public:
 public:
     Container(sf::Window &window);
 
-    void                            pack(Component::Ptr component);
+    void                            pack(ObjectBox::Ptr object);
 
     virtual bool                    isSelectable() const;
     virtual void                    handleEvent(const sf::Event &event, const sf::Vector2i& positionMouse);
@@ -39,7 +39,7 @@ private:
     bool                            checkColisionEvent(sf::Vector2i &position);
 
 private:
-    std::vector<Component::Ptr>     mChildren;
+    std::vector<ObjectBox::Ptr>     mChildren;
     int                             mSelectedChild;
     const sf::Window&               mWindow;
 };

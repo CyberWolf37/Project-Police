@@ -27,7 +27,6 @@ INPUT(
 ./debug\SettingsState.o
 ./debug\Ui.o
 ./debug\Animation.o
-./debug\Entity.o
 ./debug\Sbires.o
 ./debug\WorkerSbire.o
 ./debug\SbireManager.o
@@ -35,4 +34,5 @@ INPUT(
 ./debug\TaskManager.o
 ./debug\Position.o
 ./debug\ObjectBox.o
+./debug\SceneManager.o
 );

@@ -2,7 +2,7 @@
 #define BUILD_H
 
 // Core library
-#include "SceneNode.hpp"
+#include <ObjectBox.hpp>
 #include "Category.hpp"
 #include "ResourceHolder.hpp"
 
@@ -14,7 +14,7 @@
 
 namespace BUILD_OBJECT
 {
-class Build : public SceneNode
+class Build : public ObjectBox
 {
 public:
 

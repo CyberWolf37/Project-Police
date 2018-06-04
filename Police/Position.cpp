@@ -35,6 +35,17 @@ Position::Position(sf::Transformable &object)
 {
 }
 
+Position::Position(float &x,float &y)
+    :mObject(nullptr)
+    ,mPositionRaw(x,y)
+    ,mIsMoving(false)
+    ,mTimeMoving(sf::Time::Zero)
+    ,mElapsedTime(sf::Time::Zero)
+    ,mPositionInitial()
+    ,mCurrentDirection(Category_Direction::ID::None)
+{
+}
+
 void Position::setPositionRaw(const sf::Vector2f &positionSend)
 {
     if(mObject != nullptr)
@@ -150,15 +161,14 @@ void Position::afficher(std::ostream &flux) const
          << " Position Y : " << getPositionRaw().y;
 }
 
-std::ostream &Position::operator<<(std::ostream &flux)
+void &Position::operator<<(std::ostream &flux)
 {
     this->afficher(flux);
 }
 
-Position &Position::operator=(Position &left, Position &right)
+void &Position::operator=(Position &right)
 {
-    left.setPositionRaw(right.getPositionRaw());
-    return left;
+    setPositionRaw(right.getPositionRaw());
 }
 
 const sf::Vector2i Position::calculePositionTuile(const sf::Vector2f& positionRaw)

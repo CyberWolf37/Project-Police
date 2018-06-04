@@ -39,7 +39,6 @@ SOURCES += \
     SettingsState.cpp \
     Ui.cpp \
     Animation.cpp \
-    Entity.cpp \
     Sbires.cpp \
     WorkerSbire.cpp \
     SbireManager.cpp \
@@ -83,7 +82,6 @@ HEADERS += \
     SettingsState.hpp \
     Ui.hpp \
     Animation.hpp \
-    Entity.hpp \
     Sbires.hpp \
     WorkerSbire.hpp \
     SbireManager.hpp \

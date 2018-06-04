@@ -8,6 +8,7 @@
 #include "Settings.hpp"
 #include "Animation.hpp"
 #include "Utility.hpp"
+#include "CommandQueue.hpp"
 
 // SFML Library
 #include "SFML/System/NonCopyable.hpp"
@@ -35,51 +36,44 @@ public:
     typedef std::unique_ptr<ObjectBox> Ptr;
 
 public:
-    ObjectBox(Category_Layers::Layers layerCategory = Category_Layers::None);
-    ObjectBox(const sf::Texture& texture,Category_Layers::Layers layerCategory = Category_Layers::None);
-    ObjectBox(Position& position,const sf::Texture &texture, Category_Layers::Layers layerCategory = Category_Layers::None);
+    ObjectBox(Category_Layers::Layers layerCategory = Category_Layers::Layers::SceneNone);
+    ObjectBox(const Position& position,Category_Layers::Layers layerCategory = Category_Layers::Layers::SceneNone);
+    ObjectBox(const ObjectBox& object);
 
-    virtual void                draw(sf::RenderTarget& target, sf::RenderStates states) const;
-    virtual void                handleEvent(const sf::Event& event, const sf::Vector2f &positionMouse);
-    virtual void                update(sf::Time dt, CommandQueue &commands);
+    virtual void                    draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void                    handleEvent(const sf::Event& event, const sf::Vector2f &positionMouse);
+    virtual void                    update(sf::Time dt, CommandQueue &commands);
 
-    sf::Sprite&                 getSprite() const;
-    void                        setSprite(const sf::Sprite& sprite);
+    const sf::FloatRect&            getBounds() const;
+    void                            setBounds(const sf::FloatRect& bounds);
 
-    void                        setTextureBackground(const sf::Texture& texture);
+    virtual bool                    isSelectable() const;
 
-    Animation&                  getAnimation() const;
-    void                        setAnimation(Animation& animation);
+    const bool&                     getIsActive() const;
+    void                            setIsActive(const bool& active);
 
-    const bool&                 getIsActive() const;
-    void                        setIsActive(const bool& active);
+    const bool&                     getIsSelected() const;
+    void                            setIsSelected(const bool& selected);
 
-    const bool&                 getIsSelected() const;
-    void                        setIsSelected(const bool& selected);
+    const Category_Window::Type&    getCategoryWindow() const;
+    void                            setCategoryWindow(const Category_Window::Type& category);
 
-    const Category_Window&      getCategoryWindow() const;
-    void                        setCategoryWindow(const Category_Window& category);
-
-    const Category_Layers&      getCategoryLayers() const;
-    void                        setCategoryLayers(const Category_Layers& category);
+    const Category_Layers::Layers&  getCategoryLayers() const;
+    void                            setCategoryLayers(const Category_Layers::Layers& category);
 
 private:
     const sf::RectangleShape    drawBoundsWindow();
 
-private:
-
+protected:
     Position                    mPosition;
     bool                        mIsActive;
     bool                        mIsSelected;
+    sf::FloatRect               mBounds;
 
-    sf::Sprite                  mSprite;
-    Animation*                  mAnimation;
-    sf::RectangleShape          mWindows;
+    sf::RectangleShape          mFrames;
 
-    sf::Sprite                  mSpriteBackGround;
-
-    Category_Window             mCategoryWindows;
-    Category_Layers             mCategoryLayers;
+    Category_Window::Type       mCategoryWindows;
+    Category_Layers::Layers     mCategoryLayers;
 
 };
 

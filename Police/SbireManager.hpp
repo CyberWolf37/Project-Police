@@ -33,7 +33,7 @@ public:
     sf::Texture&            getTexture();
 
     SbireStack&             getSbireStack();
-    SbirePtr&               getSbire();
+    SbirePtr&               getSbireActive();
 
 private:
     SbireStack              mStackSbire;

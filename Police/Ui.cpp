@@ -43,7 +43,8 @@ void Ui::draw()
 
 bool Ui::handleEvent(const sf::Event &event)
 {
-    mMainContainer.handleEvent(event,sf::Mouse::getPosition(mTarget));
+    viewEvent(Event);
+    mMainContainer.handleEvent(event,sf::Mouse::getPosition(mTarget));   
 }
 
 void Ui::buildUi()
@@ -83,4 +84,50 @@ void Ui::buildUi()
 
     mMainContainer.pack(buildButton);
     mMainContainer.pack(exitButton);
+}
+
+void Ui::viewEvent(const sf::Event &event)
+{
+    if(event.type == sf::Event::KeyPressed)
+    {
+
+        switch(event.key.code)
+        {
+            case sf::Keyboard::Z:
+            mUiView.move(0.f,-PIXEL);
+            break;
+
+            case sf::Keyboard::Up:
+            mUiView.move(0.f,-PIXEL);
+            break;
+
+            case sf::Keyboard::Q:
+            mUiView.move(-PIXEL,0.f);
+            break;
+
+            case sf::Keyboard::Left:
+            mUiView.move(-PIXEL,0.f);
+            break;
+
+            case sf::Keyboard::D:
+            mUiView.move(PIXEL,0.f);
+            break;
+
+            case sf::Keyboard::Right:
+            mUiView.move(PIXEL,0.f);
+            break;
+
+            case sf::Keyboard::S:
+            mUiView.move(0.f,PIXEL);
+            break;
+
+            case sf::Keyboard::Down:
+            mUiView.move(0.f,PIXEL);
+            break;
+
+            default:
+            break;
+
+        }
+    }
 }

@@ -8,9 +8,6 @@
 // To TEST
 #include <iostream>
 
-namespace GUI
-{
-
 Button::Button(const FontHolder& fonts, const TextureHolder& textures)
     : mCallback()
     , mSprite(textures.get(Textures::Buttons))
@@ -28,8 +25,6 @@ Button::Button(const FontHolder& fonts, const TextureHolder& textures)
     // Set position of rectangle background
     sf::Color backColor(231,184,58);
     mRectangleBackground.setFillColor(backColor);
-
-
 }
 
 void Button::setCallback(Callback callback)
@@ -53,11 +48,6 @@ void Button::setToggle(bool flag)
     mIsToggle = flag;
 }
 
-bool Button::isSelectable() const
-{
-    return true;
-}
-
 void Button::select()
 {
     Component::select();
@@ -78,7 +68,7 @@ void Button::deselect()
 
 void Button::activate()
 {
-    Component::activate();
+    ObjectBox::setIsActive(true);
 
     // If we are toggle then we should show that the button is pressed and thus "toggled".
     if (mIsToggle)
@@ -100,7 +90,7 @@ void Button::activate()
 
 void Button::deactivate()
 {
-    Component::deactivate();
+    ObjectBox::setIsActive(false);
 
     if (mIsToggle)
     {
@@ -120,7 +110,7 @@ void Button::handleEvent(const sf::Event &event, const sf::Vector2i &positionMou
 {
     if(event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
     {
-        if(isSelected())
+        if(getIsSelected())
         {
             activate();
         }
@@ -167,10 +157,7 @@ void Button::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) cons
 
 void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    states.transform *= getTransform();
-    target.draw(mSprite, states);
-    target.draw(mRectangleBackground, states);
-    target.draw(mText, states);
+    drawCurrent(target,states);
 }
 
 void Button::changeTexture(Type buttonType)
@@ -178,6 +165,3 @@ void Button::changeTexture(Type buttonType)
     sf::IntRect textureRect(0, 50*buttonType, 200, 50);
     mSprite.setTextureRect(textureRect);
 }
-
-
-}   // End of namespace

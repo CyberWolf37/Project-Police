@@ -20,6 +20,7 @@ public:
     Position();
     Position(const Position& copy);
     Position(sf::Transformable &object);
+    Position(float& x,float& y);
 
     void                            setPositionRaw(const sf::Vector2f& positionSend);
     const sf::Vector2f              &getPositionRaw() const;
@@ -34,8 +35,8 @@ public:
 
     void                            afficher(std::ostream &flux) const;
 
-    std::ostream&                   operator<<(std::ostream& flux);
-    Position&                       operator=(Position& left,Position& right);
+    void                            operator<<(std::ostream& flux);
+    void                            operator=(Position& right);
 
 private:
     const sf::Vector2i              calculePositionTuile(const sf::Vector2f& positionRaw);

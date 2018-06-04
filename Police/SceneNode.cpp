@@ -90,7 +90,7 @@ sf::Transform SceneNode::getWorldTransform() const
     return transform;
 }
 
-void SceneNode::onCommand(const Command& command, sf::Time dt)
+/*void SceneNode::onCommand(const Command& command, sf::Time dt)
 {
     // Command Current Node, if category matches
     if(command.category & getCategory())
@@ -101,7 +101,7 @@ void SceneNode::onCommand(const Command& command, sf::Time dt)
     {
         child->onCommand(command, dt);
     }
-}
+}*/
 
 /*template <typename Object>
 void SceneNode::checkNodeCollision(SceneNode &node, std::set<Pair> &collisionPairs)
@@ -113,7 +113,7 @@ void SceneNode::checkNodeCollision(SceneNode &node, std::set<Pair> &collisionPai
         child->checkNodeCollision(node, collisionPairs);
 }*/
 
-void SceneNode::removeWrecks()
+/*void SceneNode::removeWrecks()
 {
     // Remove all children which request so
     auto wreckfieldBegin = std::remove_if(mChildren.begin(), mChildren.end(), std::mem_fn(&SceneNode::isMarkedForRemoval));
@@ -121,7 +121,7 @@ void SceneNode::removeWrecks()
 
     // Call function recursively for all remaining children
     std::for_each(mChildren.begin(), mChildren.end(), std::mem_fn(&SceneNode::removeWrecks));
-}
+}*/
 
 /*void SceneNode::checkTuileChildInCurrentView(const sf::View& view)
 {

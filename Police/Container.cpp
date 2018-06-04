@@ -19,9 +19,9 @@ Container::Container(sf::Window& window)
 
 }
 
-void Container::pack(Component::Ptr component)
+void Container::pack(ObjectBox::Ptr object)
 {
-    mChildren.push_back(component);
+    mChildren.push_back(object);
 }
 
 bool Container::isSelectable() const
@@ -62,16 +62,13 @@ void Container::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) c
 {
     states.transform *= getTransform();
 
-    FOREACH(const Component::Ptr& child, mChildren)
+    FOREACH(const ObjectBox::Ptr& child, mChildren)
             target.draw(*child, states);
 }
 
 void Container::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    states.transform *= getTransform();
-
-    FOREACH(const Component::Ptr& child, mChildren)
-            target.draw(*child, states);
+    drawCurrent(target,states);
 }
 
 bool Container::hasSelection() const
@@ -81,12 +78,12 @@ bool Container::hasSelection() const
 
 void Container::select(std::size_t index)
 {
-    if(mChildren[index]->isSelectable())
+    if(mChildren[index]->getIsSelected())
     {
         if(hasSelection())
-            mChildren[mSelectedChild]->deselect();
+            mChildren[mSelectedChild]->setIsSelected(false);
 
-        mChildren[index]->select();
+        mChildren[index]->setIsSelected(true);
         mSelectedChild = index;
     }
 }
@@ -123,8 +120,8 @@ void Container::selectPrevious()
 
 void Container::deselectAll()
 {
-    FOREACH(const Component::Ptr& child, mChildren)
-            child->deselect();
+    FOREACH(const ObjectBox::Ptr& child, mChildren)
+            child->setIsSelected(false);
 }
 
 bool Container::checkColisionEvent(sf::Vector2i& position)

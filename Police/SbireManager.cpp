@@ -43,7 +43,7 @@ SbireManager::SbireStack &SbireManager::getSbireStack()
     return mStackSbire;
 }
 
-SbireManager::SbirePtr &SbireManager::getSbire()
+SbireManager::SbirePtr &SbireManager::getSbireActive()
 {
     FOREACH (SbirePtr& child, mStackSbire)
     {

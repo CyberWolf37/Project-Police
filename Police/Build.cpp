@@ -5,7 +5,8 @@ namespace BUILD_OBJECT
 {
 
 Build::Build(Category_Build::Type category)
-    : mIsSelected(false)
+    : ObjectBox(Category_Layers::SceneBuildingLayer)
+    , mIsSelected(false)
     , mIsActive(false)
     , mCategory(category)
     , mProgressionTime(sf::Time::Zero)

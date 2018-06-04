@@ -27,7 +27,6 @@ INPUT(
 ./release\SettingsState.o
 ./release\Ui.o
 ./release\Animation.o
-./release\Entity.o
 ./release\Sbires.o
 ./release\WorkerSbire.o
 ./release\SbireManager.o
@@ -35,4 +34,5 @@ INPUT(
 ./release\TaskManager.o
 ./release\Position.o
 ./release\ObjectBox.o
+./release\SceneManager.o
 );

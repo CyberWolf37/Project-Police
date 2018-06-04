@@ -5,7 +5,7 @@
 #include "ResourceHolder.hpp"
 #include "ResourceIdentifiers.hpp"
 #include "TextureSpliter.hpp"
-#include "SceneNode.hpp"
+#include <SceneManager.hpp>
 #include "SpriteNode.hpp"
 #include "Utility.hpp"
 #include "Container.hpp"
@@ -45,19 +45,23 @@ namespace sf
 class Ui : private sf::NonCopyable
 {
 public:
-    explicit            Ui(sf::RenderWindow& window, FontHolder& fonts, TextureHolder& texture, SceneNode& SceneLayers);
+    explicit            Ui(sf::RenderWindow& window, FontHolder& fonts, TextureHolder& texture, SceneManager& SceneLayers);
     void                update(sf::Time dt);
     void                draw();
     bool                handleEvent(const sf::Event &event);
     void                buildUi();
 
 private:
+    void                viewEvent(const sf::Event &event);
+
+private:
 
     sf::RenderWindow&                   mTarget;
-    sf::View                            mUiView;
     FontHolder&                         mFonts;
     TextureHolder&                      mTextures;
-    SceneNode&                          mSceneGraph;
+    SceneManager&                       mSceneGraph;
+
+    sf::View                            mUiView;
     sf::RenderTexture                   mUiTexture;
     GUI::Container                      mMainContainer;
     SbireManager                        mSbireManager;

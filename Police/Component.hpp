@@ -5,7 +5,7 @@
 #include "SFML/Graphics/Drawable.hpp"
 #include "SFML/Graphics/Transformable.hpp"
 
-#include "SceneNode.hpp"
+#include <ObjectBox.hpp>
 
 #include <memory>
 
@@ -17,7 +17,7 @@ namespace sf
 namespace GUI
 {
 
-class Component : public SceneNode
+class Component : public ObjectBox
 {
 public:
 
