@@ -10,7 +10,6 @@
 #include "SFML/System/Vector2.hpp"
 
 // Core Library
-#include "SceneNode.hpp"
 #include "ResourceHolder.hpp"
 #include "ResourceIdentifiers.hpp"
 #include "Utility.hpp"
@@ -19,35 +18,28 @@
 // STD library
 #include <memory>
 
-class Tuile
+class Tuile : ObjectBox
 {
 public:
 
-    Tuile(sf::Transformable& object);
+    typedef std::unique_ptr<Tuile> Ptr;
+
+public:
+
+    Tuile(const std::shared_ptr<sf::Sprite>&  sprite);
+    Tuile(const Tuile &copy);
     ~Tuile();
 
-    void                                handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
+    virtual void                        draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void                        handleEvent(const sf::Event& event, const sf::Vector2f &positionMouse);
+    virtual void                        update(sf::Time dt, CommandQueue &commands);
 
-    const bool&                         getIsActive() const;
-    void                                setIsActive(const bool& active);
+    const std::shared_ptr<sf::Sprite>   getSprite() const;
+    void                                setSprite(std::shared_ptr<sf::Sprite> sprite);
 
-    const bool&                         getIsSelected() const;
-    void                                setIsSelected();
-
-
-    const sf::IntRect                   getRectBounds() const;
-    void                                setRectBounds(const sf::Vector2f& bounds);
 
 private:
-
-    sf::Transformable&                  mObject;
-    Position                            mPosition;
-    bool                                mIsActive;
-    bool                                mIsSelected;
-
-
-
-
+    std::shared_ptr<sf::Sprite>         mSprite;
 };
 
 #endif // TUILE_H

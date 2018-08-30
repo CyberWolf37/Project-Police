@@ -10,7 +10,6 @@
 #include "Utility.hpp"
 #include "Container.hpp"
 #include "Button.hpp"
-#include "RectangleRoom.hpp"
 #include "SbireManager.hpp"
 #include "Sbires.hpp"
 #include "TaskManager.hpp"
@@ -45,7 +44,7 @@ namespace sf
 class Ui : private sf::NonCopyable
 {
 public:
-    explicit            Ui(sf::RenderWindow& window, FontHolder& fonts, TextureHolder& texture, SceneManager& SceneLayers);
+    explicit            Ui(sf::RenderWindow& window, FontHolder& fonts, TextureHolder& texture, SceneManager& sceneManager);
     void                update(sf::Time dt);
     void                draw();
     bool                handleEvent(const sf::Event &event);

@@ -71,4 +71,17 @@ typedef ResourceHolder<sf::Font, Fonts::ID>                 FontHolder;
 typedef ResourceHolder<IOFile, File::ID>                    FileHolder;
 typedef ResourceHolder<Animation, Animations::ID>           AnimationHolder;
 
+// Some class to add for next forwad declaration
+class ObjectBox;
+class Sbires;
+class Tuile;
+
+// Forward declaration and few type definition for SceneNode
+template <typename Resource>
+class SceneNode;
+
+typedef SceneNode<ObjectBox>    NodeObject;
+typedef SceneNode<Sbires>       NodeSbire;
+typedef SceneNode<Tuile>        NodeTuile;
+
 #endif // RESOURCEIDENTIFIERS_HPP

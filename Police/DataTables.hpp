@@ -6,7 +6,6 @@
 #include "TextureSpliter.hpp"
 #include "ResourceHolder.hpp"
 #include "Tuile.hpp"
-#include "RectangleRoom.hpp"
 #include "Category.hpp"
 #include "Animation.hpp"
 
@@ -20,11 +19,11 @@
 #include <map>
 #include <functional>
 
-using namespace BUILD_OBJECT;
+//using namespace BUILD_OBJECT;
 
 struct BuildData
 {
-    std::map<RectangleRoom::TypeTuile,std::unique_ptr<Tuile>>    TuileMap;
+    //std::map<RectangleRoom::TypeTuile,std::unique_ptr<Tuile>>    TuileMap;
 };
 
 struct SbireData

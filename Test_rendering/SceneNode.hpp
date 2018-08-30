@@ -29,7 +29,7 @@ class Command;
 class CommandQueue;
 
 template <typename Object>
-class SceneNode
+class SceneNode : private sf::NonCopyable
 {
 
 public:

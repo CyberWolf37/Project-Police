@@ -28,8 +28,8 @@ MenuState::MenuState(StateStack& stack, Context context)
     playButton->setText("Play");
     playButton->setCallback([this] ()
     {
-        requestStackPop();
-        requestStackPush(States::Game);
+        //requestStackPop();
+        //requestStackPush(States::Game);
     });
 
     auto settingsButton = std::make_shared<GUI::Button>(*context.fonts, *context.textures);

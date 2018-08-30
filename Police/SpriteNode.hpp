@@ -2,12 +2,12 @@
 #define SPRITENODE_H
 
 #include "SceneNode.hpp"
+#include "ObjectBox.hpp"
 #include <iostream>
 
 #include "SFML/Graphics/Sprite.hpp"
 
-
-class SpriteNode : public SceneNode
+class SpriteNode
 {
 
 public:

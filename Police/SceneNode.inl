@@ -1,6 +1,6 @@
-#include <SceneNode.hpp>
-
-SceneNode::SceneNode(Category_Layers::Layers category)
+#include "Foreach.hpp"
+template <typename Object>
+SceneNode<Object>::SceneNode(Category_Layers::Layers category)
     : mChildren()
     , mDefaultCategory(category)
 {
@@ -8,13 +8,13 @@ SceneNode::SceneNode(Category_Layers::Layers category)
 }
 
 template <typename Object>
-void SceneNode::attachChild(Ptr child)
+void SceneNode<Object>::attachChild(SceneNode::Ptr child)
 {
     mChildren.push_back(std::move(child));
 }
 
 template <typename Object>
-SceneNode::Ptr SceneNode::detachChild(const SceneNode &node)
+typename SceneNode<Object>::Ptr SceneNode<Object>::detachChild(const SceneNode &node)
 {
     auto found = std::find_if(mChildren.begin(), mChildren.end(), [&] (Ptr& p) {return p.get() == &node; });
     assert(found != mChildren.end());
@@ -24,19 +24,21 @@ SceneNode::Ptr SceneNode::detachChild(const SceneNode &node)
     return result;
 }
 
-void SceneNode::update(sf::Time dt, CommandQueue& commands)
+template <typename Object>
+void SceneNode<Object>::update(sf::Time dt, CommandQueue& commands)
 {
     updateCurrent(dt, commands);
-    updatechildren(dt, commands);
+    updateChildren(dt, commands);
 }
 
-void SceneNode::updateCurrent(sf::Time , CommandQueue&)
+template <typename Object>
+void SceneNode<Object>::updateCurrent(sf::Time , CommandQueue&)
 {
     // Do nothing by default
 }
 
 template <typename Object>
-void SceneNode::updatechildren(sf::Time dt, CommandQueue& commands)
+void SceneNode<Object>::updateChildren(sf::Time dt, CommandQueue& commands)
 {            
     FOREACH (Ptr& child, mChildren)
     {
@@ -44,13 +46,14 @@ void SceneNode::updatechildren(sf::Time dt, CommandQueue& commands)
     }
 }
 
-void SceneNode::handleEvent(const sf::Event &event, const sf::Vector2i& positionMouse)
+template <typename Object>
+void SceneNode<Object>::handleEvent(const sf::Event &event, const sf::Vector2i& positionMouse)
 {
     handleChildrenEvent(event,positionMouse);
 }
 
 template <typename Object>
-void SceneNode::handleChildrenEvent(const sf::Event &event, const sf::Vector2i& positionMouse)
+void SceneNode<Object>::handleChildrenEvent(const sf::Event &event, const sf::Vector2i& positionMouse)
 {
     FOREACH (Ptr& child, mChildren)
     {
@@ -58,14 +61,15 @@ void SceneNode::handleChildrenEvent(const sf::Event &event, const sf::Vector2i& 
     }
 }
 
-void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
+template <typename Object>
+void SceneNode<Object>::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     // Draw node and children with changed transform
     drawChildren(target, states);
 }
 
 template <typename Object>
-void SceneNode::drawChildren(sf::RenderTarget &target, sf::RenderStates states) const
+void SceneNode<Object>::drawChildren(sf::RenderTarget &target, sf::RenderStates states) const
 {
     FOREACH (const Ptr& child, mChildren)
     {
@@ -73,12 +77,14 @@ void SceneNode::drawChildren(sf::RenderTarget &target, sf::RenderStates states) 
     }
 }
 
-sf::Vector2f SceneNode::getWorldPosition() const
+template <typename Object>
+sf::Vector2f SceneNode<Object>::getWorldPosition() const
 {
     return getWorldTransform() * sf::Vector2f();
 }
 
-sf::Transform SceneNode::getWorldTransform() const
+template <typename Object>
+sf::Transform SceneNode<Object>::getWorldTransform() const
 {
     sf::Transform transform = sf::Transform::Identity;
 
@@ -141,7 +147,8 @@ void SceneNode::checkNodeCollision(SceneNode &node, std::set<Pair> &collisionPai
     }
 }*/
 
+/*template <typename Object>
 bool collision(const SceneNode& lhs, const SceneNode& rhs)
 {
     return lhs.getBoundingRect().intersects(rhs.getBoundingRect());
-}
+}*/

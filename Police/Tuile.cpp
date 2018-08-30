@@ -9,12 +9,17 @@ Tuile::Tuile()
 
 }
 
-Tuile::Tuile(const Tuile &copy)
-    : mTuileCategory(copy.getTuileCategory())
-    , mSprite(copy.getSprite())
+Tuile::Tuile(const std::shared_ptr<sf::Sprite>& sprite)
+    : mSprite(*sprite)
 {
-    setActivate(false);
-    setSelected(false);
+
+}
+
+Tuile::Tuile(const Tuile &copy)
+    : mSprite(copy.getSprite())
+{
+    setIsActive(false);
+    setIsSelected(false);
 }
 
 Tuile::~Tuile()
@@ -23,8 +28,11 @@ Tuile::~Tuile()
 
 void Tuile::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
+    // Draw the mother class
+    Tuile::draw(target,states);
+
     // If is active drawing the tuile
-    if(isActive())
+    if(getIsActive())
     {
         // Apply Transform of current Node
         states.transform *= getTransform();
@@ -35,43 +43,6 @@ void Tuile::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 }
 
-void Tuile::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
-{
-
-}
-
-void Tuile::handleEvent(const sf::Event &event, const sf::Vector2i& positionMouse)
-{
-    if(!isActive())
-    {
-        return;
-    }
-
-    if(event.type == sf::Event::MouseMoved)
-    {
-        // Check if in this tuile we have the mouse
-        if(this->getRectBounds().contains(positionMouse))
-        {
-            setSelected(true);
-        }
-    }
-    else
-    {
-        setSelected(false);
-    }
-
-}
-
-TuileState::ID Tuile::getTuileCategory() const
-{
-    return mTuileCategory;
-}
-
-void Tuile::setTuileCategory(TuileState::ID id)
-{
-    mTuileCategory = id;
-}
-
 const std::shared_ptr<sf::Sprite> Tuile::getSprite() const
 {
     return mSprite;
@@ -80,20 +51,4 @@ const std::shared_ptr<sf::Sprite> Tuile::getSprite() const
 void Tuile::setSprite(std::shared_ptr<sf::Sprite> sprite)
 {
     mSprite = sprite;
-}
-
-const bool &Tuile::getIsActive() const
-{
-    return mIsActive;
-}
-
-const sf::IntRect Tuile::getRectBounds()
-{
-    sf::IntRect result(mSprite->getGlobalBounds());
-
-    result.left = this->getPosition().x;
-    result.top  = this->getPosition().y;
-
-    return result;
-
 }

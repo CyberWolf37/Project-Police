@@ -1,5 +1,10 @@
 #include "CommandQueue.hpp"
-#include "SceneNode.hpp"
+
+CommandQueue::CommandQueue()
+    : mQueue()
+{
+
+}
 
 void CommandQueue::push(const Command &command)
 {

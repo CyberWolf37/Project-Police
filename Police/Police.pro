@@ -19,7 +19,6 @@ SOURCES += \
     Utility.cpp \
     Utility.inl \
     World.cpp \
-    SceneNode.cpp \
     IOFile.cpp \
     SpriteNode.cpp \
     Button.cpp \
@@ -30,7 +29,6 @@ SOURCES += \
     LoadingStates.cpp \
     ParallelTask.cpp \
     Build.cpp \
-    RectangleRoom.cpp \
     Tuile.cpp \
     TextureSpliter.cpp \
     DataTables.cpp \
@@ -46,7 +44,8 @@ SOURCES += \
     TaskManager.cpp \
     Position.cpp \
     ObjectBox.cpp \
-    SceneManager.cpp
+    SceneManager.cpp \
+    SceneNode.inl
 
 HEADERS += \
     Application.hpp \
@@ -73,7 +72,6 @@ HEADERS += \
     LoadingState.hpp \
     ParallelTask.hpp \
     Build.hpp \
-    RectangleRoom.hpp \
     Tuile.hpp \
     TextureSpliter.hpp \
     DataTables.hpp \

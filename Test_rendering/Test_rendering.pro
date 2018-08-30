@@ -1,4 +1,4 @@
-CONFIG += c++14
+CONFIG += c++17
 CONFIG += console
 LIBS += -L../Police/"SFML-2.4.1 DW2"/lib
 
@@ -13,10 +13,17 @@ SOURCES += \
     object.cpp \
     stack.inl \
     object_one.cpp \
-    object_two.cpp
+    object_two.cpp \
+    SceneNode.inl \
+    ../Police/SceneManager.cpp
 
 HEADERS += \
     stack.hpp \
     object.hpp \
     object_one.hpp \
-    object_two.hpp
+    object_two.hpp \
+    SceneNode.hpp \
+    ../Police/SceneManager.hpp
+
+DISTFILES += \
+    SceneNode.cpp.autosave

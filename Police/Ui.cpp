@@ -2,12 +2,12 @@
 
 
 
-Ui::Ui(sf::RenderWindow &window, FontHolder &fonts, TextureHolder &texture, SceneNode &SceneLayers)
+Ui::Ui(sf::RenderWindow &window, FontHolder &fonts, TextureHolder &texture, SceneManager &sceneManager)
     :mTarget(window)
     ,mUiView(mTarget.getView())
     ,mFonts(fonts)
     ,mTextures(texture)
-    ,mSceneGraph(SceneLayers)
+    ,mSceneGraph(sceneManager)
     ,mUiTexture()
     ,mMainContainer(window)
     ,mSbireManager(mSceneGraph)

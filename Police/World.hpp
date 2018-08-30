@@ -10,12 +10,10 @@
 #include <IOFile.hpp>
 #include <TextureSpliter.hpp>
 #include <SceneManager.hpp>
-#include <SpriteNode.hpp>
 #include <Utility.hpp>
 #include <Container.hpp>
 #include <Button.hpp>
 #include <ObjectBox.hpp>
-#include <RectangleRoom.hpp>
 #include <Ui.hpp>
 #include <CommandQueue.hpp>
 #include <Category.hpp>
@@ -56,7 +54,6 @@ class World : private sf::NonCopyable
 // Some of typdef to make my code more readable
 public:
         typedef std::vector<sf::Vector2f> ArrayVector2f;
-        typedef std::vector<std::unique_ptr<SpriteNode>> ArraySpriteNode;
         typedef std::map<unsigned int,sf::IntRect> ArrayUi;
 
         explicit                            World(sf::RenderWindow& window, FontHolder& fonts);

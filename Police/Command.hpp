@@ -10,20 +10,20 @@
 
 // Game Library
 #include "category.hpp"
-
-class SceneNode;
+#include "SceneNode.hpp"
+#include "ObjectBox.hpp"
 
 struct Command
 {
     Command();
-    std::function<void(SceneNode&, sf::Time)>   action;
+    std::function<void(SceneNode<ObjectBox>&, sf::Time)>   action;
     unsigned int                                category;
 };
 
 template <typename GameObject, typename Function>
-std::function<void(SceneNode&, sf::Time)> derivedAction(Function fn)
+std::function<void(SceneNode<ObjectBox>&, sf::Time)> derivedAction(Function fn)
 {
-    return [=] (SceneNode& node, sf::Time dt)
+    return [=] (SceneNode<ObjectBox>& node, sf::Time dt)
     {
         // Check if cast is safe
         assert(dynamic_cast<GameObject*>(&node) != nullptr);

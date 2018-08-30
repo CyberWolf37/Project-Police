@@ -26,7 +26,7 @@ public:
     typedef std::vector<SbirePtr>               SbireStack;
 
 public:
-    SbireManager(SceneNode& sceneGraph);
+    SbireManager(SceneNode<Sbires>& sceneGraph);
 
     void                    createSbire(Category_Sbires::ID category,sf::Vector2i& position);
     void                    setTexture(sf::Texture& texture);
@@ -37,7 +37,7 @@ public:
 
 private:
     SbireStack              mStackSbire;
-    SceneNode&              mSceneGraph;
+    SceneNode<Sbires>&      mSceneGraph;
     sf::Texture             mTextureSbire;
 
 

@@ -3,7 +3,7 @@
 #include <State.hpp>
 #include <Stateidentifiers.hpp>
 #include <TitleState.hpp>
-#include <GameState.hpp>
+//#include <GameState.hpp>
 #include <MenuState.hpp>
 #include <LoadingState.hpp>
 #include <SettingsState.hpp>
@@ -89,7 +89,7 @@ void Application::render()
 void Application::registerStates()
 {
     mStateStack.registerState<TitleState>(States::Title);
-    mStateStack.registerState<GameState>(States::Game);
+    //mStateStack.registerState<GameState>(States::Game);
     mStateStack.registerState<MenuState>(States::Menu);
     mStateStack.registerState<LoadingState>(States::Loading);
     mStateStack.registerState<SettingsState>(States::Settings);

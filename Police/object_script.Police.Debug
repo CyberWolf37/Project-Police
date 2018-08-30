@@ -7,7 +7,6 @@ INPUT(
 ./debug\TitleState.o
 ./debug\Utility.o
 ./debug\World.o
-./debug\SceneNode.o
 ./debug\IOFile.o
 ./debug\SpriteNode.o
 ./debug\Button.o
@@ -18,7 +17,6 @@ INPUT(
 ./debug\LoadingStates.o
 ./debug\ParallelTask.o
 ./debug\Build.o
-./debug\RectangleRoom.o
 ./debug\Tuile.o
 ./debug\TextureSpliter.o
 ./debug\DataTables.o

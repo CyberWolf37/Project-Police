@@ -4,6 +4,7 @@
 #include "object_one.hpp"
 #include "object_two.hpp"
 #include "stack.hpp"
+#include "SceneNode.hpp"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ int main()
 
     auto& objectFound(stack.get(1));
 
-    objectFound.tell();
+    //objectFound.tell();
 
     if(typeid(objectFound) == typeid(Object_one))
     {
