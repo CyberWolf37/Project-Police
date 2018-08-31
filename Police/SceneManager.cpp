@@ -3,6 +3,7 @@
 SceneManager::SceneManager()
     :mSceneStackObject()
     ,mSceneStackSbires()
+    ,mSceneStackTuile()
 {
 
 }
