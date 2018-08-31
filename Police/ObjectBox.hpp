@@ -61,6 +61,8 @@ public:
     const Category_Layers::Layers&  getCategoryLayers() const;
     void                            setCategoryLayers(const Category_Layers::Layers& category);
 
+    Position&                       getPosition() const;
+
 private:
     const sf::RectangleShape        drawBoundsWindow();
 

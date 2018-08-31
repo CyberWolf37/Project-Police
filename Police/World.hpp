@@ -57,6 +57,7 @@ public:
         typedef std::map<unsigned int,sf::IntRect> ArrayUi;
 
         explicit                            World(sf::RenderWindow& window, FontHolder& fonts);
+
         void                                update(sf::Time dt);
         void                                draw();
         bool                                handleEvent(const sf::Event &event);

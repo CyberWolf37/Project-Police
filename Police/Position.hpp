@@ -20,13 +20,13 @@ public:
     Position();
     Position(const Position& copy);
     Position(sf::Transformable &object);
-    Position(float& x,float& y);
+    Position(float x,float y);
 
     void                            setPositionRaw(const sf::Vector2f& positionSend);
-    const sf::Vector2f              &getPositionRaw() const;
+    const sf::Vector2f&             getPositionRaw() const;
 
     void                            setPositionTuile(const sf::Vector2i& positionSend);
-    const sf::Vector2i              getPositionTuile();
+    const sf::Vector2i&             getPositionTuile();
 
     const Category_Direction::ID&   getCurrentDirection() const;
 

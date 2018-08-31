@@ -13,9 +13,9 @@ World::World(sf::RenderWindow &window, FontHolder& fonts)
     , mTexturesSplite()
     , mFonts(fonts)
     , mSceneGraph()
-    , mWorldBounds(0.f,0.f,PIXEL*100,PIXEL*100) // World Bounds for 100 tuile to 16 pix
+    , mWorldBounds(0,0,PIXEL*100,PIXEL*100) // World Bounds for 100 tuile to 16 pix
     , mFile()
-    , mSpawnPosition(800.f,808.f)
+    , mSpawnPosition(800,808)
     , mUi(window,fonts,mTextures,mSceneGraph)
     , mComandeQueue()
 {
@@ -203,9 +203,9 @@ void World::buildFile()
     // Set the Tuile
     for(size_t i = 0; i < file->Layouts[0]->layerTile.size() ; i++)
     {
-        std::shared_ptr<Tuile> Ptuile (new Tuile((*PtrMap)[file->Layouts[0]->layerTile[i]]));
-        Ptuile->setPosition(arrayPosition[i]);
-        mSceneGraph.insert(std::move(Ptuile),Category_Layers::Layers::SceneGroundLayer);
+        std::unique_ptr<Tuile> Ptuile (new Tuile((*PtrMap)[file->Layouts[0]->layerTile[i]]));
+        Ptuile->getPosition().setPositionRaw(arrayPosition[i]);
+        mSceneGraph.insert(std::move(Ptuile));
     }
 
 }

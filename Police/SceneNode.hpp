@@ -4,6 +4,7 @@
 // GAME Library
 #include "Category.hpp"
 #include "Foreach.hpp"
+#include "Tuile.hpp"
 
 // SFML Library
 #include "SFML/System/NonCopyable.hpp"

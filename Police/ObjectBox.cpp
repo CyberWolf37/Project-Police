@@ -129,6 +129,11 @@ void ObjectBox::setCategoryLayers(const Category_Layers::Layers &category)
     mCategoryLayers = category;
 }
 
+Position &ObjectBox::getPosition() const
+{
+    return mPosition;
+}
+
 const sf::RectangleShape ObjectBox::drawBoundsWindow()
 {
     mFrames.setPosition(mPosition.getPositionRaw());

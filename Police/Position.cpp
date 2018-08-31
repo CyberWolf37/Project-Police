@@ -35,7 +35,7 @@ Position::Position(sf::Transformable &object)
 {
 }
 
-Position::Position(float &x,float &y)
+Position::Position(float x, float y)
     :mObject(nullptr)
     ,mPositionRaw(x,y)
     ,mIsMoving(false)
@@ -82,7 +82,7 @@ void Position::setPositionTuile(const sf::Vector2i &positionSend)
     }
 }
 
-const sf::Vector2i Position::getPositionTuile()
+const sf::Vector2i &Position::getPositionTuile()
 {
     if(mObject != nullptr)
     {

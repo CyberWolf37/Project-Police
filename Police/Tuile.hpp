@@ -18,7 +18,10 @@
 // STD library
 #include <memory>
 
-class Tuile : ObjectBox
+class CommandQueue;
+class ObjectBox;
+
+class Tuile : public ObjectBox
 {
 public:
 
