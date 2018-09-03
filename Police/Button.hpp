@@ -14,6 +14,8 @@
 #include <memory>
 #include <functional>
 
+namespace GUI
+{
 
 class Button : public ObjectBox
 {
@@ -59,5 +61,7 @@ private:
     sf::Text                mText;
     bool                    mIsToggle;
 };
+
+} // End of namespace GUI
 
 #endif // BUTTON_H

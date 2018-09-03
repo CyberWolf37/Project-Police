@@ -44,28 +44,15 @@ public:
     ProgressBar(const FontHolder& fonts, const TextureHolder& textures);
 
     virtual void                handleEvent(const sf::Event& event, const sf::Vector2i& positionMouse);
-    virtual bool                checkColision(sf::Vector2i &position);
-
-    void                        setSelectable(bool select);
-    virtual bool                isSelectable() const;
-
-
-    virtual void                select();
-    virtual void                deselect();
-
-    sf::FloatRect               getBoundingRect();
+    virtual void                draw(sf::RenderTarget& target, sf::RenderStates states)const;
 
     void                        setSprite(const TextureHolder& textures);
-    void                        getSprite();
+    void                        getSprite() const;
 
     void                        setValue(size_t value);
     const int                   getValue() const;
 
     const bool                  isFinish() const;
-
-private:
-    virtual void                drawCurrent(sf::RenderTarget& target, sf::RenderStates states)const;
-    virtual void                draw(sf::RenderTarget& target, sf::RenderStates states)const;
 
 private:
     SpritesMap                  mStackSprite;

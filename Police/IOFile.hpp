@@ -9,6 +9,7 @@
 
 // Core Library
 #include "ObjectBox.hpp"
+#include "Tuile.hpp"
 #include "ResourceHolder.hpp"
 
 // Sfml library
@@ -34,7 +35,7 @@ class IOFile
 
 // Structure of IOFile
 public:
-    typedef std::map<Category_Layers::Layers,std::vector<std::unique_ptr<ObjectBox>>> MapTuile;
+    typedef std::map<Category_Layers::Layers,std::vector<std::unique_ptr<Tuile>>> MapTuile;
 
     struct Layout
     {

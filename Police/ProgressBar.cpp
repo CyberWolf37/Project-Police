@@ -39,18 +39,6 @@ ProgressBar::ProgressBar(const FontHolder& fonts, const TextureHolder& textures)
     this->setOrigin(20,50);
 }
 
-void ProgressBar::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
-{
-    states.transform *= getTransform();
-
-    // Draw the sprite
-    sf::Sprite sprite(mTextureProgress.getTexture());
-
-    // Draw Now the Target
-    target.draw(sprite, states);
-
-}
-
 void ProgressBar::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
@@ -69,59 +57,6 @@ void ProgressBar::handleEvent(const sf::Event& event, const sf::Vector2i &positi
     {
         std::cout << "ProgressBar Test check"<< std::endl;
     }
-}
-
-bool ProgressBar::checkColision(sf::Vector2i& position)
-{
-    // Get the rect of our progressBar
-    sf::FloatRect boundsButton  = getBoundingRect();
-
-    sf::Vector2f positionSprite = this->getPosition();
-
-    // If the position was not in our progress rect
-    if(
-            position.x < (positionSprite.x + boundsButton.width) &&
-            position.x >  positionSprite.x &&
-            position.y < (positionSprite.y + boundsButton.height) &&
-            position.y >  positionSprite.y )
-    {
-        // If we are in the box
-        return true;
-    }
-    else
-    {
-        // If we not
-        return false;
-    }
-
-}
-
-void ProgressBar::setSelectable(bool select)
-{
-    mIsSelectable = select;
-
-}
-
-bool ProgressBar::isSelectable() const
-{
-    return mIsSelectable;
-}
-
-void ProgressBar::select()
-{
-    mIsCurseurview = true;
-    setValue(mValue);
-}
-
-void ProgressBar::deselect()
-{
-    mIsCurseurview = false;
-    setValue(mValue);
-}
-
-sf::FloatRect ProgressBar::getBoundingRect()
-{
-    return mStackSprite[BackStage].getGlobalBounds();
 }
 
 void ProgressBar::setSprite(const TextureHolder &textures)
@@ -160,7 +95,7 @@ void ProgressBar::setSprite(const TextureHolder &textures)
     mStackSprite[Curseur]    = curseurSprite;
 }
 
-void ProgressBar::getSprite()
+void ProgressBar::getSprite() const
 {
     mTextureProgress.clear(sf::Color::Transparent);
     mTextureProgress.draw(mStackSprite[BackStage]);

@@ -3,12 +3,6 @@
 // Debug
 #include <QDebug>
 
-
-Tuile::Tuile()
-{
-
-}
-
 Tuile::Tuile(const std::shared_ptr<sf::Sprite>& sprite)
     : mSprite(*sprite)
 {

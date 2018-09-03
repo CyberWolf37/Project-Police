@@ -19,17 +19,12 @@ Container::Container(sf::Window& window)
 
 }
 
-void Container::pack(ObjectBox::Ptr object)
+void Container::pack(Ptr object)
 {
-    mChildren.push_back(object);
+    mChildren.push_back(std::move(object));
 }
 
-bool Container::isSelectable() const
-{
-    return false;
-}
-
-void Container::handleEvent(const sf::Event &event, const sf::Vector2i &positionMouse)
+void Container::handleEvent(const sf::Event &event, const sf::Vector2f &positionMouse)
 {
 
     //If we pressed Left button on mouse when activate a button
@@ -58,17 +53,12 @@ void Container::handleEvent(const sf::Event &event, const sf::Vector2i &position
     }
 }
 
-void Container::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
+void Container::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
 
-    FOREACH(const ObjectBox::Ptr& child, mChildren)
+    FOREACH(const Ptr& child, mChildren)
             target.draw(*child, states);
-}
-
-void Container::draw(sf::RenderTarget &target, sf::RenderStates states) const
-{
-    drawCurrent(target,states);
 }
 
 bool Container::hasSelection() const
@@ -120,25 +110,8 @@ void Container::selectPrevious()
 
 void Container::deselectAll()
 {
-    FOREACH(const ObjectBox::Ptr& child, mChildren)
+    FOREACH(const Ptr& child, mChildren)
             child->setIsSelected(false);
 }
 
-bool Container::checkColisionEvent(sf::Vector2i& position)
-{
-    // Check colision in children
-    for(size_t i = 0; i< mChildren.size(); i++)
-    {
-        if(mChildren[i]->checkColision(position))
-        {
-            mSelectedChild = i;
-            return true;
-        }
-    }
-    // If Child was not selected.
-    mSelectedChild = 0;
-    return false;
-
-}
-
-}
+} // End of namespace GUI

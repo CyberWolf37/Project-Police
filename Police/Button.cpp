@@ -8,6 +8,9 @@
 // To TEST
 #include <iostream>
 
+namespace GUI
+{
+
 Button::Button(const FontHolder& fonts, const TextureHolder& textures)
     : mCallback()
     , mSprite(textures.get(Textures::Buttons))
@@ -50,7 +53,7 @@ void Button::setToggle(bool flag)
 
 void Button::select()
 {
-    Component::select();
+    setIsSelected(true);
 
     changeTexture(Selected);
     sf::Color backColor(46,29,223);
@@ -59,7 +62,7 @@ void Button::select()
 
 void Button::deselect()
 {
-    Component::deselect();
+    setIsSelected(false);
 
     changeTexture(Normal);
     sf::Color backColor(231,184,58);
@@ -95,7 +98,7 @@ void Button::deactivate()
     if (mIsToggle)
     {
         // Reset Textures one depending on if we are selected or not
-        if (isSelected())
+        if (getIsSelected())
         {
             changeTexture(Selected);
         }
@@ -128,7 +131,7 @@ bool Button::checkColision(sf::Vector2i& position)
     // Get the rect of our button
     sf::FloatRect boundsButton  = getBoundingRect();
 
-    sf::Vector2f positionSprite = this->getPosition();
+    sf::Vector2f positionSprite = this->getPosition().getPositionRaw();
 
     // If the position was not in our button rect
     if(
@@ -165,3 +168,5 @@ void Button::changeTexture(Type buttonType)
     sf::IntRect textureRect(0, 50*buttonType, 200, 50);
     mSprite.setTextureRect(textureRect);
 }
+
+} // End of namespace GUI

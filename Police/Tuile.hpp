@@ -11,15 +11,14 @@
 
 // Core Library
 #include "ResourceHolder.hpp"
-#include "ResourceIdentifiers.hpp"
 #include "Utility.hpp"
 #include "Position.hpp"
+#include "ObjectBox.hpp"
 
 // STD library
 #include <memory>
 
 class CommandQueue;
-class ObjectBox;
 
 class Tuile : public ObjectBox
 {

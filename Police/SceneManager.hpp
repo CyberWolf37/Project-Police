@@ -54,7 +54,7 @@ void SceneManager::insert(std::unique_ptr<Object> item)
     }
     else if(typeid(Object) == typeid(Sbires))
     {
-        mSceneStackSbires.attachChild(std::move(item));
+        //mSceneStackSbires.attachChild(std::move(item));
     }
     else if(typeid(Object) == typeid(Tuile))
     {

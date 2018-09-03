@@ -15,20 +15,18 @@ class Container : public ObjectBox
 
 {
 public:
-    typedef std::shared_ptr<Container> Ptr;
+    typedef std::shared_ptr<ObjectBox> Ptr;
 
 public:
+
     Container(sf::Window &window);
 
-    void                            pack(ObjectBox::Ptr object);
+    void                            pack(Ptr object);
 
-    virtual bool                    isSelectable() const;
-    virtual void                    handleEvent(const sf::Event &event, const sf::Vector2i& positionMouse);
-
+    virtual void                    handleEvent(const sf::Event &event, const sf::Vector2f &positionMouse);
+    virtual void                    draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
-    virtual void                    drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const;
-    virtual void                    draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     bool                            hasSelection() const;
     void                            select(std::size_t index);
@@ -39,7 +37,8 @@ private:
     bool                            checkColisionEvent(sf::Vector2i &position);
 
 private:
-    std::vector<ObjectBox::Ptr>     mChildren;
+
+    std::vector<Ptr>                mChildren;
     int                             mSelectedChild;
     const sf::Window&               mWindow;
 };

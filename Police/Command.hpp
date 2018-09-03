@@ -15,12 +15,12 @@
 
 struct Command
 {
-    Command();
+    /*Command();
     std::function<void(SceneNode<ObjectBox>&, sf::Time)>   action;
-    unsigned int                                category;
+    unsigned int                                category;*/
 };
 
-template <typename GameObject, typename Function>
+/*template <typename GameObject, typename Function>
 std::function<void(SceneNode<ObjectBox>&, sf::Time)> derivedAction(Function fn)
 {
     return [=] (SceneNode<ObjectBox>& node, sf::Time dt)
@@ -31,6 +31,6 @@ std::function<void(SceneNode<ObjectBox>&, sf::Time)> derivedAction(Function fn)
         // Downcast node and invoke fonction on it
         fn(static_cast<GameObject&>(node), dt);
     };
-}
+}*/
 
 #endif // COMMAND_H

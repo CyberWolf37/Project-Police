@@ -178,15 +178,15 @@ void IOFile::readBalise(std::ifstream &file)
             // Set the name of layout
             if(balise->nameParameter == "BackGround")
             {
-                layout->category = Category::Layers::SceneGroundLayer;
+                layout->category = Category_Layers::SceneGroundLayer;
             }
             else if(balise->nameParameter == "Building")
             {
-                layout->category = Category::Layers::SceneBuildingLayer;
+                layout->category = Category_Layers::SceneBuildingLayer;
             }
             else
             {
-                layout->category = Category::Layers::None;
+                layout->category = Category_Layers::SceneNone;
             }
 
             layout->nameLayout = balise->nameParameter;
@@ -390,8 +390,8 @@ IOFile::MapTuile& IOFile::splitTexture(Category_Layers::Layers categoryLayer, sf
     // Counter to split tile
     unsigned int counter = 0;
     MapTuile mapTuile;
-    std::vector<std::unique_ptr<ObjectBox>> vector;     // Vector for texture split
-    std::vector<std::unique_ptr<ObjectBox>> vector2;    // Vector for Maptuile
+    std::vector<std::unique_ptr<Tuile>> vector;     // Vector for texture split
+    std::vector<std::unique_ptr<Tuile>> vector2;    // Vector for Maptuile
 
     // Index
     sf::IntRect index(0,0,pix.x,pix.y);
@@ -407,9 +407,9 @@ IOFile::MapTuile& IOFile::splitTexture(Category_Layers::Layers categoryLayer, sf
                 index.left = 0;
 
                 // Add in Box
-                std::unique_ptr<ObjectBox> object(new ObjectBox(categoryLayer));
-                object->setSprite(sf::Sprite(texture,index));
-                object->setPosition(index.left,index.top);
+                std::shared_ptr<sf::Sprite> img(new sf::Sprite(texture,index));
+                std::unique_ptr<Tuile> object(new Tuile(std::move(img)));
+                object->getPosition().setPositionRaw(sf::Vector2f(static_cast<float>(index.left),static_cast<float>(index.top)));
 
                 // Insert in vector in a map
                 vector.push_back(std::move(object));
@@ -420,9 +420,9 @@ IOFile::MapTuile& IOFile::splitTexture(Category_Layers::Layers categoryLayer, sf
                 index.left += pix.x;
 
                 // Add in Box
-                std::unique_ptr<ObjectBox> object(new ObjectBox(categoryLayer));
-                object->setSprite(sf::Sprite(texture,index));
-                object->setPosition(index.left,index.top);
+                std::shared_ptr<sf::Sprite> img(new sf::Sprite(texture,index));
+                std::unique_ptr<Tuile> object(new Tuile(std::move(img)));
+                object->getPosition().setPositionRaw(sf::Vector2f(static_cast<float>(index.left),static_cast<float>(index.top)));
 
                 // Insert in vector
                 vector.push_back(std::move(object));
@@ -436,7 +436,7 @@ IOFile::MapTuile& IOFile::splitTexture(Category_Layers::Layers categoryLayer, sf
     // Set the file with the box i use
     for(size_t i = 0; i < mFile->Layouts[0]->layerTile.size() ; i++)
     {
-        std::unique_ptr<ObjectBox> object(vector[mFile->Layouts[0]->layerTile[i]].get());
+        std::unique_ptr<Tuile> object(vector[mFile->Layouts[0]->layerTile[i]].get());
         vector2.push_back(std::move(object));
     }
 

@@ -71,7 +71,7 @@ bool MenuState::update(sf::Time dt)
 
 bool MenuState::handleEvent(const sf::Event &event)
 {   
-    sf::Vector2i position(0,0);
+    sf::Vector2f position(0.f,0.f);
     mGuiContainer.handleEvent(event,position);
     return false;
 }

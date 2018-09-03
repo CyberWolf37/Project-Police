@@ -1,6 +1,10 @@
 #ifndef RESOURCEIDENTIFIERS_HPP
 #define RESOURCEIDENTIFIERS_HPP
 
+#include "ObjectBox.hpp"
+#include "Sbires.hpp"
+#include "Tuile.hpp"
+
 // Forward declaration of SFML classes
 namespace sf
 {
@@ -70,11 +74,6 @@ typedef ResourceHolder<TextureSpliter, Textures::ID>        TextureSplite;
 typedef ResourceHolder<sf::Font, Fonts::ID>                 FontHolder;
 typedef ResourceHolder<IOFile, File::ID>                    FileHolder;
 typedef ResourceHolder<Animation, Animations::ID>           AnimationHolder;
-
-// Some class to add for next forwad declaration
-class ObjectBox;
-class Sbires;
-class Tuile;
 
 // Forward declaration and few type definition for SceneNode
 template <typename Resource>
